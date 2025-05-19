@@ -1,0 +1,147 @@
+@mixin draw-border-side($side, $side-name, $size, $color) {
+  @if $side {
+    border-#{$side-name}: $size solid var($color);
+  } @else {
+    border-#{$side-name}: $size solid transparent;
+  }
+}
+
+@mixin arrow($size, $direction, $color) {
+  width: 0;
+  height: 0;
+  @if $direction == 'down' {
+    border-top: $size solid var($color);
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+  }
+  @if $direction == 'up' {
+    border-bottom: $size solid var($color);
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+  }
+  
+  @if $direction == 'right' {
+    border-left: $size solid var($color);
+    border-bottom: $size solid transparent;
+    border-top: $size solid transparent;
+  }
+}
+
+@mixin arrow-down($size, $color) {
+  @include arrow($size, 'down', $color);
+}
+
+@mixin arrow-up($size, $color) {
+  margin-top: $size;
+  @include arrow($size, 'up', $color);
+}
+
+
+@mixin arrow-cycle($size, $isLeft: true) {
+  --arrow-color: var(--color-light);
+  @if $isLeft {
+    --before: 45deg;
+    --after: -45deg;
+    --left: 9px;
+  } @else {
+    --after: 45deg;
+    --before: -45deg;
+    --left: 12px;
+  }
+  
+  @include square($size);
+  
+  position: relative;
+  border-radius: 50%;
+  border: 2px solid var(--arrow-color);
+  cursor: pointer;
+  
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: var(--left);
+    width: 40%;
+    height: 3px;
+    background-color: var(--arrow-color);
+    border-radius: 5px;
+  }
+  
+  &::before {
+    top: 60%;
+    rotate: var(--before);
+  }
+  
+  &::after {
+    top: 35%;
+    rotate: var(--after);
+  }
+}
+
+.arrow-accent-sm-down, .arrow-accent-sm-up {
+  display: inline-block;
+  position:  relative;
+  width: calc(var(--arrow-accent-sm-size) * 2);
+  height: var(--arrow-accent-sm-size);
+  
+}
+.arrow-accent-sm-down {
+    @include arrow-down(var(--arrow-accent-sm-size), --color-accent);
+}
+
+.arrow-accent-sm-up {
+  @include arrow-up(var(--arrow-accent-sm-size), --color-accent);
+}
+
+.arrow-cycle--left {
+  @include arrow-cycle(var(--arrow-cycle-size));
+}
+
+.arrow-cycle--right {
+  @include arrow-cycle(var(--arrow-cycle-size), false);
+}
+
+.arrow-cycle--top {
+  @include square(50px);
+  
+  display: none;
+  position: fixed;
+  right: 40px;
+  bottom: 20px;
+  z-index: 1030;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  opacity: 0.6;
+  cursor: pointer;
+  
+  &:hover, &:focus {
+    filter: brightness(1.5);
+    outline: none;
+  }
+  
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 30%;
+    height: 40%;
+    width: 3px;
+    background-color: var(--color-light);
+    border-radius: 5px;
+  }
+  
+  &::before {
+    left: 60%;
+    rotate: -45deg;
+  }
+  
+  &::after {
+    left: 35%;
+    rotate: 45deg;
+  }
+
+}
+._arrow-inactive {
+  filter: brightness(0.60);
+}
+

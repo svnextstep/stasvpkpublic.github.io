@@ -1,0 +1,44 @@
+.tower {
+  @include bg-img_top_full-pagesize(url('#{$assetPath}tower/tower_bg.jpg'));
+}
+
+.tower-params {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  //grid-template-columns: repeat(3, 1fr);
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 30px;
+
+  .params__list {
+    flex: 1 1 30%;
+    max-width: 300px;
+    min-width: 250px;
+    gap: 20px;
+    box-shadow: var(--shadow-light);
+  }
+}
+
+.img-group__row {
+  @include flex_row(center);
+  
+  .img-group__item{
+    margin-right: 10px;
+    >img {
+      min-width: 100%;
+      border: 1px solid var(--color-accent);
+    }
+  }
+  .overlapped_img{
+    margin: 25px 0 0 -40px;
+  }
+}
+
+.tower-in-war {
+  @include bg-img(url('#{$assetPath}tower/war_img1.jpg'), center, center, cover);
+  min-height: 400px;
+}

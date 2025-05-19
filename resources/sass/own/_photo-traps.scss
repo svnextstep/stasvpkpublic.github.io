@@ -1,0 +1,33 @@
+.photo-traps {
+  @include flex-column;
+  align-items: center;
+  $imgSize: 300px;
+  
+  &__img {
+    margin-left: calc($imgSize * 0.25);
+  }
+  
+  &__params {
+    width: calc($imgSize * 0.75);
+    margin-top: calc($imgSize * -0.35 );
+  }
+  
+  &__title {
+    width: calc($imgSize * 0.75);
+    color: var(--color-pale-gold);
+    background-color:  var(--color-accent);
+    padding: 20px;
+    margin-left: -20px;
+  }
+}
+
+.photo-album {
+  @include photo-album(250px, 6);
+  
+  @include tablet {
+    @include photo-album(200px, 6);
+  }
+  @include mobile {
+    @include photo-album(150px, 6);
+  }
+}

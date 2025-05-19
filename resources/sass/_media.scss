@@ -1,0 +1,110 @@
+$desktop-above: 1281px; /* mobile first = min*/
+$desktop: 1280px;/* desktop first = max */
+
+$tablet-above: 1024px;
+$tablet: 1023px;
+
+$mobile-above: 768px;
+$mobile: 767px;
+
+$mobile-s-above: 481px;
+$mobile-s: 480px;
+
+
+@mixin desktop-above { /* < */
+  @media (min-width: $desktop-above) {
+    @content;
+  }
+}
+
+@mixin desktop {/* > */
+  @media (max-width: $desktop) {
+    @content;
+  }
+  /*
+  применение
+    .elm {
+      padding-block: 100px;
+      font-size: 30px;
+
+      @include desktop {
+        padding-block: 50px;
+        font-size: 18px;
+      }
+    }
+  css
+    .elm {
+      padding-block: 100px;
+      font-size: 30px;
+    }
+    @media (max-width: 1280px) {
+      .elm {
+        padding-block: 50px;
+        font-size: 18px;
+      }
+    }
+  */
+}
+
+@mixin tablet-above {
+  @media (min-width: $tablet-above) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin mobile-above {
+  @media (min-width: $mobile-above) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+
+@mixin mobile-s-above {
+  @media (min-width: $mobile-s-above) {
+    @content;
+  }
+}
+
+@mixin mobile-s {
+  @media (max-width: $mobile-s) {
+    @content;
+  }
+}
+
+@mixin hover {
+  /* desktop */
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+  
+  /* modile тач экраны*/
+  @media (hover: none) {
+    &:active {
+      @content;
+    }
+  }
+  
+  /*
+  button {
+    background-color: blue;
+
+    @include hover {
+      background-color: red;
+    }
+  }
+  */
+}

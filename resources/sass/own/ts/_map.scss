@@ -1,0 +1,458 @@
+$fire-point_wight: 2px;
+
+
+// FIRE
+@mixin fire-art($baseSize) {
+  $w: calc( $baseSize / 4 );
+  width: $w;
+  height: $w;
+  position: absolute;
+  top: calc($baseSize / 2);
+  left: calc( $baseSize / 2 );
+  transform: scale(0);
+  
+  &._active{
+    transform: scale(1);
+    transition: all 0.3s ease 0.6s; 
+  }
+}
+@mixin fire-point() {
+  display: block;
+  position: absolute;
+  background-color: var(--color-accent);
+  //opacity: 0;
+  //transition: all 0.8s ease 0s;
+}
+@mixin fire-point-active() {
+  opacity: 1;
+  transition: all 5s ease 0s; 
+}
+@mixin fire-point-x($baseSize) {
+  @include fire-point();
+  width: calc( $baseSize * 3);
+  height: $fire-point_wight;
+  top: calc( $baseSize / 1.41 );
+  left: 0;
+  transform: translateX(-120vw);
+  
+  &._active {
+    @include fire-point-active();
+    transform: translateX(0);
+  }
+}
+@mixin fire-point-y($baseSize) {
+  @include fire-point();
+  $h : calc( $baseSize * 4);
+  $hideH: calc($h * 1.25);
+  width: $fire-point_wight;
+  height: $h;
+  top: 0;
+  left: calc( $baseSize / 1.65 );
+  transform: translateY(-$hideH);
+  
+  &._active {
+    @include fire-point-active();
+    transform: translateY(0);
+  }
+}
+// end FIRE
+
+
+// CAMERA ART
+@mixin camera_area_active() {
+  //-webkit-animation: full_cycle_rotate 15s linear 0s infinite;
+  animation: full_cycle_rotate 15s linear 0s infinite;
+  //animation:        3s ease-in 1s infinite reverse both running slidein;
+}
+@mixin art-camera($artCameraH) {
+  .camera {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0% 100%;
+    width: calc( $artCameraH * 2.6 );
+    height: $artCameraH;
+
+    &__top-outline {
+      position: absolute;
+      z-index: 1100;
+      width: 100%;
+      height: calc( $artCameraH - $artCameraH * 0.4 );
+      margin-top: calc( $artCameraH * 0.20 );
+      border-top: 1px solid silver;
+      border-bottom: 1px solid silver;
+    }
+    &__body {
+      flex: 0 0 80%;
+      width: 80%;
+      height: 100%;
+      background-color: var(--color-accent);
+    }
+    &__visor {
+      flex: 0 0 20%;
+      width: 20%;
+      height: $artCameraH;
+      border-left: calc( $artCameraH / 2 ) solid var(--color-accent);
+      border-top: calc( $artCameraH * 0.2 ) solid transparent;
+      border-bottom: calc( $artCameraH * 0.2 ) solid transparent;
+    }
+  }
+}
+
+@mixin camera_area($baseSize) {
+  .camera-watch {
+    position: relative;
+    width: $baseSize;
+    height: $baseSize;
+    overflow: visible;
+
+    &._migrate-left {
+      top: calc($baseSize / 1.39);
+      left: 0;
+      //transform: rotate(330deg);
+    }
+    &._migrate-right {
+      top:  calc($baseSize / 6.52);
+      left: -(calc($baseSize / 3));
+      //transform: rotate(220deg);
+    }
+    
+    .camera-watch__area {
+      @include art-camera(calc($baseSize / 15));
+
+      position: relative;
+      width: $baseSize;
+      height: $baseSize;
+      border-radius: 50%;
+      border: 3px double var(--color-platinum);
+
+      &._highlight {
+         border: 5px solid var(--color-accent);
+      }
+
+      &._active {
+        @include camera_area_active;
+       
+     }
+
+      &.handle_camera_slowly {
+        -webkit-animation: handle_camera_move 13s linear 0s infinite;
+        animation: handle_camera_move 13s linear 0s infinite;
+      }
+      // elements
+      .camera-watch__view {
+        $viewSize: calc( $baseSize * 0.7 );
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-origin: 0% 100%;
+        width: $viewSize;
+        height: $viewSize;
+        border-top-right-radius: 100%;
+        transform: skewY(50deg);
+        background: linear-gradient(-58deg, rgba(255, 255, 255, 0) 60%, rgba(113, 135, 164, 0.8) 100%);
+      }
+
+      .camera {
+        transform: rotate(75deg);
+        transform-origin: 35% -40%;
+      }
+
+    }
+      // own case
+    &.fire_camera_1 {
+      transform: rotate(210deg);
+    }
+    
+    &.fire_camera_2 {
+      transform: rotate(100deg);
+    }
+    
+    &.fire_camera_1, &.fire_camera_2 {
+      .camera-watch__area._active {
+        -webkit-animation: full_cycle_rotate 15s linear 0s 3;
+        animation: full_cycle_rotate 15s linear 0s 3;
+      }
+    }
+  }
+}
+
+
+@keyframes full_cycle_rotate {
+  from {
+    @include transform_rotate(0deg);
+  }
+  to {
+    @include transform_rotate(360deg);
+  }
+}
+
+@keyframes handle_camera_move {
+  0% {
+    @include transform_rotate(0deg);
+  }
+  10% {
+    @include transform_rotate(-80deg);
+  }
+  30% {
+    @include transform_rotate(-60deg);
+  }
+  100% {
+    @include transform_rotate(0deg);
+  }
+}
+
+// end CAMERA ART
+
+
+// CAMERA GROUPS
+
+@mixin camera_pair() {
+  @include flex_row_start();
+  position: relative;
+  margin-top: -10px;
+}
+@mixin camera-watch__pair($size) {
+  .camera-watch__pair {
+    @include camera_area($size);
+
+    width: calc( $size * 2 );
+    overflow: visible;
+  }
+}
+@mixin forest-map($demoMaxW, $raylightCount) {
+  $demoMaxH: calc( $demoMaxW * 1.5);
+  $raylightSize: calc( $demoMaxH / $raylightCount / 2.5);
+  
+  
+  @include bg-img(url(#{$assetPath}tv_system/map.jpg), 0, 0, 100%, auto);
+  
+  display: flex;
+  flex-direction: column;
+  align-items:  center;
+  position: relative;
+  width: $demoMaxW;
+  min-height: $demoMaxH;
+  margin: -10% auto;
+  padding-top: 15%;
+  
+  &._before_expansion {
+    @include transform_tmp(1.8);
+  }
+  
+  &._reduce {
+    @include transform_tmp(1);
+    transition: all 0.8s ease 0s; 
+  }
+  
+  &._expansion {
+    @include transform_tmp(1.5);
+    transition: all 0.8s ease 0s; 
+  }
+  &._move-left {
+    @include transform_tmp_scale_move(1.5, -5%, -5%);
+    //@include transformX_tmp(1.5, -10%);
+    transition: all 0.8s ease 0s; 
+  }
+  &._move-right_down {
+    @include transform_tmp_scale_move(1.6, -10%, 15%);
+    transition: all 0.8s ease 0s; 
+  }
+  
+  .fire-art {
+    @include fire-art($raylightSize);
+  }
+  
+  @include camera-watch__pair($raylightSize);
+
+  .fire-point-x {
+    @include fire-point-x($raylightSize);
+  }
+
+  .fire-point-y {
+    @include fire-point-y($raylightSize);
+  }
+}
+
+// TV
+@mixin interactive_map_tv($sizeW) {
+  width: $sizeW;
+  height: calc($sizeW * 0.8);
+  padding: calc($sizeW / 55.7) calc($sizeW / 55.6);
+  @include bg-img(url(#{$assetPath}tv_system/tv.png), 0, 0, 100%, auto);
+}
+@mixin interactive_map_screen($sizeW) {
+  width: 100%;
+  height: calc($sizeW * 0.545);
+  overflow: hidden;
+  position: relative;
+}
+@mixin interactive_map($tv_size_W) {
+  @include interactive_map_tv($tv_size_W);
+  
+  &__screen {
+    @include interactive_map_screen($tv_size_W);
+    
+    .forest-map {
+      @include forest-map(calc( $tv_size_W * 1.2 ), 3);
+      
+    }
+    
+    .review-forest {
+      $moveTop: 70%;
+      $moveLeft: -90%;
+      
+      @include square(calc( $tv_size_W * 2 ));
+      @include bg-img(url(#{$assetPath}welcome_bg.jpg), 0, 0, 100%, auto);
+      
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      
+      &._visible {
+        opacity: 1;
+      }
+      
+      &._move-left {
+        left: $moveLeft;
+        transition: all 5s ease 0.5s;
+      }
+      
+      &._left--fixed {
+        left: $moveLeft;
+      }
+      
+      &._expansion {
+        @include transform_tmp(2);
+        transition: all 0.8s ease 0s; 
+      }
+      
+      &._move-top {
+        top: $moveTop;
+        transition: all 1.5s ease 0s;
+      }
+    }
+    
+
+    
+    ._tools {
+      @include map_comment_panel();
+    }
+  }
+  
+  &__bg {
+    @include transform_tmp(1.8);
+    
+    
+    
+  }
+}
+// end TV
+
+@mixin map_comment_panel($position: 'top') {
+  $margin_inline: 2%;
+  
+  position: absolute;
+  width: 35%;
+  min-height: 20%;
+  overflow: visible;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  background-color: var(--color-accent);
+  color: var(--color-pale-gold);
+  padding: 10% 5% 5% 5%;
+
+  @if ($position == "bottom") {
+    bottom: 0;
+    left: $margin_inline;
+  } @else {
+    top: 0;
+    right: $margin_inline;
+  }
+
+  @include mobile {
+    width: 45%;
+    padding: 0% 2% 2% 2%;
+  }
+}
+
+.map-card {
+  @include presentation_block();
+  
+  background-image: url(#{$assetPath}tv_system/monitore.png), url(#{$assetPath}tv_system/monitore_map_fire.png), url(#{$assetPath}welcome_bg.jpg);
+  background-position: 56% 60%, 80% 30%, 0 0;//bottom  left
+  background-size: 15% auto, 25% auto, cover;// 100% auto
+  background-repeat: no-repeat;
+  
+  @include mobile {
+    background-position: 45% 25%, 85% 10%, 0 0;//bottom  left
+    background-size: 25% auto, 35% auto,cover;// 100% auto
+
+  }
+}
+
+// camera PAIR
+.camera-watch__pair-left{
+  @include camera_pair();
+  margin-left: -20px;
+}
+.camera-watch__pair-right{
+  @include camera_pair();
+  margin-left: 30px;
+}
+.camera-watch__pair{
+  @include camera_pair();
+}
+// end camera PAIR
+
+.forest-map {
+  
+  @media (orientation: landscape) {
+    $w:90vh;
+    $count: 3;
+    @include forest-map($w, $count);
+     
+    .camera-watch__pair {
+      width: calc($w / $count);
+    }
+  }
+
+  @media (orientation: portrait) {
+    $w:70vw;
+    $count: 3;
+    @include forest-map($w, $count);
+    .camera-watch__pair {
+      width: calc($w / $count);
+    }
+  }
+ 
+}
+
+.block_demo{
+  display: block;
+  position: relative;
+}
+.interactive-map {
+  @include interactive_map(45vw);
+  
+  @include mobile {
+    @include interactive_map(90vw);
+  }
+}
+
+@include camera-watch__pair(100px);
+.data-transfer {
+  @include square(5px);
+  @include border-radius(50%);
+  //@include abc-center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 700;
+  opacity: 0;
+  background-color: var(--color-accent);
+}

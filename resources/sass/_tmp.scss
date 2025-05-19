@@ -1,0 +1,59 @@
+:root {
+  --tmp-square-size: 80px;
+}
+
+@mixin tmp-bg-color($color) {
+  background-color: var($color);
+}
+
+.tmp-rows {
+  @include flex_row;
+  gap: 20px;
+}
+
+.tmp-square {
+  @include square(var(--tmp-square-size));
+  background-color: #191A23;
+}
+
+.color-dark {
+  @include tmp-bg-color(--color-dark);
+}
+
+.color-accent {
+  @include tmp-bg-color(--color-accent);
+}
+
+.color-accent {
+  @include tmp-bg-color(--color-accent);
+}
+
+.color-bg-gray {
+  @include tmp-bg-color(--color-bg-gray);
+}
+
+.color-gray-alt {
+  @include tmp-bg-color(--color-gray-alt);
+}
+
+
+.color-pale-gold {
+  @include tmp-bg-color(--color-pale-gold);
+}
+
+.color-platinum {
+  @include tmp-bg-color(--color-platinum);
+}
+
+.color-yellow {
+  @include tmp-bg-color(--color-yellow);
+}
+
+.color-popup-header {
+  @include tmp-bg-color(--color-popup-header);
+}
+
+.color-translucent {
+  @include tmp-bg-color(--color-translucent);
+}
+

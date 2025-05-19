@@ -1,0 +1,61 @@
+.popup {
+  @include frame;
+  
+  --padding-inline: 1.2rem;
+  
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1030;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+  
+  &__wrapper {
+    @include flex_column(center);
+    
+    align-items: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 100px 0px;
+    
+  }
+  
+  &__body {
+    @include border-radius;
+    
+    width: 80%;
+    border: 1px solid var(--color-light);
+    background-color: var(--color-light);
+    overflow: hidden;
+  }
+  
+  &__header, &__footer {
+    min-height: 2rem;
+    padding: 0.5rem var(--padding-inline);
+    background-color: var(--color-bg-gray);
+    
+  }
+  &__header {
+    @include flex_row;
+  }
+  
+  &__footer {
+    @include flex_row_end;
+  }
+  
+  &__content{
+    @include flex_column_between;
+    
+    gap: 20px;
+  }
+}
+
+.popup-close-button {
+  @include close_button(1.3rem);
+  cursor: pointer;
+}

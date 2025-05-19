@@ -1,0 +1,49 @@
+:root {
+  --color-dark: #191A23;
+  --color-light:#fff;
+  --color-accent:#80243f;
+  
+  --color-bg-gray: rgb(236, 231, 217);
+  --color-bg-gray-dark: rgb(163, 155, 132);
+  --color-translucent: rgb(236, 231, 217, 0.7);
+  --color-platinum: rgb(35, 40, 37);
+  --color-yellow: #EBB240;
+
+  --color-gray:#F3F3F3;
+  --color-gray-alt:#898989;
+  
+  --color-pale-gold: palegoldenrod;
+
+ 
+  --border: 1px solid var(--color-dark);
+  --border-radius: 20px;
+  --border-radius-small: 10px;
+  --border-radius-large: 45px;
+  
+  --shadow: 0 5px 0 0 var(--color-dark);
+  --shadow-light: 0 3px 5px rgba(0,0,0,0.5);
+  
+  --font-famile-base: 'Fira Sans Condensed', sans-serif; // 700 500 normal
+  --font-famile-base-extra: 'Oswald', sans-serif;// 200 400 500
+
+  
+  --container-width: 1240px;
+  --container-padding-x: 40px;
+  
+  --section-padding-y: 70px;
+  --div-padding-y: 20px;
+  
+  --input-height: 59px;
+  --button-height: 68px;
+  
+  --arrow-accent-sm-size: 8px;
+  --arrow-cycle-size: 40px;
+  
+  --transition-duration: 0.2s;
+  --transition-duration-slowly: 1.5s;
+  
+  --title-appear-duration: 5s;
+  
+}
+//$assetPath: "/img/";
+$assetPath: '../../public/img/';

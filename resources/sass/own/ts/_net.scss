@@ -1,0 +1,395 @@
+.net-card {
+  @include presentation_block();
+  @include bg-img-cover(url(#{$assetPath}tv_system/net/network_bg.jpg));
+}
+
+// REGION
+/*@mixin net_region($size) {
+  @include flex_row();
+  flex-wrap: wrap;
+  width: $size;
+  min-height: $size;
+  position: relative;
+  margin: 0px auto;
+  overflow: visible;
+}*/
+// end REGION
+
+// LOCAL
+@mixin net_local($size) {
+  $cameraAreaSize: calc( $size / 2 );
+  
+  @include flex_column();
+  
+  width: $size;
+  min-height: $size;
+  position: relative;
+  overflow: visible;
+  
+  //пара камер
+  .camera-pair__row {
+    @include camera_area($cameraAreaSize);
+    
+    width: $size;
+    overflow: visible;
+  }
+}
+// end LOCAL
+
+@mixin region-office2($size, $top: '', $left: '', $bottom: '', $right: '') {
+  .region-office  {
+    @include position($top, $left, $bottom, $right);
+    position: absolute;
+    overflow: visible;
+
+    &__img {
+      @include square(100%);
+      position: relative;
+      z-index: 1;
+      margin: 0 auto;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -25%;
+        z-index: -1;
+        width: 150%;
+        height: 60%;
+        background-color: rgba(236, 231, 217, 0.8);
+        border: 2px solid rgb(163, 157, 143);
+        border-radius: 50%;
+      }
+    }
+
+    &__signature {
+      position: absolute;
+      top: 90%;
+      left: 85%;
+      z-index: 2;
+      min-width: 200px;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+  }
+}
+@mixin  net-regions2($size, $ratio: 2, $cameraPairCount: 4, $cameraRatio: 1)  {
+  $mapSize: calc( $size * $ratio);
+  $regionSize: calc( $size / $cameraPairCount * $cameraRatio);
+  
+  @include square($size);
+  @include shadow();
+  
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-accent);
+  border-top: 10px solid  var(--color-accent);
+  
+  .net_wrapper {
+    @include square(100%);
+    
+    position: relative;
+    overflow: visible;
+     
+    .map__block {
+      @include bg-img-cover(url(#{$assetPath}tv_system/net/main_office.jpg));
+      @include square($mapSize);
+       
+      .forestry {
+        @include square($regionSize);
+        
+        position: relative;
+        overflow: visible;
+        
+        &__cameras {
+          position: relative;
+          overflow: visible;
+          
+          .camera-watch__pair {
+            @include camera_area($regionSize);
+
+            width: calc( $regionSize * 2 );
+            overflow: visible;
+            
+            .camera-watch__area {
+              @include camera_area_active;
+            }
+          }
+        }
+        
+        &__office {
+          @include square(80px);
+        }
+        
+        @include region-office(80px, calc($size * 0.75), calc($size * 0.25));
+      
+        &.forestry_1 {
+          .forestry__cameras {
+            margin: 0  0 0 calc($regionSize * 2); 
+            transform: rotate(65deg);
+          }
+        }
+        
+        &.forestry_2 {
+          margin: 300px 0 0 50px;
+          .forestry__office {
+            margin-top: -80px;
+          }
+        }
+        
+        &.forestry_3 {
+          margin: 0px 0 0 400px;
+          .forestry__office {
+            margin: -250px 0 0 100px;
+          }
+        }
+        
+        .central-office{
+          position: absolute;
+          top: 60%;
+          right: 10%;
+        }
+      }
+    }
+  }
+  
+  .create_net_comments {
+    .step {
+      @include map_comment_panel();
+      @include anim-show(0px, -120px);
+    }
+
+    .comment_bottom {
+      @include map_comment_panel('bottom');
+    }
+    
+    ._note{
+      font-family: var(--font-famile-base-extra);
+      font-weight: 200;
+    }
+    
+
+    >div._active {
+      @include anim-show-active();
+      transition: all 1s ease 3s;
+    }
+  }
+}
+@mixin  net-regions3($size, $ratio: 2, $cameraPairCount: 4, $cameraRatio: 1) {
+  $mapSize: calc( $size * $ratio);
+  $regionSize: calc( $size / $cameraPairCount * $cameraRatio);
+  
+  @include square($size);
+  @include shadow();
+  
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-accent);
+  border-top: 10px solid  var(--color-accent);
+  
+  .net_wrapper {
+    @include square(100%);
+    
+    position: relative;
+    overflow: visible;
+    
+    .map__block {
+      @include bg-img-cover(url(#{$assetPath}tv_system/net/main_office.jpg));
+      @include square($mapSize);
+      
+      .forestry {
+        @include flex_column;
+        gap: 20px;
+        position: relative;
+        
+        &__cameras {
+          position: relative;
+          overflow: visible;
+          border: 4px solid green;
+        }
+        
+        &__office {
+          @include square(80px);
+          border: 4px solid red;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+@mixin region-office($size, $top: 0, $left: 0) {
+  @include square($size);
+
+  position: relative;
+  overflow: visible;
+  margin: $top 0 0 $left;
+
+  .region-office__img {
+    @include square(100%);
+    
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -25%;
+      z-index: -1;
+      width: 150%;
+      height: 60%;
+      background-color: rgba(236, 231, 217, 0.8);
+      border: 2px solid rgb(163, 157, 143);
+      border-radius: 50%;
+    }
+  }
+
+  .region-office__signature {
+    position: absolute;
+    top: 90%;
+    left: 85%;
+    z-index: 2;
+    min-width: 200px;
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+}
+
+
+@mixin  net-regions($size, $ratio: 2, $cameraPairCount: 4, $cameraRatio: 1) {
+  $mapSize: calc( $size * $ratio);
+  $cameraAreaSize: calc( $size / $cameraPairCount * $cameraRatio);
+  $sizeHouse : $cameraAreaSize;
+  
+  @include square($size);
+  @include shadow();
+  
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-accent);
+  border-top: 10px solid  var(--color-accent);
+  
+  .net_wrapper {
+    @include square(100%);
+    
+    .map__block {
+      @include bg-img-cover(url(#{$assetPath}tv_system/net/main_office.jpg));
+      @include square($mapSize);
+      
+      position: relative;
+      overflow: hidden;
+      
+      .forestry {
+        @include flex_column;
+        gap: 20px;
+        position: absolute;
+        overflow: visible;
+        
+        &__cameras {
+          flex: 0 0 auto;
+          position: relative;
+          overflow: visible;
+          
+          .camera-watch__pair {
+            @include camera_area($cameraAreaSize);
+
+            width: calc( $cameraAreaSize * 2 );
+            overflow: visible;
+            
+            .camera-watch__area {
+              @include camera_area_active;
+            }
+          }
+        }
+        
+        
+         
+        &__office.region-office {
+          @include region-office($sizeHouse, 0, calc( $cameraAreaSize * 1.25 ));
+       
+          flex: 1 1 $sizeHouse;
+        }
+      }
+      
+      .forestry_1 {
+        top: 10%;
+        left: 2%;
+        
+        .forestry__cameras{
+          transform: rotate(-100deg);
+        }
+      }
+      
+      .forestry_2 {
+        top: 55%;
+        left: 1%;
+      }
+      
+      .forestry_3 {
+        top: 3%;
+        left: 75%;
+        
+        .region-office{
+          top: calc($cameraAreaSize * -1);
+          left: calc($cameraAreaSize * -3);
+          
+          .region-office__signature {
+            top: calc($sizeHouse + 5px);
+            left: calc($sizeHouse / -2);
+          }
+        }
+      }
+      
+      .region-office.central-office {
+        @include region-office(calc($sizeHouse * 1.5), 60%, 75%);
+        
+        .region-office__signature {
+          top: calc($sizeHouse * 1.8);
+          left: calc($sizeHouse / -1.5);
+          font-size: 1.5em;
+        }
+      }
+    }
+  }
+}
+
+
+
+.net-alone-office__row, .net-expand__row {
+  @include net-regions(500px);
+  
+  @include mobile {
+     @include net-regions(400px);
+  }
+}
+
+.net-central-office__row {
+  @include net-regions(500px, 1, 4, 0.5);
+  
+  @include mobile {
+     @include net-regions(400px, 1, 4, 0.5);
+  }
+}
+
+.net-expand__row {
+  @include bg-img-cover(url(#{$assetPath}tv_system/net/expand_net.jpg));
+}
+
+
+.transfer-svg {
+  position: absolute;
+  border:1px solid grey;
+  
+  path {
+    stroke: var(--color-bg-gray-dark);
+    stroke-width: "1";
+    fill: "none";
+  }
+  circle {
+    fill: var(--color-accent);
+  }
+}

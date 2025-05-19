@@ -1,0 +1,67 @@
+
+.img-vertial-title {
+  display: block;
+  position: relative;
+  &__text{
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0 30px;
+    height: 100%;
+    text-align: center;
+    background-color:  #ECE9E9;
+    opacity: 0.8;
+    
+    font-family: var(--font-famile-base-extra);
+    color: var(--color-platinum);
+    font-size: 2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+     
+  }
+  &__img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.support__img {
+  >img {
+    width: 100%;
+  }
+}
+
+.protection {
+  @include bg-img(url('../../public/img/tv_system/protection.jpg'), top, right, '540px');
+}
+
+.restoration-old-tower {
+  overflow: hidden;
+  
+  &__row {
+    @include flex_row_start;
+    
+    flex-wrap: nowrap;
+    gap: 0;
+  }
+  
+  &__item {
+    @include flex_column;
+
+    flex: 1 1 50%;
+    gap: 0;
+  }
+  
+
+}
+
+.walkie {
+  padding-block: 20px;
+  
+  >img {
+    border-left: 1px solid var(--color-accent);
+  }
+}

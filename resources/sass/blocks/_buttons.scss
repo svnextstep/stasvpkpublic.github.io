@@ -1,0 +1,35 @@
+@mixin btn($colorText, $colorBg, $colorBorder: '') {
+  @if ($colorBorder == '') {
+    $colorBorder: $colorBg;
+  }
+  
+  @include border-radius();
+  
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 30px;
+  margin: 5px;
+  color: $colorText;
+  background-color: $colorBg;
+  border: 1px solid $colorBorder;
+  font-family: var(--font-famile-base-extra);
+  font-weight: 200;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn__main {
+  @include btn(var(--color-light), var(--color-accent));
+}
+
+.btn-tool {
+  $color: var(--color-pale-gold);
+  
+  @include btn($color, transparent, $color);
+
+  @include hover {
+    color: var(--color-accent);
+    background-color: $color;
+  }
+}

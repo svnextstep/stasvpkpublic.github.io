@@ -1,0 +1,940 @@
+
+
+
+// CAMERA MONITORING AREA
+
+// CAMERA AREA
+@mixin camera_monitoring_area($baseSize, $areaColor: grey) {
+  position: relative;
+  width: $baseSize;
+  height: $baseSize;
+  overflow: visible;
+  
+  &._migrate-left {
+    top: calc($baseSize / 1.39);
+    left: 0;
+    //transform: rotate(330deg);
+  }
+  &._migrate-right {
+    top:  calc($baseSize / 6.52);
+    left: -(calc($baseSize / 3));
+    //transform: rotate(220deg);
+  }
+  
+
+  // own case
+  &.fire_camera_1 {
+    transform: rotate(210deg);
+    
+    
+  }
+  &.fire_camera_2 {
+    transform: rotate(100deg);
+  }
+  &.fire_camera_1, &.fire_camera_2 {
+    .camera_monitoring_area._active {
+      -webkit-animation: full_cycle_rotate 15s linear 0s 3;
+      animation: full_cycle_rotate 15s linear 0s 3;
+    }
+  }
+}
+
+
+
+// end CAMERA AREA
+
+// CAMERA GROUPS
+
+
+// LOCAL
+@mixin net_local($size) {
+  $cameraAreaSize: calc( $size / 2 );
+  @include flex_column();
+  width: $size;
+  min-height: $size;
+  position: relative;
+  overflow: visible;
+  
+  //пара камер
+  .camera-pair__row {
+    width: $size;
+    overflow: visible;
+    
+    .camera_monitoring{
+      @include camera_monitoring_area($cameraAreaSize);
+      
+    }
+    
+  }
+}
+// end LOCAL
+
+// REGION
+@mixin net_region($size) {
+  @include flex_row();
+  flex-wrap: wrap;
+  width: $size;
+  min-height: $size;
+  position: relative;
+  margin: 0px auto;
+  overflow: visible;
+}
+// end REGION
+
+// end CAMERA GROUPS
+
+// NET
+@mixin map_block($size) {
+  @include flex_column();
+  //$map_margin: calc( $size * 0.25 );
+  position: relative;
+  width: $size;
+  height: $size;
+  //margin-left: 0px;
+  //margin-top: - calc( $size * 0.3 );
+  overflow: visible;//hidden;
+
+  .canvas_lines {
+    width: $size;
+    height: $size;
+  }
+}
+// $size - parent block size
+// $ratio - make block bigger then parent one
+// $cameraPairCount - monitoring camera areas count
+@mixin net_wrapper($size, $ratio, $cameraPairCount) {
+  
+  .net_wrapper{
+    width: $size;
+    height: $size;
+    overflow: visible;//hidden;
+    //border: 1px solid red;
+    margin: 0px auto;
+    
+    
+    // moving block, big size
+    .map__block {
+
+      @include map_block(calc( $size * $ratio));
+
+      
+
+      ._inactive {
+        opacity: 0 !important;
+        transition: all 0.8s ease 0s; 
+      }
+      
+      .region-office, .central-office {
+        position: absolute;
+        
+        width: calc($size / 3.5);
+        height: calc($size / 3.5);
+        overflow: visible;
+        
+        ._signature {
+          position: relative;
+          top: 67%;
+          right: -70%;
+          font-size: 1.4rem;
+          font-weight: 700;
+        }
+        ._office_area {
+          margin: 0 auto;
+          margin-top: 20%;
+          width: 80%;
+          height: 30%;
+          background-color: rgba(236, 231, 217, 0.8);
+          border: 2px solid $bg_text_soft;
+          @include border-radius(50%);
+        }
+        ._img {
+          width: 50%;
+          height: 50%;
+          margin: 0 auto;
+          margin-top: -55%;
+        }
+        
+      }
+
+      .net-region-office__row {
+        $regionSize: calc( $size / $cameraPairCount);
+        @include net_region($regionSize);
+
+        //лесничество default 2 row
+        .net-local-office__row {
+          $localSize: calc( $regionSize * 0.95 );
+
+          @include net_local($localSize);
+
+        }
+      }
+    }
+  }
+}
+
+// end  NET
+
+// SPECIAL CASES
+.canvas_flashing {
+  position: absolute;
+  top:0;
+  left:0;
+  opacity:0;
+  &._active {
+    opacity:1;
+    animation: flash 3s linear infinite;
+  }
+  
+}
+@keyframes flash {
+  0% {
+    opacity: 0.1;
+    transition: all 2s linear 0s;
+  }
+
+  25% {
+    opacity: 1;
+    transition: all 3s linear 0s;
+  }
+  75% {
+    opacity: 1;
+    transition: all 3s linear 0s;
+  }
+  100% {
+    opacity: 0;
+    transition: all 2s linear 0s;
+  }
+}
+@mixin frame_demo_panel() {
+  overflow: hidden;
+  border: 1px solid $color_vpk;
+  border-top: 10px solid $color_vpk;
+  box-shadow: $box-shadow;
+}
+
+@mixin net-central-office__row($size) {
+  $map_ratio: 2;
+  $map_size: calc( $size * $map_ratio );
+  width: $size;
+  height: $size;
+  position: relative;
+  margin: 0px auto;
+  @include frame_demo_panel();
+  @include net_wrapper($size, 2, 2);
+
+
+  .net_wrapper {
+    .create_net_comments {
+      >div {
+        position: absolute;
+        top: 0;
+        right: 2%;
+        width: 70%;
+        overflow: visible;
+        font-size: 1rem;
+        font-weight: 700;
+        text-align: center;
+        background-color: $color_vpk;
+        color: $pale_gold;
+        padding: 4%;
+        @include anim-show(0px, -120px);
+        @media (min-width: $burger_breakpoint_min) {
+          width: 45%;
+          min-height: 20%;
+          padding: 10% 5% 5% 5%;
+          font-size: 1.2rem;
+        }
+        p {
+          margin: 0px 0px 5px 0px;
+          @media (min-width: $medium_breakpoint_min) {
+            margin: 0px 0px 10px 0px;
+          }
+        }
+      }
+      >div._active {
+        @include anim-show-active();
+        transition: all 1s ease 3s;
+      }
+      .area_name {
+        font-size: 1.5rem;
+      }
+      button {
+        margin-top: 5px;
+        @media (min-width: $burger_breakpoint_min) {
+          margin-top: 20px;
+        }
+      }
+    }
+    //anim-show($left: 0px, $top: 120%, $duration: 0.8s)
+    //anim-show-active($left: 0px, $top: 0px)
+    .map__block {
+       
+      //background: url(#{$assetPath}tv_system/net/main_office.jpg) 0 0 /cover no-repeat;
+      @include bg-img-cover(url(#{$assetPath}tv_system/net/main_office.jpg));
+
+      .central-office {
+        top: 60%;
+        right: 15%;
+        width: calc($size / 2.6);
+        height: calc($size / 2.6);
+        ._signature {
+          top: -15%;
+          right: -20%;
+          font-size: 2.3rem;
+        }
+      }
+      
+      .net-central__elm-1 {
+        @include elm_position(10%, 10%);
+        opacity: 1;
+        
+        .region-office {
+          top: 100%;
+          left: 0;
+        }
+
+        ._local_1{
+          opacity: 1;
+          transform: rotate(240deg);
+        }
+      }
+      .net-central__elm-2 {
+        @include elm_position(40%, 5%);
+        width: $size;
+        height: calc( $size / 2 );
+        
+        .region-office {
+          top: 160%;
+          left: 10%;
+        }
+
+        ._local_1{
+          transform: rotate(-70deg);
+          padding-right: 70px;
+          padding-bottom: 40px;
+        }
+
+      }
+      .net-central__elm-3 {
+        @include elm_position(80%, 40%);
+        opacity: 1;
+        
+        .region-office {
+          top: 38%;
+          left: 80%;
+          ._signature {
+            top: -15%;
+            right: -40%;
+          }
+        }
+
+        ._local_1{
+          transform: rotate(8deg);
+        }
+        
+      }
+
+      // ACTIONS
+
+      &.reset_net {
+        @include transform_tmp_scale_move(1, 0px, 0px);
+        transition: all 0.8s ease 0s;
+      }
+      &._data_transfer_region_2 {
+        @include transform_move(0px, - (calc( $map_size * 0.45 )));//0px, -360px
+        //$map_size 800
+        transition: all 0.8s ease 6s;
+      }
+      &._data_transfer_region_3 {
+        @include transform_move(- (calc( $map_size * 0.375 )), - (calc( $map_size * 0.5 )));//-300px, -400px
+        transition: all 0.8s ease 0s;
+      }
+      &._net_full_screen {
+        @include transform_tmp_scale_move(0.60, - (calc( $map_size * 0.375 )), - (calc( $map_size * 0.5 )));//-300px, -400px
+        transition: all 0.8s ease 0s;
+      }
+    }
+  }
+}
+
+
+.net-central-office__row, .net-expand__row, .net-alone-office__row {
+  @include net-central-office__row(400px);
+  
+  @media (min-width: $medium_breakpoint_min) {
+    @include net-central-office__row(500px);
+  }
+}
+.net-expand__row {
+  //background: url(#{$assetPath}tv_system/net/expand_net.jpg) 0 0 /cover no-repeat;
+  @include bg-img-cover(url(#{$assetPath}tv_system/net/expand_net.jpg));
+  .net_wrapper .create_net_comments .step_2 {
+    top: 75%;
+    bottom: 0%;
+    left: 2%;
+  }
+}
+.net-alone-office__row {
+  .net-central__elm-1 {
+    top: 5% !important;
+    .region-office {
+      top: 80% !important;
+    }
+  }
+  
+}
+    ._arrow-left {
+      width: 0;
+      height: 0;
+      border-top: 40px solid transparent;
+      border-left: 30px solid $color_vpk;
+      border-bottom: 40px solid transparent;
+    }
+
+//design
+
+
+.steps__row {
+  $w_steps: 50vw;
+  $h: 80px;
+  $p: 10px;
+  $w_body: calc( $w_steps / 3.5 );
+  $text_left: calc( $p * 2.5 );
+  $size_arrow: calc( $h / 2);
+    
+  width: $w_steps;
+  padding-top: 30px;
+  
+  .steps__item {
+    @include flex_row();
+    
+    width: $w_body;
+    min-width: 300px;
+    margin-top: 50px;
+    margin-right: calc( $w_body / 3.5 / 2); 
+    cursor: pointer;
+    
+    @media (min-width: $burger_breakpoint_min) {
+      min-width: 400px;
+    }
+    .step_body {
+      @include flex_column(center);
+      flex: 1 1 auto;
+      position: relative;
+      height: calc( $h - $p * 2 );
+      margin-top: $p;
+      overflow: visible;
+      
+      
+      ._number {
+        position: absolute;
+        top: ( - calc( $h / 4 ));
+        left: ( - calc( $h / 4 ));
+        width: calc( ($h -  $p * 2) / 1.5 );
+        height: calc( ($h -  $p * 2) / 1.5 );
+        padding-top: 5px;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: $pale_gold;
+        @include border-radius(50%);
+        border: 2px solid $pale_gold;
+        background-color: $color_vpk;
+      }
+      ._description {
+        display: none;
+        position: absolute;
+        top: calc( $h - $p * 2 );
+        left: 0;
+        z-index: 1000;
+        width: $w_body;
+        min-width: calc(400px - $size_arrow);
+        max-height: 500px;
+        padding: $text_left $p $p $text_left;
+        overflow: auto;
+        color: black;
+        border: 1px solid $color_vpk;
+        background-color: white;
+        opacity: 0;
+        transform: translate(0, 0px);
+
+      }      
+      ._title {
+        padding-left: $text_left;
+        overflow: hidden;
+        
+        font-size: 1.5rem;
+        font-weight: 500;
+        cursor: pointer;
+        color: $pale_gold;
+      }
+
+      &:hover {
+        ._title {
+          color: $pale_gold;
+        }
+        
+        ._description {
+          display: block;
+          animation: ani 1s forwards;
+          @keyframes ani {
+            0% {
+              opacity: 0;
+              transform: translateY(-5%);
+            }
+            100% {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        }
+      }
+      
+    }
+    .step_1_color {
+      background-color: $color_vpk;
+    }
+    .step_2_color {
+      background-color: $yellow;
+    }
+    .step_3_color {
+      background-color: $secondary_info;
+    }
+    
+    ._arrow-left {
+      @include _arrow-big-left($size_arrow, $size_arrow, $color_vpk);
+      flex: 0 0 $size_arrow;
+    }
+  }
+}
+
+.anim_panel_description__item {
+  max-width: 75%;
+  min-height: 80%;
+  margin-top: 5%;
+  padding: 20px 30px 20px 20px;
+  border: 1px solid $chocolad;
+    
+  @media screen {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(236, 231, 217, 0.95);
+    @include anim-show(0px, -120px, 0.8s, 0.5s);
+  }
+  
+  @media screen and (min-width: 550px) {
+    max-width: 450px;
+  }
+  
+  @media print {
+    position: relative;
+  }
+  
+
+  &._active {
+    @include anim-show-active();
+  }
+  .slogan {
+    border-top: 1px solid grey;
+    text-align: right;
+    padding-bottom: 10px;
+  }
+  >p {
+    text-align: justify;
+  }
+}
+
+
+.design-steps__block {
+  
+  position: relative;
+  @media print {
+    @include flex_row();
+    flex-wrap: wrap;
+  }
+  //background: url(#{$assetPath}tv_system/net/design_arrows.jpg) top right/auto 100% no-repeat;
+  @include bg-img(url(#{$assetPath}tv_system/net/design_arrows.jpg), top, right, auto, 100%);
+  .design-steps__row {
+    width: 500px;
+    
+    @media print {
+      display: none;
+    }
+  }
+  
+}
+
+
+.demo_net {
+  $width: 40vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: $width;
+  height: calc( $width * 0.6 );
+  overflow: hidden;
+  border: 1px solid red;
+  
+}
+
+
+
+
+
+
+
+
+
+// CREATE NET
+
+.future_component {  
+  display: none;
+}
+
+@mixin camera_data_transfer($margin) {
+  position: absolute;
+  top: $margin;
+  left: $margin;
+  border-top: 2px dashed $pale_gold;
+  border-left: 2px dashed $pale_gold;
+  transform-origin: 0px 0px;
+}
+
+@mixin net_schema_elm_area($size) {
+  @include flex_row(space-around);
+  align-items: center;
+  position: absolute;
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  //background-color: rgba(255, 255, 255, 1);
+  overflow: visible;
+  
+  .img_params {
+    width: 80%;
+  }
+}
+
+@mixin net-schema_wrapper($w) {
+  position: absolute;
+  top: calc( $header_body_height + 3rem );
+  right: 0;
+  width: $w;
+  height: $w;
+  overflow: hidden;
+}
+.net-presentation__row {
+  
+  .presentation___item {
+    margin-top: 40%;
+    @media (min-width: 500px) {
+      margin-top: 15%;
+    }
+  }
+  
+  .net-schema_wrapper {
+    @include net-schema_wrapper(100vw);
+    
+    @media (min-width: $big_breakpoint_min) {
+      @include net-schema_wrapper(80vw);
+    }
+    
+    .net-schema {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      
+      
+      .camera_1 {
+        @include net_schema_elm_area(8%);
+        top: 10%;
+        left: 2%;
+
+        .camera_data_transfer {
+          @include camera_data_transfer(50%);
+          width: 1000%;
+          height: 1%;
+          transform: rotate(3deg);
+        }
+        @media (min-width: 500px) {
+          top: 20%;
+          left: 2%;
+
+          .camera_data_transfer {
+            @include camera_data_transfer(50%);
+            width: 1000%;
+            height: 1%;
+            transform: rotate(-3deg);
+          }
+        }
+        @media (min-width: 600px) {
+          top: 15%;
+          left: 2%;
+          .camera_data_transfer {
+            @include camera_data_transfer(50%);
+            width: 1000%;
+            transform: rotate(-1deg);
+          }               
+        }
+        @media (min-width: $medium_breakpoint_min) {
+          top: 10%;
+          left: 2%;
+          .camera_data_transfer {
+            @include camera_data_transfer(50%);
+            width: 1000%;
+            transform: rotate(3deg);
+          }               
+        }
+      }
+      
+      .camera_2 {
+        @include net_schema_elm_area(6%);
+        top:0;
+        left: 40%;
+        .camera_data_transfer {
+          @include camera_data_transfer(50%);
+          width: 700%;
+          height: 1%;
+          transform: rotate(15deg);
+        }
+      }
+      
+      .camera_3 {
+        @include net_schema_elm_area(12%);
+        top: 30%;
+        right: 40%;
+        .camera_data_transfer {
+          @include camera_data_transfer(50%);
+          width: 300%;
+          height: 1%;
+          transform: rotate(-25deg);
+        }
+                  
+        @media (min-width: 500px) {
+          top: 50%;
+          right: 40%;
+          .camera_data_transfer {
+            @include camera_data_transfer(50%);
+            width: 500%;
+            transform: rotate(-45deg);
+          }               
+        }
+
+
+        @media (min-width: 600px) {
+          top: 40%;
+          right: 40%;
+          .camera_data_transfer {
+            @include camera_data_transfer(50%);
+            width: 350%;
+            transform: rotate(-35deg);
+          }               
+        }
+        @media (min-width: 650px) {
+          top: 35%;
+          right: 30%;
+          .camera_data_transfer {
+            @include camera_data_transfer(50%);
+            width: 300%;
+            transform: rotate(-38deg);
+          }               
+        }
+        @media (min-width: 700px) {
+          top: 30%;
+          right: 20%;
+          .camera_data_transfer {
+            @include camera_data_transfer(50%);
+            width: 200%;
+            transform: rotate(-45deg);
+          }               
+        }
+        @media (min-width: $medium_breakpoint_min) {
+          top: 20%;
+          right: 20%;
+          .camera_data_transfer {
+            @include camera_data_transfer(50%);
+            width: 200%;
+            transform: rotate(-30deg);
+          }               
+        }
+      }
+      
+      .camera_1, .camera_2, .camera_3 {
+        border-bottom: 3px solid $pale_gold;
+        @include border-radius(20%);
+      }
+      
+      .office{
+        @include net_schema_elm_area(15%);
+        width: 35%;
+        top:6%;
+        right:-10%;
+        @media (min-width: $burger_breakpoint_min) {
+          width: 35%;
+        }
+      }
+    }
+    
+  }
+  
+}
+
+
+@mixin lenses_compare_ts ($count) {
+  width: 45%;
+  height: auto;
+  overflow: hidden;
+
+  ._forest_net {
+    $w: 300px;
+    @include forest-map($w, $count);
+    width: 100%;
+    background-size: cover;
+    min-height: 250px;
+    margin: 0 auto;
+    border: 1px solid $color_vpk;
+    .camera-pair__row {
+      width: calc($w / $count);
+    }
+  }
+}
+
+.lenses_compare__net {
+  @include flex_row();
+  flex-wrap: nowrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 100%;
+  
+  @media (min-width: $burger_breakpoint_min) {
+    flex-basis: 49%;
+  }
+  
+  .lenses_compare_own_ts {
+    @include lenses_compare_ts (2);
+    ._forest_net {
+      padding-top: 5%;
+    }
+  }
+  
+  .lenses_compare_casual_ts {
+    @include lenses_compare_ts (4);
+  }
+}
+
+// how it works
+.how_it_works__panel {
+  .slide_1{
+    .camera_img, camera_skeleton {
+      width: 380px;
+      height: 230px;
+      margin: 40px auto;
+    }
+  }
+  
+}
+
+.screens_dark {
+  @include flex_row();
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  text-align: center;
+  
+  .screen_dark_left, .screen_dark_right {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    min-height: 100%;
+    background-color: $platinum;
+  }
+  .screen_dark_left {
+    left: 1%;
+    &._open {
+      animation: screen_dark_left_open 6s forwards;
+    }
+  }
+  .screen_dark_right {
+    right: 1%;
+    &._open {
+      animation: screen_dark_right_open 6s forwards;
+    }
+  }
+  @keyframes screen_dark_left_open {
+    0% {
+      @include transform_move(0, 0);
+    }
+    100% {
+      @include transform_move(-500px, 0);
+    }
+  }
+  @keyframes screen_dark_right_open {
+    0% {
+      @include transform_move(50%, 0);
+    }
+    100% {
+      @include transform_move(500px, 0);
+    }
+  }
+}
+
+.screens_yellow {
+  @include flex_row();
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 220;
+  .screen_yellow_left, .screen_yellow_right {
+    position: absolute;
+    top: 0;
+    width: 100px;
+    min-height: 100%;
+    background-color: $yellow;
+    opacity: 0;
+  }
+  .screen_yellow_left {
+    left: 51%;
+    &._open {
+      opacity: 1;
+      animation: screen_left_open 6s forwards;
+    }
+  }
+  .screen_yellow_right {
+    left: 49%;
+    &._open {
+      opacity: 1;
+      animation: screen_right_open 6s forwards;
+    }
+  }
+
+  @keyframes screen_left_open {
+    
+    0% {
+      @include transform_move(0, 0);
+    }
+
+    100% {
+      @include transform_move(-500px, 0);
+    }
+  }
+  @keyframes screen_right_open {
+    0% {
+      @include transform_move(50%, 0);
+    }
+
+    100% {
+      @include transform_move(500px, 0);
+    }
+  }
+}
+//local forestry
+//regional forestry
+//central office
