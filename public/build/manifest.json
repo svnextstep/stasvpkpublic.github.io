@@ -1,0 +1,129 @@
+{
+  "public/fonts/FiraSansCondensed-Medium.woff2": {
+    "file": "assets/FiraSansCondensed-Medium-ACjZRAx6.woff2",
+    "src": "public/fonts/FiraSansCondensed-Medium.woff2"
+  },
+  "public/fonts/FiraSansCondensed-Regular.woff2": {
+    "file": "assets/FiraSansCondensed-Regular-C8wOlpRz.woff2",
+    "src": "public/fonts/FiraSansCondensed-Regular.woff2"
+  },
+  "public/fonts/FiraSansExtraCondensed-ExtraBold.woff2": {
+    "file": "assets/FiraSansExtraCondensed-ExtraBold-DtMPcldY.woff2",
+    "src": "public/fonts/FiraSansExtraCondensed-ExtraBold.woff2"
+  },
+  "public/fonts/FiraSansExtraCondensed-Light.woff2": {
+    "file": "assets/FiraSansExtraCondensed-Light-CWdLD8jc.woff2",
+    "src": "public/fonts/FiraSansExtraCondensed-Light.woff2"
+  },
+  "public/fonts/FiraSansExtraCondensed-Medium.woff2": {
+    "file": "assets/FiraSansExtraCondensed-Medium-Bnou_5hy.woff2",
+    "src": "public/fonts/FiraSansExtraCondensed-Medium.woff2"
+  },
+  "public/fonts/Oswald-ExtraLight.woff2": {
+    "file": "assets/Oswald-ExtraLight-0SFg6Xx2.woff2",
+    "src": "public/fonts/Oswald-ExtraLight.woff2"
+  },
+  "public/fonts/Oswald-Medium.woff2": {
+    "file": "assets/Oswald-Medium-DFFqm3b5.woff2",
+    "src": "public/fonts/Oswald-Medium.woff2"
+  },
+  "public/fonts/Oswald-Regular.woff2": {
+    "file": "assets/Oswald-Regular-Da9OivxR.woff2",
+    "src": "public/fonts/Oswald-Regular.woff2"
+  },
+  "public/img/logo_bg.png": {
+    "file": "assets/logo_bg-CkURi_JO.png",
+    "src": "public/img/logo_bg.png"
+  },
+  "public/img/tower/tower_bg.jpg": {
+    "file": "assets/tower_bg-DjTmyJ2K.jpg",
+    "src": "public/img/tower/tower_bg.jpg"
+  },
+  "public/img/tower/war_img1.jpg": {
+    "file": "assets/war_img1-DsZYWDJ8.jpg",
+    "src": "public/img/tower/war_img1.jpg"
+  },
+  "public/img/tree_bg.png": {
+    "file": "assets/tree_bg-DqdwCZgN.png",
+    "src": "public/img/tree_bg.png"
+  },
+  "public/img/tv_system/camera.png": {
+    "file": "assets/camera-DsGttXEz.png",
+    "src": "public/img/tv_system/camera.png"
+  },
+  "public/img/tv_system/lenses/compare_origin_view.jpg": {
+    "file": "assets/compare_origin_view-W9RMJWVB.jpg",
+    "src": "public/img/tv_system/lenses/compare_origin_view.jpg"
+  },
+  "public/img/tv_system/lenses/tv_lenses.jpg": {
+    "file": "assets/tv_lenses-ByK-zx65.jpg",
+    "src": "public/img/tv_system/lenses/tv_lenses.jpg"
+  },
+  "public/img/tv_system/map.jpg": {
+    "file": "assets/map-dciQZtiK.jpg",
+    "src": "public/img/tv_system/map.jpg"
+  },
+  "public/img/tv_system/monitore.png": {
+    "file": "assets/monitore-C3S8UiEY.png",
+    "src": "public/img/tv_system/monitore.png"
+  },
+  "public/img/tv_system/monitore_map_fire.png": {
+    "file": "assets/monitore_map_fire-DcEq6dZF.png",
+    "src": "public/img/tv_system/monitore_map_fire.png"
+  },
+  "public/img/tv_system/net/design_arrows.jpg": {
+    "file": "assets/design_arrows-CF3wgLSm.jpg",
+    "src": "public/img/tv_system/net/design_arrows.jpg"
+  },
+  "public/img/tv_system/net/expand_net.jpg": {
+    "file": "assets/expand_net-CRN-EUcw.jpg",
+    "src": "public/img/tv_system/net/expand_net.jpg"
+  },
+  "public/img/tv_system/net/main_office.jpg": {
+    "file": "assets/main_office-BzWO3mks.jpg",
+    "src": "public/img/tv_system/net/main_office.jpg"
+  },
+  "public/img/tv_system/net/network_bg.jpg": {
+    "file": "assets/network_bg-9L0irM8h.jpg",
+    "src": "public/img/tv_system/net/network_bg.jpg"
+  },
+  "public/img/tv_system/protection.jpg": {
+    "file": "assets/protection-Bg8hb-mL.jpg",
+    "src": "public/img/tv_system/protection.jpg"
+  },
+  "public/img/tv_system/ts.png": {
+    "file": "assets/ts-BVUuAsPt.png",
+    "src": "public/img/tv_system/ts.png"
+  },
+  "public/img/tv_system/ts_bg.jpg": {
+    "file": "assets/ts_bg-BepnTYYM.jpg",
+    "src": "public/img/tv_system/ts_bg.jpg"
+  },
+  "public/img/tv_system/ts_bg_medium.jpg": {
+    "file": "assets/ts_bg_medium-C2mZg_sD.jpg",
+    "src": "public/img/tv_system/ts_bg_medium.jpg"
+  },
+  "public/img/tv_system/ts_bg_small.jpg": {
+    "file": "assets/ts_bg_small-p0SX0Rpr.jpg",
+    "src": "public/img/tv_system/ts_bg_small.jpg"
+  },
+  "public/img/tv_system/tv.png": {
+    "file": "assets/tv-ZGdVHCyB.png",
+    "src": "public/img/tv_system/tv.png"
+  },
+  "public/img/welcome_bg.jpg": {
+    "file": "assets/welcome_bg-FmQvHneR.jpg",
+    "src": "public/img/welcome_bg.jpg"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-BIEhJIub.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/sass/app.scss": {
+    "file": "assets/app-MD6Utw4S.css",
+    "src": "resources/sass/app.scss",
+    "isEntry": true
+  }
+}
