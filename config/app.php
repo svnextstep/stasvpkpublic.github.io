@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://stas.v8.int'),
+    'url' => env('APP_URL', 'http://vpk.int'),
 
     'asset_url' => env('ASSET_URL'),
 
