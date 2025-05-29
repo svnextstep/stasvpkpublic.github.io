@@ -49,24 +49,20 @@
               'ts_models' => 'ts_models',
               'net' => 'net',
               'interactive_map' => 'interactive_map',
-              'ts_protection' => 'protection',
             ] as $sLink => $sTr)
-              <a class="_no-underline" href="#">{{ __('messages.' . $sTr) }}</a>
+              <a class="_no-underline" href="{{route($sLink)}}">{{ __('messages.' . $sTr) }}</a>
             @endforeach
+            <a class="_no-underline" href="{{route('services')}}#protection">{{ __('messages.protection') }}</a>
             </div>
           </div>
           
           <div class="footer__menu-item">
             <div class="footer__menu-title">{{ __('messages.services') }}</div>
             <div class="fl-clm-start _fl-center _gap-20">
-             @foreach ([
-              'support' => 'support',
-              'ts_protection' => 'protection',
-              'tower_old' => 'tower_old',
-              'walkie' => 'walkie_talkie',
-            ] as $sLink => $sTr)
-              <a class="_no-underline" href="#">{{ __('messages.' . $sTr) }}</a>
-            @endforeach
+              <a class="_no-underline" href="{{route('services')}}">{{ __('messages.support') }}</a>
+              <a class="_no-underline" href="{{route('services')}}#protection">{{ __('messages.protection') }}</a>
+              <a class="_no-underline" href="{{route('services')}}#tower_old">{{ __('messages.tower_old') }}</a>
+              <a class="_no-underline" href="{{route('services')}}#walkie_talkie">{{ __('messages.walkie_talkie') }}</a>
             </div>
           </div>
           
@@ -77,7 +73,7 @@
               'photo_traps' => 'photo_traps',
               'control_sawmill' => 'subordinate'
             ] as $sLink => $sTr)
-              <a class="_no-underline" href="#">{{ __('messages.' . $sTr) }}</a>
+              <a class="_no-underline" href="{{route($sLink)}}">{{ __('messages.' . $sTr) }}</a>
             @endforeach
             </div>
           </div>
