@@ -40,22 +40,6 @@ function hidePanel(obj) {
 
 /* END expand panel */
 
-
-/* button scroll top */
-(function() {
-  let button = $('.arrow-cycle--top');
-  
-  /* show button only page Hight > screen */
-  $(window).on('scroll', () => {
-    ($(window).scrollTop() >= 50) ? button.fadeIn() : button.fadeOut();
-  });
-  
-  button.on('click', (e) => {
-    e.preventDefault();
-    $('html').animate({scrollTop: 0}, 1000);
-  });
-})();
-
 // VISIBLE ELM
 function checkAnimElmVisible($oObj) {
 
@@ -93,72 +77,6 @@ function animMonitoring($className = "_anim-items") {
   });
 }
 
-// AUTOLOAD BY SCROLL
-$( window ).on( "scroll", function() {
- animMonitoring();
-});
-
-/* expand panel */
-$(blockLink).click(function() {
-  const parent = $(this).closest(blockWrapper);
-  const arrow = parent.find(blockArrow);
-  const panel = parent.find(blockBody);
-  
-  if ($(panel).css("visibility") == "visible") {
-    arrowDown (arrow);
-    hidePanel(panel);
-  } else {
-    parent.siblings(blockWrapper).each(function(){
-      arrowDown ($(this).find(blockArrow));
-      hidePanel($(this).find(blockBody));
-    });
-    arrowUp (arrow);
-    showPanel(panel);
-  }
-});
-
-
-/* burger */
-$('#burger-menu').click(function() {
-  $('.header__menu').addClass('header__menu-modal--visible');
-});
-
-$('#burger-menu-close').click(function() {
-  $('.header__menu').removeClass('header__menu-modal--visible');
-});
-/* END burger */
-
-
-/* popup  */
-$('.popup-close-button').on('click', function() {
-  $(this).closest('.popup').fadeOut();
-});
-
-$('.popup_click').on('click', function() {
-  $('#' + $(this).attr('id') + '_popup').fadeIn();
-});
-/* END popup  */
-
-
-$('.tabs__item').click(function() {
-  const className = '_active';
-  
-  const iIndex = $(this).index();
-  const sTabPref = $(this).attr('data-item');
-  const sItem = sTabPref + '__item';
-  const sContentItem = sTabPref + '__content-item';
-  
-  const parent = $(this).closest('.' + sTabPref);
-  const tabContentList = parent.find('.' + sContentItem)[iIndex];
-
-  /* reset data */
-  parent.find('.' + sItem).removeClass(className);
-  parent.find('.' + sContentItem).removeClass(className);
-  
-  /* set active */
-  $(this).addClass(className);
-  $(tabContentList).addClass(className);
-});
 
 function appearPanel(sPref, sDirection) {
   $('.' + sPref + '__link').click(function() {
@@ -169,7 +87,91 @@ function appearPanel(sPref, sDirection) {
   });
 }
 
-appearPanel('appear-panel', 'left');
+
+$(document).ready(function(){
+  
+  /* button scroll top */
+  (function() {
+    let button = $('.arrow-cycle--top');
+
+    /* show button only page Hight > screen */
+    $(window).on('scroll', () => {
+      ($(window).scrollTop() >= 50) ? button.fadeIn() : button.fadeOut();
+    });
+
+    button.on('click', (e) => {
+      e.preventDefault();
+      $('html').animate({scrollTop: 0}, 1000);
+    });
+  })();
+
+  // AUTOLOAD BY SCROLL
+  $( window ).on( "scroll", function() {
+   animMonitoring();
+  });
+
+  /* expand panel */
+  $(blockLink).click(function() {
+    const parent = $(this).closest(blockWrapper);
+    const arrow = parent.find(blockArrow);
+    const panel = parent.find(blockBody);
+
+    if ($(panel).css("visibility") == "visible") {
+      arrowDown (arrow);
+      hidePanel(panel);
+    } else {
+      parent.siblings(blockWrapper).each(function(){
+        arrowDown ($(this).find(blockArrow));
+        hidePanel($(this).find(blockBody));
+      });
+      arrowUp (arrow);
+      showPanel(panel);
+    }
+  });
 
 
+  /* burger */
+  $('#burger-menu').click(function() {
+    $('.header__menu').addClass('header__menu-modal--visible');
+  });
 
+  $('#burger-menu-close').click(function() {
+    $('.header__menu').removeClass('header__menu-modal--visible');
+  });
+  /* END burger */
+
+
+  /* popup  */
+  $('.popup-close-button').on('click', function() {
+    $(this).closest('.popup').fadeOut();
+  });
+
+  $('.popup_click').on('click', function() {
+    $('#' + $(this).attr('id') + '_popup').fadeIn();
+  });
+  /* END popup  */
+
+
+  $('.tabs__item').click(function() {
+    const className = '_active';
+
+    const iIndex = $(this).index();
+    const sTabPref = $(this).attr('data-item');
+    const sItem = sTabPref + '__item';
+    const sContentItem = sTabPref + '__content-item';
+
+    const parent = $(this).closest('.' + sTabPref);
+    const tabContentList = parent.find('.' + sContentItem)[iIndex];
+
+    /* reset data */
+    parent.find('.' + sItem).removeClass(className);
+    parent.find('.' + sContentItem).removeClass(className);
+
+    /* set active */
+    $(this).addClass(className);
+    $(tabContentList).addClass(className);
+  });
+
+  appearPanel('appear-panel', 'left');
+
+});
