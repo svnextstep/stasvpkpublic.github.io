@@ -45,5 +45,12 @@
   --title-appear-duration: 5s;
   
 }
+
+@include mobile {
+  :root {
+    --container-padding-x: 15px;
+  }
+}
+
 //$assetPath: "/img/";
 $assetPath: '../../public/img/';

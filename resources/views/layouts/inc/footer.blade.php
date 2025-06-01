@@ -40,7 +40,7 @@
           
           <div class="footer__menu-item">
             <div class="footer__menu-title">{{ __('messages.tvsystem') }}</div>
-            <div class="fl-clm-start _fl-center _gap-20">
+            <div class="fl-clm-start _fl-center">
              @foreach ([
               'ts_descr' => 'description',
               'tvsystem' => 'components',
