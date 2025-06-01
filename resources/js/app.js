@@ -1,5 +1,5 @@
+//import './lib/jquery-3-7-1-min.js';
 import './bootstrap';
-import './lib/jquery-3-7-1-min.js';
 
 import './common';
 import './gallery';
