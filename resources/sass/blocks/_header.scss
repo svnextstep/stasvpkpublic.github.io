@@ -30,7 +30,7 @@
     
     align-items: center;
     gap: 40px;
-    padding-inline: 40px;
+    padding-inline: var(--container-padding-x);
     z-index: 1012;
   }
   

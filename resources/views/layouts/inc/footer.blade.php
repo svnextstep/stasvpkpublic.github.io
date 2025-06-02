@@ -38,49 +38,15 @@
       <div class="footer__body-item">
         <div class="footer__menu">
           
-          <div class="footer__menu-item">
-            <div class="footer__menu-title">{{ __('messages.tvsystem') }}</div>
-            <div class="fl-clm-start _fl-center">
-             @foreach ([
-              'ts_descr' => 'description',
-              'tvsystem' => 'components',
-              'lenses' => 'lenses',
-              'tower' => 'tower',
-              'ts_models' => 'ts_models',
-              'net' => 'net',
-              'interactive_map' => 'interactive_map',
-            ] as $sLink => $sTr)
-              <a class="_no-underline" href="{{route($sLink)}}">{{ __('messages.' . $sTr) }}</a>
-            @endforeach
-            <a class="_no-underline" href="{{route('services')}}#protection">{{ __('messages.protection') }}</a>
+          <div class="expand-block " data-point-parent="">
+            <div class="expand-block__title">
+              <span>{{ __('messages.about') }}</span>
+              <div data-point-link="">
+                <x-arrow-expand></x-arrow-expand>
+              </div>
             </div>
-          </div>
-          
-          <div class="footer__menu-item">
-            <div class="footer__menu-title">{{ __('messages.services') }}</div>
-            <div class="fl-clm-start _fl-center _gap-20">
-              <a class="_no-underline" href="{{route('services')}}">{{ __('messages.support') }}</a>
-              <a class="_no-underline" href="{{route('services')}}#protection">{{ __('messages.protection') }}</a>
-              <a class="_no-underline" href="{{route('services')}}#tower_old">{{ __('messages.tower_old') }}</a>
-              <a class="_no-underline" href="{{route('services')}}#walkie_talkie">{{ __('messages.walkie_talkie') }}</a>
-            </div>
-          </div>
-          
-          <div class="footer__menu-item">
-            <div class="footer__menu-title">{{ __('messages.projects') }}</div>
-            <div class="fl-clm-start _fl-center _gap-20">
-             @foreach ([
-              'photo_traps' => 'photo_traps',
-              'control_sawmill' => 'subordinate'
-            ] as $sLink => $sTr)
-              <a class="_no-underline" href="{{route($sLink)}}">{{ __('messages.' . $sTr) }}</a>
-            @endforeach
-            </div>
-          </div>
-          
-          <div class="footer__menu-item">
-            <div class="footer__menu-title">{{ __('messages.about') }}</div>
-            <div class="fl-clm-start _fl-center _gap-20">
+
+            <div class="expand-block__body" data-point-hide-panel="expand-panel">
               @foreach ([
                 'about' => 'about',
                 'clients' => 'clients',
@@ -91,11 +57,69 @@
             </div>
           </div>
           
+          <div class="expand-block " data-point-parent="">
+            <div class="expand-block__title">
+              <span>{{ __('messages.tvsystem') }}</span>
+              <div data-point-link="">
+                <x-arrow-expand></x-arrow-expand>
+              </div>
+            </div>
+
+            <div class="expand-block__body" data-point-hide-panel="expand-panel">
+              @foreach ([
+              'ts_descr' => 'description',
+              'tvsystem' => 'components',
+              'lenses' => 'lenses',
+              'tower' => 'tower',
+              'ts_models' => 'ts_models',
+              'net' => 'net',
+              'interactive_map' => 'interactive_map',
+            ] as $sLink => $sTr)
+              <a class="_no-underline" href="{{route($sLink)}}">{{ __('messages.' . $sTr) }}</a>
+            @endforeach
+              <a class="_no-underline" href="{{route('services')}}#protection">{{ __('messages.protection') }}</a>
+            </div>
+          </div>
+          
+          <div class="expand-block " data-point-parent="">
+            <div class="expand-block__title">
+              <span>{{ __('messages.services') }}</span>
+              <div data-point-link="">
+                <x-arrow-expand></x-arrow-expand>
+              </div>
+            </div>
+
+            <div class="expand-block__body" data-point-hide-panel="expand-panel">
+              <a class="_no-underline" href="{{route('services')}}">{{ __('messages.support') }}</a>
+              <a class="_no-underline" href="{{route('services')}}#protection">{{ __('messages.protection') }}</a>
+              <a class="_no-underline" href="{{route('services')}}#tower_old">{{ __('messages.tower_old') }}</a>
+              <a class="_no-underline" href="{{route('services')}}#walkie_talkie">{{ __('messages.walkie_talkie') }}</a>
+            </div>
+          </div>
+         
+          <div class="expand-block " data-point-parent="">
+            <div class="expand-block__title">
+              <span>{{ __('messages.projects') }}</span>
+              <div data-point-link="">
+                <x-arrow-expand></x-arrow-expand>
+              </div>
+            </div>
+
+            <div class="expand-block__body" data-point-hide-panel="expand-panel">
+              @foreach ([
+              'photo_traps' => 'photo_traps',
+              'control_sawmill' => 'subordinate'
+            ] as $sLink => $sTr)
+              <a class="_no-underline" href="{{route($sLink)}}">{{ __('messages.' . $sTr) }}</a>
+            @endforeach
+            </div>
+          </div>
+          
         </div>
         
       </div>
       
-      <span class="footer__body-item">{{ __('messages.text_footer_all_rights') }}</span>
+      <span class="footer__body-item all_rights">{{ __('messages.text_footer_all_rights') }}</span>
 
     </div>
 

@@ -114,6 +114,10 @@
   opacity: 0.6;
   cursor: pointer;
   
+  @include mobile {
+    right: 10px;
+  }
+  
   &:hover, &:focus {
     filter: brightness(1.5);
     outline: none;

@@ -39,9 +39,9 @@
       @include square($square-size);
       padding-top: 20px;
       overflow: visible;
-    }
+    } 
     @include mobile {
-      padding-left: calc($square-size / 1.5 + $square-size / 2);
+      padding-left: calc($square-size / 2 );
     }
   }
   

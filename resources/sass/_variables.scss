@@ -29,6 +29,7 @@
   
   --container-width: 1240px;
   --container-padding-x: 40px;
+  --content-gap: 4rem;
   
   --section-padding-y: 70px;
   --div-padding-y: 20px;
@@ -46,9 +47,16 @@
   
 }
 
+  @include tablet {
+    :root {
+      --content-gap: 2.4rem;
+    }
+  }
+  
 @include mobile {
   :root {
     --container-padding-x: 15px;
+    --content-gap: 1.2rem;
   }
 }
 
