@@ -3,20 +3,18 @@
   --color-footer-bg-medium: #4d646f;
   --color-footer-bg-dark: #3d4d54;
   
- 
- 
   position: relative;
   width: 100%;
   min-height: 400px;
   /*padding: 20px 10%;*/
   z-index: 1;
   background-color: var(--color-footer-bg);
-  background-image: url('../../public/img/logo_bg.png');
+  background-image: url('#{$assetPath}logo_bg.png');
+  
   background-repeat: no-repeat;
   background-position: 98% 1%;
   color: #fff;
   border-top: 2px solid #3d4d54;
-  
   
   &::before {
     content: "";
@@ -27,7 +25,11 @@
     bottom: 0;
     right: 0;
     z-index: -1;
-    background: url('../../public/img/tree_bg.png') bottom left/auto no-repeat;
+    @include bg-img(url('#{$assetPath}tree_bg.png'), bottom, left, auto);
+    
+    @include mobile {
+      background-position:  bottom right;
+    }
   }
   
   &__inner{
@@ -81,13 +83,12 @@
   }
   
   &__body-item {
-    text-align: center;
+    
     padding: 30px;
     
     .body-item__row {
       @include flex_column();
       align-items: center;
-      
       gap: 15px;
       
       .phones {
@@ -99,6 +100,10 @@
           @include flex_column();
         }
       }
+
+      @include mobile {
+        align-items: start;
+      }
     }
   }
   
@@ -106,68 +111,49 @@
   &__menu {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    justify-content: space-around;
     gap: 20px;
     
     @include tablet {
-      grid-column-start: 2;
-      grid-column-end: 4;
-      grid-row-start: 1;
-      grid-row-end: 3;
+      grid-template-columns: repeat(2, 1fr);
     }
     
     @include mobile {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(1, 1fr);
     }
 
-    &-item {
-      font-family: 'Fira Sans Extra Condensed';
-      font-weight: 500;
-      font-size: 1.2rem;
-      padding: 20px 30px;
-      border-top: 2px solid var(--color-footer-bg-dark);
-    }
-    
-    &-title {
-      font-weight: 700;
-      font-size: 1.5rem;
-      text-align: center;
-      color: var(--color-footer-bg-dark);
-      padding-bottom: 30px;
-    }
-  }
-  
-  
-  
-  
-  
-  
-  
-  &__menu1 {
-    @include flex_row();
-    flex-wrap: wrap;
-    gap: 20px;
-    
-    &-item {
-      //flex: 1 1 12%;
-      font-family: 'Fira Sans Extra Condensed';
-      font-weight: 500;
-      font-size: 1.2rem;
-      padding: 20px 30px;
-      border-top: 2px solid var(--color-footer-bg-dark);
-    }
-    &-title {
-      font-weight: 700;
-      font-size: 1.5rem;
-      text-align: center;
-      color: var(--color-footer-bg-dark);
-      padding-bottom: 30px;
-    }
-    &-list {
+    .expand-block {
       
+      &__title {
+        align-items: start;
+        gap: 20px;
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--color-footer-bg-dark);
+        padding-bottom: 0;
+      }
+      
+      &__body {
+        @include flex_column;
+        
+        gap: 10px;
+        font-family: "Fira Sans Extra Condensed";
+        font-weight: 500;
+        font-size: 1.2rem;
+        border-left: 2px solid var(--color-footer-bg-dark);
+        padding-left: 15px;
+        
+        @include mobile {
+          gap: 40px;
+        }
+      }
     }
   }
   
-  &__item {
-    
+  @include mobile-above {
+    .all_rights {
+      text-align: center;
+    }
   }
+  
 }
