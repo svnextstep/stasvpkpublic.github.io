@@ -13,6 +13,10 @@
   
   &__panel {
     @include flex_row_start;
+    @include mobile {
+      flex-wrap: wrap;
+      gap: var(--mobile-gap);
+    }
   }
   
   &__hands {
@@ -20,6 +24,10 @@
     
     flex: 0 0 60%;
     padding-top: 30px;
+    
+    @include mobile {
+      flex: 0 0 100%;
+    }
     
     >p {
       width: 80%;
@@ -42,16 +50,10 @@
     border-radius: var(--border-radius-small);
     border-inline: 1px solid var(--color-accent);
     text-align: center;
-  }
-  
-  @include mobile {
-    &__panel {
-      flex-wrap: wrap;
-      gap: var(--mobile-gap);
-    }
     
-    &__hands, &__phones {
+    @include mobile {
       flex: 0 0 100%;
+      border-block: 1px solid var(--color-accent);
     }
   }
   
