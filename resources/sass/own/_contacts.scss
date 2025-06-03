@@ -31,6 +31,10 @@
     
     >p {
       width: 80%;
+      
+      @include mobile {
+        width: 100%;
+      }
     }
     
     .hands {
@@ -48,8 +52,11 @@
     gap: 30px;
     padding: 20px;
     border-radius: var(--border-radius-small);
-    border-inline: 1px solid var(--color-accent);
     text-align: center;
+    
+    @include mobile-above {
+      border-inline: 1px solid var(--color-accent);
+    }
     
     @include mobile {
       flex: 0 0 100%;
