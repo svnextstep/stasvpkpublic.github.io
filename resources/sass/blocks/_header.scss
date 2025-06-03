@@ -164,13 +164,12 @@
         &__item {
           position: relative;
           border-left: 4px solid var(--sub-menu-bg);
-          background-color: inherit;
           padding: 10px;
 
           &:hover {
             color: var(--color-accent);
             border-left: 4px solid var(--color-accent);
-            filter: brightness(0.98);
+            background-color: inherit;
             transition-duration: var(--transition-duration-slowly);
           }
         }
