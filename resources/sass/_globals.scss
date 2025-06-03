@@ -265,6 +265,10 @@ ul.list--dotted {
   color: var(--color-accent);
 }
 
+._top-line-accent {
+  border-top: 3px solid var(--color-accent);
+}
+
 ._keep-space {
   opacity: 0;
 }

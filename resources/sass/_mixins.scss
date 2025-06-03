@@ -259,7 +259,7 @@
   background-size: cover;//100% auto;
 }
 
-@mixin bg-img($url, $x, $y, $w, $h: '', $repeat: no-repeat) {
+@mixin bg-img($url, $x, $y, $w, $h: auto, $repeat: no-repeat) {
   background-image: $url;
   background-position: $x $y;//bottom  left
   @if $w == cover {
