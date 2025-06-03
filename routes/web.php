@@ -51,7 +51,6 @@ Route::get('forest/tvsystem/lenses', [LensController::class, 'index'])->name('le
 //Route::get('forest/tvsystem/lenses', function() {return view('tvsystem/lenses');})->name('lenses');
         Route::get('forest/tvsystem/interactive_map', function() {return view('tvsystem/map');})->name('interactive_map');
         Route::get('forest/tvsystem/net', function() {return view('tvsystem/net');})->name('net');
-        Route::get('forest/tvsystem/protection', function() {return view('tvsystem/protection');})->name('ts_protection');
         
         
      // TOWER
@@ -65,6 +64,7 @@ Route::get('forest/tvsystem/lenses', [LensController::class, 'index'])->name('le
       
       //SERVICE
       Route::get('services', function () {return view('services_list');})->name('services');
+      Route::get('services#protection', function () {return view('services_list#protection');})->name('ts_protection');
       
       Route::get('articals', function () {return view('articals');})->name('articals');
       Route::get('contacts', function () {return view('contacts');})->name('contacts');

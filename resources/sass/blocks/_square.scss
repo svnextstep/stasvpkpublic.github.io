@@ -130,12 +130,13 @@
       width: 100vw;
       padding: 20px calc($wrapper-size / 1.5);
       background-color: var(--color-translucent);
-      z-index: 20;
     }
     
     >h3 {
-      margin: 10px;
-      
+      font-size: 1.3rem;
+      margin: 0;
+      padding: 0;
+      text-align: center;
     }
   }
   
@@ -164,21 +165,23 @@
         align-self: center;
         width: 70%;
         height: auto;
-        //border: 1px solid red;
         margin-bottom: -100px;
-        @media (max-width: 599px) {
-          //position: absolute;
-          //left:-100px;
-          //top: 20px;
-          //width: 70px;
+        
+        @include mobile {
+          position: absolute;
+          top: 40px;
+          left: -10px;
+          width: 120px;
+          z-index: 30;
         }
       }
+      
       ._less-img {
-        
         width: 40%;
-        @media (max-width: 599px) {
-          width: 50px;
-          top: 10px;
+        
+        @include mobile {
+          width: 70px;
+          top: 30px;
         }
       }
 

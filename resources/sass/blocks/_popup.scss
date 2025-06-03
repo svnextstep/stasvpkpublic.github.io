@@ -26,17 +26,27 @@
   }
   
   &__body {
-    @include border-radius;
     
-    width: 80%;
-    border: 1px solid var(--color-light);
-    background-color: var(--color-light);
-    overflow: hidden;
+    @include mobile-above {
+      @include border-radius;
+      
+      width: 80%;
+      border: 1px solid var(--color-light);
+      overflow: hidden;
+    }
+    
+    @include mobile {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
   }
   
   &__header, &__footer {
     min-height: 2rem;
-    padding: 0.5rem var(--padding-inline);
+    padding: 1rem var(--padding-inline);
     background-color: var(--color-bg-gray);
     
   }
@@ -51,7 +61,12 @@
   &__content{
     @include flex_column_between;
     
+    background-color: var(--color-light);
     gap: 20px;
+    
+    @include mobile {
+      overflow-x: auto;
+    }
   }
 }
 

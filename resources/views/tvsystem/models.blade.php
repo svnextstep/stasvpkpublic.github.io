@@ -20,7 +20,7 @@
     
     <x-square-bg iId="vpk2000"  sClass='popup_click'  sImgName="stub">
       <h3>ВПК-2000</h3>
-      <img  class="img_pos" src="{{ asset('img/tv_system/models/2000.png') }}" alt="2000"/>
+      <div class="img_pos"><img src="{{ asset('img/tv_system/models/2000.png') }}" alt="2000"/></div>
     </x-square-bg>
   </x-row>
 
@@ -76,7 +76,7 @@
       <div class="img_pos _less-img"><img src="{{ asset('img/tv_system/models/1400.png') }}" alt="1400"/></div>
     </x-square-bg>
 
-    <x-square-bg sClass='_center'>
+    <x-square-bg sClass='_center' sImgName="stub">
       <div class="_center">Ожидается новая телесистема с улучшенными показателями</div>
     </x-square-bg>
   </x-row>
