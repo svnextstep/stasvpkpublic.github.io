@@ -51,10 +51,17 @@
   
   @include tablet {
     --bg-img-size: 400px;
+    h3 {
+      margin: 100px 0 50px 0;
+    }
   }
   
   @include mobile {
     --bg-img-size: 270px;
+    h3 {
+      margin: 85px 0 50px 0;
+      width: 75%;
+    }
   }
   @include bg-img(url('#{$assetPath}tv_system/protection.jpg'), top, right, var(--bg-img-size));
   
