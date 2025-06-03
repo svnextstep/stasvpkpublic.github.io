@@ -21,6 +21,25 @@
   }
 }
 
+@include mobile {
+
+  .change-order {
+    display: contents;
+    
+    >p, >div {
+      padding: var(--container-padding-x);
+    }
+  }
+  
+  .photo-traps__gist {
+    order: -2;
+  }
+  
+  .photo-traps {
+    order: -1;
+  }
+}
+
 .photo-album {
   @include photo-album(250px, 6);
   
