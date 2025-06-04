@@ -41,7 +41,7 @@
     <x-gallery-item-img>
       <img src="{{asset('/img/tv_system/monitore_map_fire_left.png')}}"  width="400" height="auto"  alt="demo search fire" loading="lazy" />
     </x-gallery-item-img>
-    
+
     <x-gallery-item-desc>
       <h5>Точность координат</h5>
       <p>Точность координат обеспечивается пересечением лучей двух камер</p>

@@ -15,21 +15,12 @@ $(document).ready(function(){
   
   const checkStepsLeft = function(oFrame, oList) {
     return Math.round(Math.abs( $(oList).offset().left - $(oFrame).offset().left ));
-  }
-  
-  const checkStepsRight = function(oFrame, oList) {
-    const frameW = Math.round($(oFrame).innerWidth());
-    const listW = Math.round($(oList).prop('scrollWidth'));
- 
-    return frameW > ( listW - Math.abs($(oList).offset().left) );
-  }
+  };
   
   const getStepWidth = function(realW, frameW, iChildern) {
-    const unitW = Math.round( realW / iChildern );
-    let countUnitsInFrame = Math.floor( frameW / unitW );
-    
-    return --countUnitsInFrame * unitW;
-  }
+    const itemW = realW / iChildern;
+    return (frameW <= itemW) ? itemW : Math.floor(frameW / itemW) * itemW;
+  };
   
   const setArrowStatus = function(oArrow, bRemoveClass) {
     if(bRemoveClass) {
@@ -37,14 +28,14 @@ $(document).ready(function(){
     } else if (!(oArrow.hasClass(sGalleryArrowInactive))) {
       oArrow.addClass(sGalleryArrowInactive);
     }
-  }
+  };
   
   const hideNavigationTools = function(oGallery){
     oGallery.find('.' + sGalleryArrow).each(function() {
       $(this).css('opacity', 0);
     });
     oGallery.find("." + sGalleryLegend).css('opacity', 0);
-  }
+  };
   
   $('.' + sGallery).each(function(){
     const oGallery = $(this);
@@ -61,7 +52,7 @@ $(document).ready(function(){
     let legendChildren = $(oLegend).children();
     
     let bLock = false;
-    
+  
     
     /* navigation */
     if (realW <= frameW) {
@@ -71,45 +62,51 @@ $(document).ready(function(){
       step = getStepWidth(realW, frameW, iChildern);
       
       /* legend */
-      if (legendChildren.length == 1) {
-        let legendCount = (realW - frameW) / step;
+      if (legendChildren.length === 1) {
+        let legendCount = Math.floor(realW / step);
+        
         /* append legend*/
-        for (let i = 0; i < legendCount; i++) {
+        for (let i = 1; i < legendCount; i++) {
           $(oLegend).append($(legendChildren).prop('outerHTML'));
         }
 
         /* set active legend item*/
         $(oLegend).children().first().addClass(sGalleryLegendItemFilled);
       }
+       
+      /* arrow listen*/
+      oGallery.find('.' + sGalleryArrow).click(function(){
+
+        if (!bLock && !($(this).hasClass(sGalleryArrowInactive))) {
+          const bDirectionRight = $(this).attr('data-arrow-cycle-left') === undefined;
+          const existSteps = checkStepsLeft(oFrame, oList);
+          let move = (bDirectionRight) ? step + existSteps : Math.abs(step - existSteps);
+          bLock = true;
+
+          /* move list */
+          $(oList).css('transform', 'translate3d(-' + move + 'px, 0px, 0px)');
+
+          setTimeout(function(){
+
+            /* refresh arrow */
+            setArrowStatus(oGallery.find('[data-arrow-cycle-left]'), (($(oList).offset().left * -1 ) > $(oFrame).offset().left));
+            setArrowStatus(oGallery.find('[data-arrow-cycle-right]'), ((realW - ($(oList).offset().left * -1) - step)  >= step));
+            
+            /* refresh legend */
+            let currentLegendItem = $(oLegend).find("." + sGalleryLegendItemFilled);
+            currentLegendItem.removeClass(sGalleryLegendItemFilled);
+            if (bDirectionRight) {
+              currentLegendItem.next().addClass(sGalleryLegendItemFilled);
+            } else {
+              currentLegendItem.prev().addClass(sGalleryLegendItemFilled);
+            }
+
+            bLock = false;
+          }, 500);
+
+        }
+      });
     }
-    
-    /* arrow listen*/
-    oGallery.find('.' + sGalleryArrow).click(function(){
-
-      if (!bLock && !($(this).hasClass(sGalleryArrowInactive))) {
-        const bDirectionRight = $(this).attr('data-arrow-cycle-left') === undefined;
-        const existSteps = checkStepsLeft(oFrame, oList);
-        let move = (bDirectionRight) ? step + existSteps : Math.abs(step - existSteps);
-        bLock = true;
-        
-        /* move list */
-        $(oList).css('transform', 'translate3d(-' + move + 'px, 0px, 0px)');
-
-        setTimeout(function(){
-          
-          /* refresh arrow */
-          setArrowStatus(oGallery.find('[data-arrow-cycle-left]'), ($(oList).offset().left < $(oFrame).offset().left));
-          setArrowStatus(oGallery.find('[data-arrow-cycle-right]'), (!checkStepsRight(oFrame, oList)));
-
-          /* refresh legend */
-          let currentStep = Math.floor( checkStepsLeft(oFrame, oList) / step );
-          $(oLegend).children().removeClass(sGalleryLegendItemFilled).eq(currentStep).addClass(sGalleryLegendItemFilled);
-          
-          bLock = false;
-        }, 900);
-        
-      }
-    });
   });
   
   const legendWork = function(oItem) {
@@ -125,7 +122,7 @@ $(document).ready(function(){
     
     oItem.css('background-color', 'white');
     cardsList.eq(index).fadeIn(time);
-  }
+  };
   
   /* legend for cards */
   $('[data-legend]').children().each(function() {

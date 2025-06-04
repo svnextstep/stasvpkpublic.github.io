@@ -85,10 +85,6 @@
     border-radius: 50%;
     cursor: pointer;
 
-    &:first-child {
-      background-color: var(--color-light);
-    }
-  
     &--filled {
       background-color: var(--color-light);
     }
