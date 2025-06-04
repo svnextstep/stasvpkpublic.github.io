@@ -14,6 +14,163 @@
 </div>
 
  <h1>Welcome</h1>
+ 
+ 
+ 
+
+
+
+
+
+<section>
+  {{-- how it works --}}
+  <h2>{{ __('messages.ts.title_how_it_works') }}</h2>
+  <div class="how-it-works _anim-items _anim-no-hide">
+    <div class="howitworks demo-sliders">
+      <x-row>
+        
+        <x-item-no-padding>
+          {{-- camera/tower design --}}
+          <div id="howitworks_slide1" class="demo-sliders__item _active">
+            <x-svg-howitworks-lens></x-svg-howitworks-lens>
+            <x-svg-howitworks-camera></x-svg-howitworks-camera>
+            <x-svg-howitworks-tower></x-svg-howitworks-tower>
+            <x-svg-howitworks-turner></x-svg-howitworks-turner>
+            
+            <div class="demo-title svg-lens-title">Объектив</div>
+            <div class="demo-title svg-camera-title">Корпус</div>
+            <div class="demo-title svg-tower-title">Вышка</div>
+            <div class="demo-title svg-turner-title">Поворотное устройство</div>
+          
+          </div>
+          <div id="howitworks_slide2"  class="demo-sliders__item">demo 2</div>
+          <div id="howitworks_slide3"  class="demo-sliders__item">demo 3</div>
+          <div id="howitworks_slide4"  class="demo-sliders__item">demo 4</div>
+          
+          <div class="clear-screen">
+            <x-row sClass="shatter clear-screen__row1">
+              <x-item></x-item>
+              <x-item sClass="clear-screen__item-right"></x-item>
+            </x-row>
+            <hr class="clear-screen__line"/>
+            <x-row sClass="clear-screen__row2">
+              <x-item></x-item>
+              <x-item sClass="clear-screen__item-right"></x-item>
+            </x-row>
+            <x-row sClass="clear-screen__row3">
+              <x-item></x-item>
+              <x-item sClass="clear-screen__item-right"></x-item>
+            </x-row>
+            <x-row sClass="clear-screen__row4">
+              <x-item></x-item>
+              <x-item sClass="clear-screen__item-right"></x-item>
+            </x-row>
+          </div>
+        </x-item-no-padding>
+        
+        
+        <x-item>
+          {{-- camera tower design --}}
+          <div id="howitworks_slide1_descr" class="demo-sliders__item-descr">
+            <p>Телекамера (объектив защищенный металлическим кожухом) крепиться на поворотное устройсто, которое устанавливается на наивысшую точку вышки (высотой до 48м).</p>
+          </div>
+          
+          {{-- camera works --}}
+          <div id="howitworks_slide2_descr" class="demo-sliders__item-descr">
+            <p>Также на вышку монтируются и сопутствующее оборудование - антена, устройство управления телекамерой, средства коммуникации. Поворотное устройство медленно поворачивает камеру <span class="_color"> на 360 градусов</span>, осматривая лесной массив <span class="_color">  площадью 30-60 км </span> в зависимости от рельефа.</p>
+          </div>
+          
+          {{-- net --}}
+          <div id="howitworks_slide3_descr" class="demo-sliders__item-descr">
+            <p class="_justify">Компьютерное моделирование создает сеть телекамер, решая задачу мониторинга ВСЕГО лесного массива предприятия (лесхоза). Данные с телекамер передаются на пункты наблюдения.</p>
+          </div>
+          
+          {{-- office --}}
+          <div id="howitworks_slide4_descr" class="demo-sliders__item-descr">
+            <p class="_justify">Оператор анализирует информацию. При обнаружении дыма сигнализирует и система определяет координаты местоположения возгорания, кратчайший маршрут следования и передает инфорацию службам пожарного реагирования.</p>
+          </div>
+        </x-item>
+        
+      </x-row>
+    </div>
+    
+    <div class="how-it-works__legend"></div>
+  </div>
+  
+</section>
+
+
+<section>
+  {{-- how it works --}}
+  
+  <div class="how-it-works">
+    
+    <div class="how-it-works__content">
+      
+      {{-- camera tower design --}}
+      <x-row sClass="_active">
+        
+        <x-item sClass="how-it-works__demo">
+          <x-svg-howitworks-lens></x-svg-howitworks-lens>
+          <x-svg-howitworks-camera></x-svg-howitworks-camera>
+          <x-svg-howitworks-turner></x-svg-howitworks-turner>
+          <x-svg-howitworks-tower></x-svg-howitworks-tower>
+          
+          <div class="lens-title _active">Объектив</div>
+          <div class="camera-title _active">Корпус</div>
+          <div class="tower-title _active">Вышка</div>
+          <div class="turner-title _active">Поворотное устройство</div>
+        </x-item>
+        
+        <x-item sClass="how-it-works__description _active">
+          <div class="number_as_bg">01</div>
+          <p>Телекамера (объектив защищенный металлическим кожухом) крепиться на поворотное устройсто, которое устанавливается на наивысшую точку вышки (высотой до 48м).</p>
+        </x-item>
+        
+      </x-row>
+      
+      {{-- camera works --}}
+      <x-row>
+        <x-item sClass="how-it-works__demo">demo</x-item>
+        <x-item sClass="how-it-works__description">
+          <div class="number_as_bg">02</div>
+          <p>Также на вышку монтируются и сопутствующее оборудование - антена, устройство управления телекамерой, средства коммуникации. Поворотное устройство медленно поворачивает камеру <span class="_color"> на 360 градусов</span>, осматривая лесной массив <span class="_color">  площадью 30-60 км </span> в зависимости от рельефа.</p>
+        </x-item>
+      </x-row>
+      
+      {{-- net --}}
+      <x-row>
+        <x-item sClass="how-it-works__demo">demo</x-item>
+        <x-item sClass="how-it-works__description">
+          <div class="number_as_bg">03</div>
+          <p class="_justify">Компьютерное моделирование создает сеть телекамер, решая задачу мониторинга ВСЕГО лесного массива предприятия (лесхоза). Данные с телекамер передаются на пункты наблюдения.</p>
+        </x-item>
+      </x-row>
+      
+      {{-- office --}}
+      <x-row>
+        <x-item sClass="how-it-works__demo">demo</x-item>
+        <x-item sClass="how-it-works__description">
+          <div class="number_as_bg">04</div>
+          <p class="_justify">Оператор анализирует информацию. При обнаружении дыма сигнализирует и система определяет координаты местоположения возгорания, кратчайший маршрут следования и передает инфорацию службам пожарного реагирования.</p>
+        </x-item>
+      </x-row>
+      
+    </div>
+    
+    
+
+    
+    <div class="how-it-works__legend legend">
+      @for ($i = 1; $i <= 4; $i++ )
+      <div class="legend__item"></div>
+      @endfor
+    </div>
+    
+  </div>
+</section>
+
+
  <p class="test-mixin"><a href="/">The text which</a>The text which has a lot of wishes</p>
       <p class="add-text">Test mixin file includes</p>
 

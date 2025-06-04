@@ -45,7 +45,7 @@ $(document).ready(function(){
     const frameW = Math.round($(oList).innerWidth());
     const realW = Math.round($(oList).prop('scrollWidth'));
     const iChildern = oList.children().length;
-    
+            
     let step = frameW;
     
     const oLegend = oGallery.find('.' + sGalleryLegend);

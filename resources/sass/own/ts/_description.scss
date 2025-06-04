@@ -479,7 +479,11 @@
   }
   .slider {
     @include flex_column;
-    @include border-radius;
+    
+    @include mobile-above {
+      @include border-radius;
+    }
+    
     
     align-items: center;
     width: 60%;
@@ -507,12 +511,19 @@
         width: 100%;
         padding-inline: 3rem;
         
+        @include mobile {
+          padding-inline: var(--container-padding-x);
+        }
+        
         >h3, >p {
           color: var(--color-bg-gray);
         }
         
         >p {
           font-size: 1.4rem;
+          @include mobile {
+            font-size: 1.1rem;
+          }
         }
       }
       

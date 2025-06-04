@@ -32,7 +32,8 @@ Route::group(
     ],
     function () {
 Route::get('tmp', function () { return view('tmp'); });
-      Route::get('/', function () { return view('welcome'); });
+      //Route::get('/', function () { return view('welcome'); });
+      Route::get('/', function () {return view('tvsystem/description');});
 
       // ABOUT
       Route::get('about/about', function () {return view('about/about');})->name('about');
