@@ -24,7 +24,7 @@
   }
   
   &__list {
-    @include flex_row(space-around);
+    @include flex_row_start();
 
     position: relative;
     align-items: stretch;
