@@ -14,65 +14,84 @@
 @mixin lenses_tab_content($w, $y) {
   $unit: calc( $w / 3 );
   
-  @include bg-img(url(#{$assetPath}tv_system/lenses/tv_lenses.jpg), 0, 0, cover);
+  .tab-lens {
+    @include bg-img(url(#{$assetPath}tv_system/lenses/tv_lenses.jpg), 0, 0, cover);
   
-  position: relative;
-  margin: 0 auto;
-  width: $w;
-  height: $y;
-  //overflow: hidden;
-  
-  .inside-win {
-    @include inside_win($unit);
-  }
-  
-  .params__list {
-    position: absolute;
-    top: -300px;
-    max-width: 200px;
+    position: relative;
+    margin: 0 auto;
+    width: $w;
+    height: $y;
 
-    &._active {
-      top: 20px;
-      @include transition-common;
-    }
-  }
-  
-  &.lenses-tab__1 {
-    .inside-win {
-      margin-left: calc( $unit * -3);
-    }
-    
-    .params__list {
-      left: calc( $unit * 1.25);
-    }
-  }
-  
-  &.lenses-tab__2 {
-    .inside-win {
-      margin-left: calc( $unit * -1.75);
-    }
-    
-    .params__list {
-      left: calc( $unit * 0.40);
-      align-items: flex-end;
-      .params__item {
-        text-align: right;
+    &__focus {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 0;
+      width: 100%;
+      height: 100%;
+
+      >div {
+        position: relative;
+        background-color: var(--color-bg-gray);
+        opacity: 0.8;
+        overflow: visible;
+      }
+      
+      ._active-win {
+        opacity: 0;
       }
     }
-  }
-  
-  &.lenses-tab__3 {
-    .inside-win {
-      margin-left: calc( $unit * -1);
-    }
-    
-    .params__list {
-      left: calc( $unit * 1.15);
-      align-items: flex-end;
-      .params__item {
-        text-align: right;
+
+    &__params {
+      display: grid;
+      grid-template-columns: 1.5fr 2fr;
+      gap: 0;
+      position: absolute;
+      top: -300px;
+      width: 100%;
+      height: 100%;
+
+      &._active {
+        top: 0;
+        @include transition-common;
       }
     }
+    
+    .lens-params__3 {
+      grid-template-columns: 2.5fr 1fr;
+    }
+
+    .params__list {
+      padding-inline: 10px;
+      
+      &._direction-right {
+        align-items: flex-end;
+        
+        .params__item {
+          text-align: right;
+        }
+      }
+
+      @include mobile {
+        .param__header {
+          font-size: 0.8rem;
+        }
+
+        .param__data h3 {
+          font-size: 1rem;
+        }
+      }
+    }
+
+
+/*    &.lenses-tab__2, &.lenses-tab__3 {
+      .params__list {
+        align-items: flex-end;
+
+        .params__item {
+          text-align: right;
+        }
+      }
+    }*/
   }
 }
 
@@ -80,17 +99,32 @@
   display: block;
   position: absolute;
   top: 0;
-  left: 60%;
   width: 150px;
   height: 250px;
   background-color: var(--color-bg-gray);
   overflow: visible;
   padding-top: 120px;
+  
+  @include mobile-above {
+    left: 60%;
+  }
+  
+  @include mobile {
+    right: 5%;
+    width: 100px;
+    height: 140px;
+    padding-top: 60px;
+  }
 
   img {
     max-width: 250px;
     height: auto;
     margin-left: -120px;
+    
+    @include mobile {
+      max-width: 150px;
+      margin-left: -60px;
+    }
   }
 }
 
@@ -98,81 +132,101 @@
   width: 100%;
 }
 
-.lenses-tab__content {
-  @include lenses_tab_content(900px, 520px);
-}
+
+  
+  @include tablet-above {
+    @include lenses_tab_content(900px, 520px);
+  }
+  
+  @include tablet {
+    @include lenses_tab_content(450px, 260px);
+  }
+  
+  @include mobile {
+    @include lenses_tab_content(300px, 173px);
+
+  }
+
 
 .forest-view {
-  @include flex_column;
-  
-  align-items: center;
-  width: 100%;
+  column-gap: 20px;
   
   &__bg {
-    @include bg-img(url(#{$assetPath}tv_system/lenses/compare_origin_view.jpg), center, top, cover);
-    
-    width: 400px;
-    height: 267px;
     margin: 0 auto;
+    
+    >img {
+      width: 100%;
+    }
   }
   
   &__compare-img-list {
-    @include flex_row;
+    margin-top: -60px;
     
-    align-items: flex-start;
-    gap: 10px;
-    margin-top: -50px;
+    >img {
+      width: 100%;
+      border: 4px solid var(--color-light);
+    }
+    >p {
+      text-align: center;
+    }
+  }
+}
+
+.lenses-practice {
+  @include tablet {
+    margin-top: 50px;
+  }
+  
+  @include mobile {
+    margin-top: 80px;
+  }
+}
+@mixin lenses_compare_ts ($count) {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+
+  &._forest_net {
+    $w: 300px;
+    @include forest-map($w, $count);
     width: 100%;
-    
-    .panel__item--no-padding {
-      flex: 0 0 240px;
+    background-size: cover;
+    min-height: 250px;
+    margin: 0 auto;
+    border: 1px solid var(--color-accent);
+    .camera-watch__pair {
+      width: calc($w / $count);
       
-      >img {
-        border: 3px solid var(--color-light);
-        height: 140px;
-      }
-      
-      >p {
-        text-align: center;
+      .camera-watch__area {
+        @include camera_area_active;
       }
     }
   }
 }
-._border {
-  border: 3px solid red;
-}
+
 .lenses-compare {
-  &__net-params {
-    @include flex_column;
-    
+  >div {
     text-align: center;
-    padding-top: 10px;
-    
-    &-title {
-      font-family: var(--font-famile-base-extra);
-      padding: 5px 0 !important;
-      background-color: var(--color-yellow);
-    }
   }
   
   ._forest_net {
-      @include bg-img(url(#{$assetPath}tv_system/map.jpg), 0, 0, 100%, auto);
-      @include flex_column(center);
-      
-      align-items: center;
+      @include bg-img(url(#{$assetPath}tv_system/map.jpg), 0, 0, auto, 100%);
       position: relative;
-      width: 100%;
-      min-height: 250px;
-      margin: 0 auto;
-      padding-top: 15%;
-      border: 1px solid #80243f;
+      padding: 15% 0 0 5%;
+      overflow: hidden;
     }
     
-    .net-chema {
-
-      &__title {
-        padding: 5px 0;
-        font-weight: 500;
-      }
+    &__own-ts{
+      @include lenses_compare_ts (2);
+    }
+    
+    &__casual-ts {
+      @include lenses_compare_ts (3);
+    }
+    
+    .net-schema-title {
+      padding: 5px 0;
+      font-weight: 500;
     }
 }
+

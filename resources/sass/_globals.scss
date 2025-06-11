@@ -193,6 +193,21 @@ ul.list--dotted {
   @include flex_row_end();
 }
 
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 10px;
+}
+
+.grid-unite-row-cells {
+  grid-column: -1 / 1;
+}
+.table-header {
+  font-family: var(--font-famile-base-extra);
+  padding: 5px 0 !important;
+  background-color: var(--color-yellow);
+}
 
 .grid-3 {
   @include grid_3();
@@ -238,6 +253,11 @@ ul.list--dotted {
   
   .flex-self-end {
     align-self: flex-end !important;
+  }
+}
+.mobile-row-reverse {
+  @include mobile {
+    flex-direction: column-reverse;
   }
 }
 
@@ -430,7 +450,35 @@ ul.list--dotted {
   }
 }
 
-
+.list-big-number {
+  position: relative;
+  
+  @include tablet-above {
+    padding-left: 50px;
+  }
+  
+  &__bg {
+    position: absolute;
+    top: -12rem;
+    left: -10px;
+    z-index: -1;
+    font-family: var(--font-famile-base-extra);
+    font-size: 12rem;
+    font-weight: 500;
+    color: palegoldenrod;
+    opacity: 0.2;
+    
+    @include tablet {
+      top: -5rem;
+      font-size: 8rem;
+    }
+    
+    @include mobile {
+      top: -6rem;
+      font-size: 8rem;
+    }
+  }
+}
 
 /* INDIVIDUAL GROUP */
 
