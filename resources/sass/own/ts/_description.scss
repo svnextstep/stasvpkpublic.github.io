@@ -235,7 +235,7 @@
         position: absolute;
         font-family: "Caveat", cursive;
         font-size: 1.3rem;
-        color: var(--color-light);
+        color: var(--color-text-soft-light); //var(--color-light);
         //visibility: hidden;
         opacity: 0;
       }
@@ -485,7 +485,7 @@
     margin: 10% auto;
     padding: 20px 20px;
     background-color: rgba(0,0,0,0.4);
-    color: #ddd;
+    color: var(--color-text-soft-light);
     
     @include mobile {
       width: 100%;
