@@ -24,8 +24,12 @@
   }
   
   &__list {
-    @include flex_row_start();
-
+    @include flex_row(space-around);
+    
+    @include mobile {
+      @include flex_row_start();
+    }
+    
     position: relative;
     align-items: stretch;
     flex-wrap: nowrap;

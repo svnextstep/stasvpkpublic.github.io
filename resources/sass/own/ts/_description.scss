@@ -1,7 +1,7 @@
 @mixin svg_draw_main() {
   svg {
     position: absolute;
-    line, path, ellipse, poligon {
+    line, path, ellipse, poligon, circle {
       fill:none;
       stroke: var(--color-yellow);//#EBB240;
       stroke-miterlimit:10;
@@ -9,7 +9,9 @@
       stroke-dashoffset: 2000;
     }
   }
+
 }
+
 @mixin draw_lens_slide1($w, $delay: 0) {
   
   .svg-lens {
@@ -97,14 +99,14 @@
     }
     
     path {
-      animation: draw 50s linear calc($delay + 10s) forwards;
+      animation: draw 40s linear calc($delay + 10s) forwards;
     }
     
     path.pillar {
       animation: draw 40s linear $delay forwards;
     }
     ellipse {
-      animation: draw 30s linear calc($delay + 8s) forwards;
+      animation: draw 30s linear calc($delay + 2s) forwards;
     }
     
   }
@@ -114,6 +116,19 @@
     right: 5%;
     animation: appear_text 2s linear $delay forwards;
     //@include transition-in(var(--title-appear-duration), $delay);
+  }
+}
+
+
+@mixin draw_tree_slide2($delay: 0) {
+  path {
+    animation: draw 30s linear $delay forwards;
+  }
+}
+
+@mixin draw_camera_slide2($delay: 0) {
+  line {
+    animation: draw 250s linear $delay forwards;
   }
 }
 
@@ -134,7 +149,6 @@
     left: 0%;
   }
 }
-
 @keyframes appear_text {
   0%{
     opacity:0;
@@ -142,6 +156,18 @@
   100% {
     opacity: 1;
     //visibility: visible;
+  }
+}
+@keyframes move_net_work_canvas {
+  100% {
+    left: 0;
+  }
+}
+@keyframes transfer_svg_circle {
+  100% {
+    
+      fill: var(--color-yellow);
+  
   }
 }
 
@@ -158,11 +184,45 @@
 }
 
 @mixin svg_draw_slide2($delay) {
-  #howitworks_slide2_descr{
+  #howitworks_slide2_descr {
     @include transition-in(var(--transition-duration-slowly), $delay);
   }
   
+  .howitworks__demo {
+    line, path, circle {
+      fill: var(--color-platinum);
+    }
+  }
   
+  #howitworks-step2-tree-big {
+    @include draw_tree_slide2($delay);
+  }
+  
+  #howitworks-step2-tree-small {
+    @include draw_tree_slide2(calc($delay + 2s));
+  }
+  
+  #howitworks-step2-office {
+    circle {
+      animation: draw 10s linear calc($delay + 5s) forwards;
+    }
+
+    line, path {
+      animation: draw 250s linear calc($delay + 7s) forwards;
+    }
+  }
+  
+  #howitworks-step2-camera-big{
+    @include draw_camera_slide2(calc($delay + 9s));
+  }
+  
+  #howitworks-step2-camera-small {
+    @include draw_camera_slide2(calc($delay + 11s));
+  }
+  
+  .transfer-svg circle {
+    animation: transfer_svg_circle 3s linear calc($delay + 15s) forwards;
+  }
 }
 
 .how-it-works {
@@ -189,18 +249,9 @@
         svg {
           fill: none;
         }
-        
-        &--clearing {
-          position: absolute;
-          top: 0;
-          left: calc($demo-screen-w * -1);
-          width: $demo-screen-w;
-          height: $demo-screen-h;
-          background-color: var(--color-platinum);
-          border: 2px solid red;
+        .transfer-svg {
+          border: none;
         }
-        
-        
       }
     }
     
@@ -212,19 +263,101 @@
       align-items: center;
     }
     
-    &__slide2, &__slide3, &__slide4 {
+    &__slide2 {
       position: absolute;
       top: 0;
       left: calc($demo-screen-w * -2);
       width: $demo-screen-w;
       height: $demo-screen-h;
       background-color: var(--color-platinum);
-      border: 2px solid green;
+      
+      .net-work {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        width: 800px;
+        height: 100%;
+        color: var(--color-light);
+
+        &__canvas {
+          background-color: var(--color-platinum);
+        }
+
+        .transition {
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+
+          &__cell {
+            background-color: var(--color-platinum);
+          }
+
+          &__top {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            height: 30%;
+
+            .item-2, .item-3, .item-4 {
+              border-bottom: 2px solid var(--color-yellow);
+            }
+
+            .item-4{
+              background-color: var(--color-yellow);
+              opacity: 0.8;
+            }
+          }
+
+          &__middle {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.2fr 0.8fr;
+            height: 15%;
+
+            .item-1, .item-2, .item-3 {
+              border-bottom: 2px solid var(--color-yellow);
+            }
+
+            .item-3{
+              background-color: var(--color-yellow);
+              opacity: 0.8;
+            }
+
+            .item-4{
+              opacity: 0;
+            }
+          }
+
+          &__bottom {
+            display: grid;
+            grid-template-columns: 1fr 0.8fr 1.2fr 1fr;
+            height: 30%;
+
+            .item-4{
+              opacity: 0;
+            }
+          }
+
+          &__footer {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr 1.7fr 0.3fr;
+            height: 25%;
+
+            .item-2, .item-3 {
+              border-top: 2px solid var(--color-yellow);
+            }
+
+            .item-3{
+              background-color: var(--color-yellow);
+              opacity: 0.8;
+            }
+
+            .item-4{
+              opacity: 0;
+            }
+          }
+        }
+      }
     }
   }
-  
-  
-  
   
   &._active {
     
@@ -235,134 +368,23 @@
         position: absolute;
         font-family: "Caveat", cursive;
         font-size: 1.3rem;
-        color: var(--color-text-soft-light); //var(--color-light);
+        color: var(--color-text-soft-light);
         //visibility: hidden;
         opacity: 0;
       }
+      
       &__slide1{
         @include svg_draw_slide1();
       }
-      &__slide2{
-        .demo-screen--clearing {
-          //animation: screen_clearing 10s linear calc(20s) forwards;
-        }
-        
-        @include svg_draw_slide2(20s);
-      }
-      &__slide3{}
-      &__slide4{}
-    }
-  }
-  
-  //@keyframe screen_clearing {
-   // 99% {
-     // left: calc (500px * 2);
-    //}
-   // 100% {
-     // left: calc (500px * -1);
-    //}
-  //}
-  
-  &__content {
-    width: 100%;
-    
-    &.demo-sliders {
-      .panel__item--no-padding {
-        position: relative;
-        width: 100%;
-        min-height: 500px;
-        overflow: hidden;
-        
-        .demo-sliders__item {
-          position: absolute;
-          bottom: 0px;
-          right: 30px;
-          width: 400px;
-          height: 500px;
-          visibility: hidden;
-          overflow: hidden;
-          
-          .demo-title {
-            position: absolute;
-            font-family: "Caveat", cursive;
-            font-size: 1.3rem;
-            color: var(--color-light);
-          }
-
-          
-          &._active {
-            //visibility: visible;
-          }
-          
-        }
-        
-        .clear-screen {
-          width: 100%;
-          height: 100%;
-          
-          &__item-right {
-            background-color: var(--color-yellow);
-            opacity: 0.6;
-          }
-          
-          &__line {
-            width: 400px;
-            height: 2px;
-            border: 1px solid var(--color-pale-gold);
-          }
-          
-          &__row1 {
-            width: 100%;
-            height: 30%;
-
-            .clear-screen__item-right {
-              flex: 0 0 60px;
-            }
-          }
-
-          &__row2 {
-            width: 100%;
-            height: 40%;
-
-            .clear-screen__item-right {
-              background-color: transparent;
-            }
-          }
-
-          &__row3 {
-            width: 100%;
-            height: 20%;
-
-            .clear-screen__item-right {
-              flex: 0 0 160px;
-            }
-          }
-          
-          &__row4 {
-            width: 100%;
-            height: 10%;
-
-            .clear-screen__item-right {
-              background-color: transparent;
-            }
-          }
-        }
-
-        
-      }
-          
-      //@include svg_draw_main;
-          
-      //@include svg_draw_slide1();
       
+      &__slide2{
+        @include svg_draw_slide2(30s);
+        
+        animation: move_net_work_canvas 3s linear 25s forwards;
+      }
     }
   }
 }
-
-
-
-
-
 
 @mixin project_steps($rowW) {
   $stepSize: 40px;

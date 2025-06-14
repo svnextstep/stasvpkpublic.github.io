@@ -65,6 +65,7 @@
   
 </section>
 
+
  <section>
   {{-- how it works --}}
   <h2>{{ __('messages.ts.title_how_it_works') }}</h2>
@@ -88,13 +89,43 @@
           </div>
 
           {{-- camera works --}}
-          <div class="howitworks__slide2"></div>
+          <div class="howitworks__slide2">
+            <div class="net-work">
+                <div class="net-work__canvas">
+                  <x-svg_howitworks_step2></x-svg_howitworks_step2>
+                  <svg class="transfer-svg" width="800" height="800" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet">
+                    <path id="howitworks-net-camera1" d="M 115,155 L 330,250"></path>
+                    <g>
+                      <circle cx="0" cy="0" r="3"></circle>
+                      <animateMotion dur="3s" repeatCount="indefinite" fill="freeze"> 
+                         <mpath xlink:href="#howitworks-net-camera1"></mpath>
+                      </animateMotion> 
+                    </g>
+                  </svg>
 
-          <div class="howitworks__slide3"></div>
+                  <svg class="transfer-svg" width="800" height="800" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet">
+                    <path id="howitworks-net-camera2" d="M 330,100 L 330,250"></path>
+                    <g>
+                      <circle cx="0" cy="0" r="3"></circle>
+                      <animateMotion dur="3s" repeatCount="indefinite" fill="freeze"> 
+                         <mpath xlink:href="#howitworks-net-camera2"></mpath>
+                      </animateMotion> 
+                    </g>
+                  </svg>
+                </div>
 
-          <div class="howitworks__slide4"></div>
-          
-          <div class="demo-screen--clearing"></div>
+                <div class="net-work__transition transition">
+                  @foreach (['top', 'middle', 'bottom', 'footer'] as $sTransitionItem)
+                    <div class="transition__{{$sTransitionItem}}">
+                      @for ($i=1; $i <= 4; $i++)
+                        <div class="transition__cell item-{{$i}}"></div>
+                      @endfor
+                    </div>    
+                  @endforeach
+
+                </div>
+            </div>
+          </div>
         </div>
       </x-item-no-padding>
       
