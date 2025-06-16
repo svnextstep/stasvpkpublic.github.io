@@ -53,8 +53,8 @@
   }
   
   .svg-camera-title {
-    top: 15%;
-    left: 7%;
+    top: 45%;
+    right: 5%;
     animation: appear_text 2s linear $delay forwards;
     //@include transition-in(var(--title-appear-duration), $delay);
   }
@@ -112,7 +112,7 @@
   }
   
   .svg-tower-title {
-    bottom: 5%;
+    top: 75%;
     right: 5%;
     animation: appear_text 2s linear $delay forwards;
     //@include transition-in(var(--title-appear-duration), $delay);
@@ -171,7 +171,7 @@
 
 @keyframes move_description {
   100% {
-    left: 0;
+    top : 0;
   }
 }
 
@@ -230,17 +230,20 @@
 }
 
 .how-it-works {
+  $blockH: 550px;
   @include flex_column_between;
-  
+  align-items: center;
   background-color: var(--color-platinum);
   color: var(--color-light);
   width: 100%;
-  min-height: 500px;
+  min-height: $blockH;
+  overflow: hidden;
   
   .howitworks {
     $demo-screen-w: 400px;
-    $demo-screen-h: 500px;
-    
+    $demo-screen-h: $blockH;
+    position: relative;
+
     &__demo {
       @include flex_row_end;
       
@@ -260,14 +263,23 @@
     }
     
     &__desciptions {
-      @include flex_column(center);
-      
-      position: relative;
-      overflow: hidden;
+      @include flex_column(flex-start);
+  
+      position: absolute;
+      top:0;
+      left:0;
+      right: 0;
+      bottom: 0;
+
       
       .desciptions-item {
         position: relative;
-        left: 600px;
+        top: -600px;
+        width: 80%;
+        font-size: 1rem;
+        line-height: 1.1;
+        text-align: left;
+        padding-top: 10px;
       }
     }
     
@@ -282,7 +294,7 @@
       width: $demo-screen-w;
       height: $demo-screen-h;
       background-color: var(--color-platinum);
-      
+
       .net-work {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -379,9 +391,8 @@
       .demo-title {
         position: absolute;
         font-family: "Caveat", cursive;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         color: var(--color-text-soft-light);
-        //visibility: hidden;
         opacity: 0;
       }
       
@@ -399,16 +410,52 @@
       &__desciptions {
 
         #howitworks_slide1_descr {
-          animation: move_description 10s ease-in 0s forwards;
+          left: -30%;
+          padding-top: 20px;
+          animation: move_description 8s ease-in 6s forwards;
+          
+          @include mobile {
+            left: 0;
+          }
         }
         #howitworks_slide2_descr {
-          animation: move_description 10s ease-in 3s forwards;
+          left: -20%;
+          width: 350px;
+          animation: move_description 5s ease-in 15s forwards;
+          
+          @include mobile {
+            left: 0;
+          }
         }
         #howitworks_slide3_descr {
-          animation: move_description 10s ease-in 35s forwards;
+          left: -10%;
+          width: 250px;
+          padding-top: 210px;
+          animation: move_description 5s ease-in 40s forwards;
+          
+          @include mobile {
+            left: 0px;
+            padding-top: 190px;
+          }
         }
         #howitworks_slide4_descr {
-          animation: move_description 10s ease-in 45s forwards;
+          left: 30%;
+          width: 100%;
+          padding-top: 15px;
+          animation: move_description 5s ease-in 50s forwards;
+          
+          @include mobile {
+            left: 0;
+            width: 100%;
+            padding-top: 25px;
+          }
+          
+          >ul {
+            padding: 0 0 0 20px;
+            li {
+              padding-top: 0;
+            }
+          }
         }
       }
     }

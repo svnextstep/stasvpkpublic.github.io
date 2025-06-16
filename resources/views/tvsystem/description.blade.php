@@ -127,25 +127,37 @@
             </div>
           </div>
         </div>
+        
+        
+        <div class="howitworks__desciptions">
+          {{-- camera tower design --}}
+          <div id="howitworks_slide1_descr" class='desciptions-item'>
+            Телекамера крепиться на поворотное устройсто, которое устанавливается на наивысшую точку вышки.
+          </div>
+
+          {{-- camera works --}}
+          <div id="howitworks_slide2_descr" class='desciptions-item'>
+            Поворотное устройство медленно поворачивает камеру на 360 градусов, осматривая лесной массив площадью 30-60 км.
+          </div>
+
+          {{-- net --}}
+          <div id="howitworks_slide3_descr" class="desciptions-item">
+            Компьютерное моделирование создает сеть телекамер. Данные с телекамер передаются на пункты наблюдения.
+          </div>
+
+          {{-- office --}}
+          <div id="howitworks_slide4_descr" class="desciptions-item">
+            Оператор анализирует информацию. При обнаружении дыма сигнализирует и передает инфорацию службам пожарного реагирования:
+            <ul class="first-letter">
+              <li>координаты местоположения возгорания</li>
+              <li>кратчайший маршрут следования</li>
+            </ul>
+          </div>
+
+        </div>
       </x-item-no-padding>
       
-      <x-item sClass="howitworks__desciptions">
-        {{-- camera tower design --}}
-        <div id="howitworks_slide1_descr" class='desciptions-item'><p>Телекамера (объектив защищенный металлическим кожухом) крепиться на поворотное устройсто, которое устанавливается на наивысшую точку вышки (высотой до 48м).</p></div>
-        {{-- camera works --}}
-        <div id="howitworks_slide2_descr" class='desciptions-item'><p>Поворотное устройство медленно поворачивает камеру на 360 градусов, осматривая лесной массив площадью 30-60 км в зависимости от рельефа.</p></div>
-        {{-- net --}}
-        <div id="howitworks_slide3_descr" class="desciptions-item">
-          <p class="_justify">Компьютерное моделирование создает сеть телекамер, решая задачу мониторинга ВСЕГО лесного массива предприятия (лесхоза). Данные с телекамер передаются на пункты наблюдения.</p>
-        </div>
 
-        {{-- office --}}
-        <div id="howitworks_slide4_descr" class="desciptions-item">
-          <p class="_justify">Оператор анализирует информацию. При обнаружении дыма сигнализирует и система определяет координаты местоположения возгорания, кратчайший маршрут следования и передает инфорацию службам пожарного реагирования.</p>
-        </div>
-      
-      
-      </x-item>
       
     </x-row>
 
