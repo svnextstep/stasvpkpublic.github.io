@@ -1,5 +1,9 @@
 .tower {
   @include bg-img_top_full-pagesize(url('#{$assetPath}tower/tower_bg.jpg'));
+  
+  @include mobile {
+    @include bg-img_top_full-pagesize(url('#{$assetPath}tower/tower_bg-tablet.jpg'));
+  }
 }
 
 .tower-params {

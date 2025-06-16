@@ -1,6 +1,14 @@
 .net-card {
   @include presentation_block();
   @include bg-img-cover(url(#{$assetPath}tv_system/net/network_bg.jpg));
+  
+  @include tablet {
+    @include bg-img-cover(url(#{$assetPath}tv_system/net/network_bg-tablet.jpg));
+  }
+  
+  @include mobile {
+    @include bg-img-cover(url(#{$assetPath}tv_system/net/network_bg-mobile.jpg));
+  }
 }
 
 // REGION

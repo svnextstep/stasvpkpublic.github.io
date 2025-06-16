@@ -211,6 +211,11 @@
   
   ._forest_net {
       @include bg-img(url(#{$assetPath}tv_system/map.jpg), 0, 0, auto, 100%);
+      
+      @include mobile {
+        @include bg-img(url(#{$assetPath}tv_system/map-mobile.jpg), 0, 0, auto, 100%);
+      }
+      
       position: relative;
       padding: 15% 0 0 5%;
       overflow: hidden;

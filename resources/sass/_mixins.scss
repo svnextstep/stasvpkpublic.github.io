@@ -280,7 +280,7 @@
   min-height: 50vh;
   margin: 0;
   @include mobile {
-    min-height: 70vh;
+    //min-height: 70vh;
   }
 
   &__title {

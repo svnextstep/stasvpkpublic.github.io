@@ -229,6 +229,10 @@ $fire-point_wight: 2px;
   
   @include bg-img(url(#{$assetPath}tv_system/map.jpg), 0, 0, 100%, auto);
   
+  @include mobile {
+    @include bg-img(url(#{$assetPath}tv_system/map-mobile.jpg), 0, 0, 100%, auto);
+  }
+  
   display: flex;
   flex-direction: column;
   align-items:  center;
@@ -305,7 +309,7 @@ $fire-point_wight: 2px;
       $moveLeft: -90%;
       
       @include square(calc( $tv_size_W * 2 ));
-      @include bg-img(url(#{$assetPath}welcome_bg.jpg), 0, 0, 100%, auto);
+      @include bg-img(url(#{$assetPath}ts-description_bg-tablet.jpg), 0, 0, 100%, auto);
       
       opacity: 0;
       position: absolute;
@@ -383,12 +387,17 @@ $fire-point_wight: 2px;
 .map-card {
   @include presentation_block();
   
-  background-image: url(#{$assetPath}tv_system/monitore.png), url(#{$assetPath}tv_system/monitore_map_fire.png), url(#{$assetPath}welcome_bg.jpg);
+  background-image: url(#{$assetPath}tv_system/monitore.png), url(#{$assetPath}tv_system/monitore_map_fire.png), url(#{$assetPath}ts-description_bg.jpg);
   background-position: 56% 60%, 80% 30%, 0 0;//bottom  left
   background-size: 15% auto, 25% auto, cover;// 100% auto
   background-repeat: no-repeat;
   
+  @include tablet {
+    background-image: url(#{$assetPath}tv_system/monitore.png), url(#{$assetPath}tv_system/monitore_map_fire.png), url(#{$assetPath}ts-description_bg-tablet.jpg);
+  }
+
   @include mobile {
+    background-image: url(#{$assetPath}tv_system/monitore.png), url(#{$assetPath}tv_system/monitore_map_fire.png), url(#{$assetPath}ts-description_bg-mobile.jpg);
     background-position: 45% 25%, 85% 10%, 0 0;//bottom  left
     background-size: 25% auto, 35% auto,cover;// 100% auto
 

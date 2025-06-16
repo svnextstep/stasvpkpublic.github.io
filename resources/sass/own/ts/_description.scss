@@ -165,9 +165,13 @@
 }
 @keyframes transfer_svg_circle {
   100% {
-    
-      fill: var(--color-yellow);
-  
+    fill: var(--color-yellow);
+  }
+}
+
+@keyframes move_description {
+  100% {
+    left: 0;
   }
 }
 
@@ -257,6 +261,14 @@
     
     &__desciptions {
       @include flex_column(center);
+      
+      position: relative;
+      overflow: hidden;
+      
+      .desciptions-item {
+        position: relative;
+        left: 600px;
+      }
     }
     
     .panel__item {
@@ -375,12 +387,29 @@
       
       &__slide1{
         @include svg_draw_slide1();
+        
       }
       
       &__slide2{
-        @include svg_draw_slide2(30s);
+        @include svg_draw_slide2(35s);
         
-        animation: move_net_work_canvas 3s linear 25s forwards;
+        animation: move_net_work_canvas 3s linear 30s forwards;
+      }
+      
+      &__desciptions {
+
+        #howitworks_slide1_descr {
+          animation: move_description 10s ease-in 0s forwards;
+        }
+        #howitworks_slide2_descr {
+          animation: move_description 10s ease-in 3s forwards;
+        }
+        #howitworks_slide3_descr {
+          animation: move_description 10s ease-in 35s forwards;
+        }
+        #howitworks_slide4_descr {
+          animation: move_description 10s ease-in 45s forwards;
+        }
       }
     }
   }
@@ -485,12 +514,17 @@
 
 
 .tv-system-top {
-  background-image: url(#{$assetPath}tv_system/camera.png), url(#{$assetPath}welcome_bg.jpg);
+  background-image: url(#{$assetPath}tv_system/camera.png), url(#{$assetPath}ts-description_bg.jpg);
   background-repeat: no-repeat;
   background-position: top right, center top;
   background-size: auto 250px, cover;
   
+  @include tablet {
+    background-image: url(#{$assetPath}tv_system/camera.png), url(#{$assetPath}ts-description_bg-tablet.jpg);
+  }
+  
   @include mobile {
+    background-image: url(#{$assetPath}tv_system/camera.png), url(#{$assetPath}ts-description_bg-mobile.jpg);
     background-size: auto 100px, cover;
   }
   .slider {
@@ -500,10 +534,8 @@
       @include border-radius;
     }
     
-    
     align-items: center;
     width: 60%;
-    
     margin: 10% auto;
     padding: 20px 20px;
     background-color: rgba(0,0,0,0.4);
@@ -512,6 +544,7 @@
     @include mobile {
       width: 100%;
       padding: 5px 10px;
+      margin: 15% auto 5%;
     }
     
     .ts-brief {
@@ -519,6 +552,9 @@
       width: 100%;
       min-height: 250px;
       
+      @media (orientation: landscape) {
+        min-height: 150px;
+      }
       &__item{
         display: none;
         position: absolute;
@@ -627,12 +663,8 @@
   @include bg-img(url(#{$assetPath}tv_system/ts_bg.jpg), top, right, cover);
   border: 1px solid white;
   
-  @include tablet {
-    @include bg-img(url(#{$assetPath}tv_system/ts_bg_medium.jpg), top, right, cover);
-  }
-  
   @include mobile {
-    @include bg-img(url(#{$assetPath}tv_system/ts_bg_small.jpg), top, right, cover);
+    @include bg-img(url(#{$assetPath}tv_system/ts_bg_medium.jpg), top, right, cover);
   }
 }
 
