@@ -552,9 +552,12 @@
       width: 100%;
       min-height: 250px;
       
-      @media (orientation: landscape) {
-        min-height: 150px;
+      @include mobile {
+        @media (orientation: landscape) {
+          min-height: 150px;
+        }
       }
+      
       &__item{
         display: none;
         position: absolute;
