@@ -46,12 +46,16 @@
   
   &__header, &__footer {
     min-height: 2rem;
-    padding: 1rem var(--padding-inline);
+    padding: var(--container-padding-x);//var(--padding-inline);
     background-color: var(--color-bg-gray);
     
   }
   &__header {
     @include flex_row;
+    .title {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
   }
   
   &__footer {

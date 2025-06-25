@@ -328,7 +328,7 @@
 
 
 {{-- WRONG TS popup --}}
-<x-popup-details sTitle="Предостерегаем о подделках" iId='wrong_ts_popup'  sClass="print_popup" >
+<x-popup-details sTitle="Предостерегаем о подделках" iId='wrong_ts_popup'  sClass="print_popup wrong-cameras" >
   
   <x-row>
     
@@ -347,17 +347,10 @@
   <div class="_article">
     <h3 class="_center">Телекамеры не рекомендованные для наблюдения за лесным массивом.</h3>
       
-    <div class="grid-3">
-      <x-img-platform>
-        <img src="{{asset('/img/tv_system/wrong_cameras/wally.png')}}" width="20%" height="auto" alt="" loading='lazy'/>
-      </x-img-platform>
-      <x-img-platform>
-        <img src="{{asset('/img/tv_system/wrong_cameras/wrong2.png')}}" width="45%" height="auto" alt="" loading='lazy'/>
-      </x-img-platform>
-      <x-img-platform>
-        <img src="{{asset('/img/tv_system/wrong_cameras/wrong4.png')}}" width="20%" height="auto" alt="" loading='lazy'/>
-      </x-img-platform>
-      
+    <div class="wrong-cameras__img-list">
+      <img  src="{{asset('/img/tv_system/wrong_cameras/wally.png')}}" width="15%" height="auto" alt="" loading='lazy'/>
+      <img src="{{asset('/img/tv_system/wrong_cameras/wrong2.png')}}" width="35%" height="auto" alt="" loading='lazy'/>
+      <img src="{{asset('/img/tv_system/wrong_cameras/wrong4.png')}}" width="15%" height="auto" alt="" loading='lazy'/>
     </div>
   </div>
     

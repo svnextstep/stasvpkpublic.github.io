@@ -275,11 +275,11 @@
       .desciptions-item {
         position: relative;
         top: -600px;
-        width: 80%;
+        width: 85%;
         font-size: 1rem;
         line-height: 1.1;
         text-align: left;
-        padding-top: 10px;
+        padding: 10px var(--container-padding-x);
       }
     }
     
@@ -410,7 +410,7 @@
       &__desciptions {
 
         #howitworks_slide1_descr {
-          left: -30%;
+          left: -40%;
           padding-top: 20px;
           animation: move_description 8s ease-in 6s forwards;
           
@@ -419,8 +419,8 @@
           }
         }
         #howitworks_slide2_descr {
-          left: -20%;
-          width: 350px;
+          left: -25%;
+          width: 360px;
           animation: move_description 5s ease-in 15s forwards;
           
           @include mobile {
@@ -428,9 +428,9 @@
           }
         }
         #howitworks_slide3_descr {
-          left: -10%;
-          width: 250px;
-          padding-top: 210px;
+          left: -20%;
+          width: 350px;
+          padding-top: 160px;
           animation: move_description 5s ease-in 40s forwards;
           
           @include mobile {
@@ -440,7 +440,7 @@
         }
         #howitworks_slide4_descr {
           left: 30%;
-          width: 100%;
+          width: 500px;
           padding-top: 15px;
           animation: move_description 5s ease-in 50s forwards;
           
@@ -744,3 +744,11 @@
   }
 }
 
+.wrong-cameras {
+  &__img-list {
+    @include flex_row(space-around);
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-block: 40px;
+  }
+} 
