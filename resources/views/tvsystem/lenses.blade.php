@@ -28,7 +28,7 @@
 
       <h5>Бытовые или специализированные?</h5>
       <p class="_justify">Объективы для бытовых камер способны качественно мониторить двор, морской порт. Но на больших площадях они бесполезны. </p>
-      <p><a href="#" id="which_lens" class="text_read_more relative_link">{{__('messages.text_read_more')}}</a></p>
+      <p><a href="#elm_which_lens" id="which_lens" class="text_read_more relative_link">{{__('messages.text_read_more')}}</a></p>
 
     </x-item>
 
@@ -93,7 +93,7 @@
 
 {{-- PARAMETERS --}}
 <section>
-  <h2 iId="elm_which_lens">Бытовые или специализированные?</h2>
+  <h2 id="elm_which_lens">Бытовые или специализированные?</h2>
   
   <div class="panel__row">
     

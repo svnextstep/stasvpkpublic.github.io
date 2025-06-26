@@ -66,7 +66,7 @@
       
       <x-params-list>
         <x-params-item sName="Размер основы секции">650х650х650 мм</x-params-item>
-        <x-params-item sName="Высота">3м</x-params-item>
+        <x-params-item sName="Высота секции">3м</x-params-item>
         <x-params-item sName="Количество">14, усиленных - 2</x-params-item>
       </x-params-list>
 
@@ -205,9 +205,7 @@
       </x-accents-list>
 
 
-      <p>Ремонт и покраска старой вышки может быть и отдельным заказом. А так же других высотных конструкций.
-        <a href="{{ route('services') }}" class="text_read_more">{{__('messages.text_read_more')}}</a>
-      </p>
+      <p>Ремонт и покраска старой вышки может быть и отдельным заказом. А так же других высотных конструкций.</p>
       
     </div>
     

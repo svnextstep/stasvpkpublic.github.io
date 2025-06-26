@@ -199,13 +199,13 @@
     
     <x-item>
       <h3 class="_mt30">{{ __('messages.title_advantages') }}</h3>
-      <ul class="list--dotted">
-        <li>{{ __('messages.ts.text_advantages_1') }}</li>
-        <li>{!! __('messages.ts.text_advantages_2', ['url_map' => route('interactive_map')]) !!}</li>
-        <li>{{ __('messages.ts.text_advantages_3') }}</li>
-        <li>{!! __('messages.ts.text_advantages_4', ['url_net' => route('net')]) !!}</li>
-        <li>{!! __('messages.ts.text_advantages_5', ['url_protection' => route('ts_protection')]) !!}</li>
-        <li>{{ __('messages.ts.text_advantages_6') }}</li>
+      <ul class="list--dotted appear-right">
+        <li class='_anim-items _anim-no-hide'>{{ __('messages.ts.text_advantages_1') }}</li>
+        <li class='_anim-items _anim-no-hide'>{!! __('messages.ts.text_advantages_2', ['url_map' => route('interactive_map')]) !!}</li>
+        <li class='_anim-items _anim-no-hide'>{{ __('messages.ts.text_advantages_3') }}</li>
+        <li class='_anim-items _anim-no-hide'>{!! __('messages.ts.text_advantages_4', ['url_net' => route('net')]) !!}</li>
+        <li class='_anim-items _anim-no-hide'>{!! __('messages.ts.text_advantages_5', ['url_protection' => route('ts_protection')]) !!}</li>
+        <li class='_anim-items _anim-no-hide'>{{ __('messages.ts.text_advantages_6') }}</li>
       </ul>
 
       <div class="attantion-frame">

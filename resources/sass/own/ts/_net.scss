@@ -161,10 +161,13 @@
     }
   }
   
-  .create_net_comments {
+ 
+}
+
+ .create_net_comments {
     .step {
       @include map_comment_panel();
-      @include anim-show(0px, -120px);
+      //@include anim-show(0px, -120px);
     }
 
     .comment_bottom {
@@ -182,7 +185,7 @@
       transition: all 1s ease 3s;
     }
   }
-}
+
 @mixin  net-regions3($size, $ratio: 2, $cameraPairCount: 4, $cameraRatio: 1) {
   $mapSize: calc( $size * $ratio);
   $regionSize: calc( $size / $cameraPairCount * $cameraRatio);

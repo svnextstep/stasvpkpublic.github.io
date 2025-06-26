@@ -227,10 +227,10 @@ $fire-point_wight: 2px;
   $raylightSize: calc( $demoMaxH / $raylightCount / 2.5);
   
   
-  @include bg-img(url(#{$assetPath}tv_system/map.jpg), 0, 0, 100%, auto);
+  @include bg-img(url(#{$assetPath}tv_system/map.jpg), 0, 0, cover);
   
   @include mobile {
-    @include bg-img(url(#{$assetPath}tv_system/map-mobile.jpg), 0, 0, 100%, auto);
+    @include bg-img(url(#{$assetPath}tv_system/map-mobile.jpg), 0, 0, cover);
   }
   
   display: flex;

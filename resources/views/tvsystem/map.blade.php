@@ -116,8 +116,7 @@
 {{-- MAP FUNCTIONS --}}
 
 <section>
-  <h2>Область применения</h2>
-  
+   
   <x-accents-list>
     <x-accents-item>запись в электронный журнал</x-accents-item>
     <x-accents-item>автоматическое оповещение о пожаре операторов</x-accents-item>

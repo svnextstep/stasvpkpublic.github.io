@@ -54,7 +54,7 @@
 
 {{-- OLD TOWERS RECONSTRUCTION reconstruction of old towers --}}
 
-<section class="_article">
+<section class="_article" id='oldstructures'>
   <div class="panel__row _frame support">
       
     <div class="panel__item">

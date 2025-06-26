@@ -16,12 +16,16 @@
   
   .tab-lens {
     @include bg-img(url(#{$assetPath}tv_system/lenses/tv_lenses.jpg), 0, 0, cover);
-  
+    
     position: relative;
     margin: 0 auto;
     width: $w;
     height: $y;
-
+    
+    @include mobile {
+      @include bg-img(url(#{$assetPath}tv_system/lenses/tv_lenses_mobile.jpg), 0, 0, cover);
+    }
+    
     &__focus {
       display: grid;
       grid-template-columns: 1.5fr 1fr 1fr;
@@ -61,7 +65,11 @@
     }
 
     .params__list {
-      padding-inline: 10px;
+      padding: 1.5rem;
+      
+      @include mobile {
+        padding: 0px 10px;
+      }
       
       &._direction-right {
         align-items: flex-end;
@@ -134,19 +142,24 @@
 
 
   
-  @include tablet-above {
+  @include mobile-above {
     @include lenses_tab_content(900px, 520px);
   }
   
   @include tablet {
-    @include lenses_tab_content(450px, 260px);
+    @include lenses_tab_content(480px, 277px);
   }
   
   @include mobile {
-    @include lenses_tab_content(300px, 173px);
-
+    @include lenses_tab_content(480px, 277px);
   }
-
+  
+  @media (max-width: 450px) {
+    @include lenses_tab_content(400px, 230px);
+  }
+  @media (max-width: 350px) {
+    @include lenses_tab_content(300px, 173px);
+  }
 
 .forest-view {
   column-gap: 20px;
@@ -210,10 +223,10 @@
   }
   
   ._forest_net {
-      @include bg-img(url(#{$assetPath}tv_system/map.jpg), 0, 0, auto, 100%);
+      //@include bg-img(url(#{$assetPath}tv_system/map.jpg), 0, 0, cover);
       
       @include mobile {
-        @include bg-img(url(#{$assetPath}tv_system/map-mobile.jpg), 0, 0, auto, 100%);
+        //@include bg-img(url(#{$assetPath}tv_system/map-mobile.jpg), 0, 0, cover);
       }
       
       position: relative;

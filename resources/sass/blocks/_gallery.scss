@@ -7,7 +7,15 @@
   }
   
   &__body {
-    --arrow-size: calc(var(--arrow-cycle-size) + 20px);
+    
+    @include mobile-above {
+      --arrow-size: calc(var(--arrow-cycle-size) + 20px);
+    }
+    
+    @include mobile {
+      --arrow-size: var(--arrow-cycle-size);
+    }
+    
     display: grid;
     grid-template-columns: var(--arrow-size) auto var(--arrow-size);
     padding-block: 40px;

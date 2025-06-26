@@ -95,41 +95,41 @@
   <x-row>
     <x-item>
       <p>Телекамера - наиважнейшая часть телесистемы, состоит из объектива и защитного корпуса. Именно телекамера определяет чистоту, четкость изображения и дальность осмотра леса, обеспечивает</p>
-      <h8 class="_color" >детальное качественное изображение</br>
-        при максимальном увеличении</h8>
+      <h3 class="_color-accent" >детальное качественное изображение при максимальном увеличении</h3>
     </x-item>
     
     <x-item>
-      <p> <b>Модельный ряд</b> телесистем позволяют проектировать работу системы наблюдения с учетом индивидуальных особенностей каждого хозяйства:ландшафт, бюджет, потребности.</p>
-      <p><a href="{{ route('ts_models') }}" class="text_read_more">{{__('messages.text_read_more')}}</a></p>
+      <p> <b>Модельный ряд</b> телесистем позволяют проектировать работу системы наблюдения с учетом индивидуальных особенностей каждого хозяйства:ландшафт, бюджет, потребности.</br>
+      <a href="{{ route('ts_models') }}" class="text_read_more">{{__('messages.text_read_more')}}</a></p>
     </x-item>
   </x-row>
   
   {{-- row 2 --}}
-  <x-row>
-    <x-item>
-      <div>
-        <x-img-platform>
-          <img src="{{ asset('img/tv_system/lenses/gallary/gl_1.jpg')}}" width="70%" height="auto" alt="" loading='lazy'/> 
-        </x-img-platform>
-        <h5>Корпус</h5>
-        <p>Корпус защищает объектив от внешних воздействий.<br/>
+  <div class='popup-ts-components__camera-items _article'>
+    <div class='camera-frame'>
+      <h5 class='photo-traps__gist'>Корпус</h5>
+      <p>Корпус защищает объектив от внешних воздействий.<br/>
         Водостойкий, выдерживает морозы, покраска надежно защищает от коррозии.</p>
-      </div>
-    </x-item>
+    </div>
     
-    <x-item>
-      <div>
-        
-        <x-img-platform>
-          <img src="{{ asset('img/tv_system/lenses/gallary/gl_2.jpg')}}"  width="70%" height="auto" alt="" loading='lazy'/>
-        </x-img-platform>
-        <h5>Объектив</h5>
-        <p>Телекамеры ВПК базируются только на</p>
-        <h3 class='_color-accent'>качественных японских объективах</h3>
-      </div>      
-    </x-item>
-  </x-row>
+    <div>
+      <h5>Объектив</h5>
+      <p>Телекамеры ВПК базируются только на
+      <span class='_color-accent'>качественных японских объективах</span></p>
+    </div>
+    
+    <div class='camera-frame-img'>
+      <x-img-platform>
+         <img src="{{ asset('img/tv_system/lenses/gallary/gl_1.jpg')}}" width="70%" height="auto" alt="" loading='lazy'/> 
+       </x-img-platform>    
+    </div>
+
+    <div>
+      <x-img-platform>
+        <img src="{{ asset('img/tv_system/lenses/gallary/gl_2.jpg')}}"  width="70%" height="auto" alt="" loading='lazy'/>
+      </x-img-platform>    
+    </div>
+  </div>
 
   {{-- row 3 --}}
   <x-row>
@@ -268,10 +268,21 @@
          <li>Поворачивать в нужном направлении</li>
          <li>Возобновлять рабочий режим</li>
         </ul>
+        
+        <picture class='_article'>
+            <source 
+                media="(max-width: 480px)"
+                srcset="{{ asset('img/tv_system/user_console_mobile.png')}}">
 
-        <x-img-platform>
-          <img src="{{ asset('img/tv_system/user_console.jpg')}}" width="300px"  height="auto" alt="alt" loading="lazy"/>
-        </x-img-platform>
+            <source 
+                media="(max-width: 1280px)"
+                srcset="{{ asset('img/tv_system/user_console.png')}}">
+
+            <img 
+                src="{{ asset('img/tv_system/user_console.png')}}" 
+                alt="Пульт управленеия камерами"
+                width="300px" height="auto" alt="" loading='lazy'>
+        </picture>
       </div>
     </x-item>
     
@@ -301,10 +312,7 @@
       <div>
         <h5>Управление камерами</h5>
         <p>Включает запись в электронный журнал <span class='_color-accent'>видео с камер | информацию о пожаре</span></p>
-        <ul class="first-letter">
-          <li></li>
-          <li></li>
-        </ul>        
+     
       </div>
 
       <div>
@@ -325,9 +333,23 @@
     <x-item-column>
       <h5>Оборудование</h5>
       <p>Производством ВПК был разработан gps трекер позволяющий водителям пожарных машин пользоваться навигационной системой, которая прокладывает <span class="_color">оптимальный маршрут</span> движения <span class="_color">от местоположения автомобиля и до места пожара</span>.</p>
-      <x-img-platform>
-        <img src="{{ asset('img/tv_system/gps/gps.jpg')}}" width="300px" height="auto" alt="" loading='lazy'/>
-      </x-img-platform>
+        
+      <picture class='_article'>
+          <source 
+              media="(max-width: 480px)"
+              srcset="{{ asset('img/tv_system/gps/gps_mobile.png')}}">
+
+          <source 
+              media="(max-width: 1280px)"
+              srcset="{{ asset('img/tv_system/gps/gps.png')}}">
+
+          <img 
+              src="{{ asset('img/tv_system/gps/gps.png')}}" 
+              alt="GPS навигатор производства ВПК"
+              width="300px" height="auto" alt="" loading='lazy'>
+      </picture>
+
+        
     </x-item-column>
     
     <x-item-column>
@@ -337,10 +359,8 @@
         <span class="_color">лесными дорогами</span>
       </p>
       <p>В процесс разработки телесистем ВПК включается также и внесение в навигационную карту недостающих лесных дорог.</p>
-      <x-img-platform>
-        <img src="{{ asset('img/tv_system/gps/program.png')}}" width="80%" height="auto" alt="alt" loading="lazy"/>
-      </x-img-platform>
-      
+      <img src="{{ asset('img/tv_system/gps/program.png')}}" width="80%" height="auto" alt="alt" loading="lazy"/>
+
     </x-item-column>
     
   </x-row>

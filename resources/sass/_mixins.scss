@@ -19,6 +19,10 @@
 @mixin paragraph() {
   max-width: 600px;
   padding-top: 10px;
+  
+  @include mobile {
+    padding-top: 5px;
+  }
 }
 
 @mixin flex-center($isInline: false) {

@@ -153,12 +153,12 @@
             <div class="net_wrapper">
               
               <div class="create_net_comments">
-                <div class="step _active">
+                <div class="step">
                   <div>Лесничество</br>1</div>
                   <div class="_note">cеть телесистем ВПК</div>
                 </div>
 
-                <div class="comment_bottom _active">
+                <div class="comment_bottom ">
                   <div>Лесничество</br>2</div>
                   <div class="_note">cеть телесистем ВПК</div>
                 </div>
@@ -242,14 +242,7 @@
               </div>
               
               
-              <div class="create_net_comments">
-                <div class="step _active">
-                  <p>all regions networks monitoring from </p>
-                  <p><span class="area_name">central office</span></p>
-                  <button class="btn-tool btn__secondary_transparent btn_net_central_office_show-again _hide" id="local-net_again">Show again</button>
-                </div>
 
-              </div>
             </div>
           </div>
         </x-item>
