@@ -725,7 +725,7 @@
   border: 1px solid white;
   
   @include mobile {
-    @include bg-img(url(#{$assetPath}tv_system/ts_bg_medium.jpg), top, right, cover);
+    @include bg-img(url(#{$assetPath}tv_system/ts_bg_small.jpg), top, right, cover);
   }
 }
 
