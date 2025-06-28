@@ -479,8 +479,8 @@ ul.list--dotted {
     font-family: var(--font-famile-base-extra);
     font-size: 12rem;
     font-weight: 500;
-    color: palegoldenrod;
-    opacity: 0.5;
+    color: var(--color-platinum);
+    opacity: 0.05;
     
     @include tablet {
       top: -5rem;

@@ -338,6 +338,38 @@ $fire-point_wight: 2px;
         top: $moveTop;
         transition: all 1.5s ease 0s;
       }
+      
+      &._move-to-smoke {
+        top: 0;
+        left: 0;
+        transition: all 1.5s ease 0s;
+      }
+      
+      &__smoke {
+        position: absolute;
+        top: 12%;
+        left: 7%;
+        opacity: 0.4;
+        width: 25px;
+        height: auto;
+      }
+      
+      &__accent {
+        position: absolute;
+        top: 10%;
+        left: 5%;
+        circle {
+          fill: none;
+          stroke: var(--color-accent);
+          stroke-width: 0;
+        }
+        
+        &._active {
+          circle {
+            animation: point_smoke 5s linear 0s forwards;
+          }
+        }
+      }
     }
     
 
@@ -354,8 +386,13 @@ $fire-point_wight: 2px;
     
   }
 }
-// end TV
 
+// end TV
+@keyframes point_smoke {
+  100% {
+    stroke-width: 4px;
+  }
+}
 @mixin map_comment_panel($position: 'top') {
   $margin_inline: 2%;
   
@@ -394,11 +431,13 @@ $fire-point_wight: 2px;
   
   @include tablet {
     background-image: url(#{$assetPath}tv_system/monitore.png), url(#{$assetPath}tv_system/monitore_map_fire.png), url(#{$assetPath}ts-description_bg-tablet.jpg);
+    background-position: top 200px left 55%, top 110px left 95%, 0 0;//bottom  left
+    background-size: 25% auto, 35% auto,cover;// 100% auto
   }
 
   @include mobile {
-    background-image: url(#{$assetPath}tv_system/monitore.png), url(#{$assetPath}tv_system/monitore_map_fire.png), url(#{$assetPath}ts-description_bg-mobile.jpg);
-    background-position: 45% 25%, 85% 10%, 0 0;//bottom  left
+    background-image: url(#{$assetPath}tv_system/monitore_small.png), url(#{$assetPath}tv_system/monitore_map_fire_small.png), url(#{$assetPath}ts-description_bg-mobile.jpg);
+    background-position: top 200px left 55%, top 110px left 95%, 0 0;//bottom  left
     background-size: 25% auto, 35% auto,cover;// 100% auto
 
   }

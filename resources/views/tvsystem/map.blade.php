@@ -93,7 +93,13 @@
             
           </div>
           
-          <div class="review-forest"></div>
+          <div class="review-forest">
+            <img class="review-forest__smoke" src="{{asset('/img/tv_system/smoke.png')}}" width="50" height="auto" alt="" loading="lazy" />
+            <svg class="review-forest__accent" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="25px" y="25px"
+               xml:space="preserve">
+              <circle cx="40" cy="40" r="35"/>
+            </svg>
+          </div>
           
           {{-- tools --}}
           <div class="_tools">

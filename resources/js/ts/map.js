@@ -41,33 +41,33 @@ $(document).ready(function(){
     }, actionDelay);
   }
   // handle control 
-  function demo_handle_cameras(oMap, sIdCamera, iTurnCycle) {
+  function demo_handle_cameras(reviewForest, sIdCamera, iTurnCycle) {
     const oCamera = $('#' + sIdCamera);
     oCamera.removeClass('_active').addClass('_highlight handle_camera_slowly');//13000
       
     setTimeout(function(){
-      $('.review-forest').addClass('_visible');
+      reviewForest.addClass('_visible');
     }, (iTurnCycle * 0.3));//4000
     
     setTimeout(function(){
-      $('.review-forest').addClass('_move-left');//5s ease 0.5s
+      reviewForest.addClass('_move-left');//5s ease 0.5s
     }, (iTurnCycle * 0.3 + 100));//4100
     
     setTimeout(function(){
-      $('.review-forest').removeClass('_move-left');
-      $('.review-forest').addClass('_left--fixed');
+      reviewForest.removeClass('_move-left');
+      reviewForest.addClass('_left--fixed');
     }, (iTurnCycle * 0.6));//10000
     
     setTimeout(function(){
-      $('.review-forest').addClass('_expansion');//0.8s
+      reviewForest.addClass('_expansion');//0.8s
     }, (iTurnCycle * 0.6 + 200));//10200
     
     setTimeout(function(){
-      $('.review-forest').addClass('_move-top');//1.5s
+      reviewForest.addClass('_move-top');//1.5s
     }, (iTurnCycle * 0.7));//11250
     
     setTimeout(function(){
-      $('.review-forest').removeClass('_visible').removeClass('_expansion').removeClass('_move-top');
+      reviewForest.removeClass('_visible _expansion _move-top');
     }, iTurnCycle);
   }
   // fix fire
@@ -98,6 +98,7 @@ $(document).ready(function(){
   function start_interactive_map(oMap) {
     const iTurnCycle = 15000;
     const descrItems = $('.map-descr').children();
+    const reviewForest = $('.review-forest');
     
     clear_interactive_map(oMap);
     setTimeout(function(){
@@ -117,7 +118,7 @@ $(document).ready(function(){
     }, ( iTurnCycle * 0.5));//11250
     
     setTimeout(function(){
-      demo_handle_cameras(oMap, "handle_camera", iTurnCycle);//15000
+      demo_handle_cameras(reviewForest, "handle_camera", iTurnCycle);//15000
     }, iTurnCycle);//15000
     
     // FIX FIRE
@@ -128,6 +129,22 @@ $(document).ready(function(){
     setTimeout(function(){
       oMap.removeClass('_move-left').addClass('_move-right_down');//0.8s
     }, ( iTurnCycle * 2));//33750
+    
+    setTimeout(function(){
+      reviewForest.removeClass('_left--fixed');
+      reviewForest.addClass('_move-to-smoke _visible');
+    }, (iTurnCycle * 2.2));//10200
+    
+    setTimeout(function(){
+      //reviewForest.addClass('_expansion');//1.5s
+      reviewForest.find('.review-forest__accent').addClass('_active');
+    }, (iTurnCycle * 2.4));//10200
+    
+    setTimeout(function(){
+      reviewForest.removeClass('_move-to-smoke  _visible ');
+      reviewForest.addClass('_left--fixed');
+      reviewForest.find('.review-forest__accent').removeClass('_active');
+    }, (iTurnCycle * 3.2));//34 500
     
     setTimeout(function(){
       demo_fix_fire(oMap, (iTurnCycle * 0.6 ));
