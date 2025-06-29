@@ -259,9 +259,7 @@ ul.list--dotted {
     padding: 0;
   }
   
-  .panel__item--center {
-    align-self: center;
-  }
+
   
   .panel__item-column {
     @include flex_column_between;
@@ -275,6 +273,11 @@ ul.list--dotted {
     align-self: flex-end !important;
   }
 }
+
+.panel__item--center {
+  align-self: center;
+}
+
 .mobile-row-reverse {
   @include mobile {
     flex-direction: column-reverse;
@@ -511,7 +514,7 @@ ul.list--dotted {
     opacity: 0;
     
     &._active{
-      animation: expand_line 2s linear 0s forwards;
+      animation: expand_line 1.5s linear 0s forwards;
     }
   }
   

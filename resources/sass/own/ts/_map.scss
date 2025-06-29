@@ -436,13 +436,13 @@ $fire-point_wight: 2px;
   
   .presentation__img {
     position: absolute;
-    top:2%;
+    top:100px;
     right: 5%;
     width: 25%;
     overflow: visible;
           
     @include mobile {
-      top:4%;
+      //top:;
       right: 5%;
       width: 30%;
     }
@@ -467,6 +467,35 @@ $fire-point_wight: 2px;
   }
 
 }
+
+.map-demonstration {
+  @include tablet {
+    @include flex_column;
+    align-items: center;
+    gap: 0;
+    
+  }
+  
+  &__descr {
+    @include tablet {
+      @include flex_row();
+      gap: 20px;
+    }
+    
+    @include mobile {
+      @include flex_column;
+      align-self: self-start;
+      
+    }
+  }
+  
+  &__show {
+    @include tablet {
+      padding: 0 !important;
+    }
+  }
+}
+
 
 // camera PAIR
 .camera-watch__pair-left{
@@ -512,8 +541,12 @@ $fire-point_wight: 2px;
 .interactive-map {
   @include interactive_map(45vw);
   
+  @include tablet {
+    @include interactive_map(60vw);
+  }
+  
   @include mobile {
-    @include interactive_map(90vw);
+    @include interactive_map(95vw);
   }
 }
 
