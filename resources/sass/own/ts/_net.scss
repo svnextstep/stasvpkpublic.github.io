@@ -248,7 +248,7 @@
     &:before {
       content: '';
       position: absolute;
-      top: 50%;
+      top: 30%;
       left: -25%;
       z-index: -1;
       width: 150%;
@@ -261,7 +261,7 @@
 
   .region-office__signature {
     position: absolute;
-    top: 90%;
+    top: 80%;
     left: 85%;
     z-index: 2;
     min-width: 200px;
@@ -403,4 +403,19 @@
   circle {
     fill: var(--color-accent);
   }
+}
+
+.acess-level {
+  @include tablet {
+    @include flex_column;
+    .panel__item {
+      align-self: center;
+    }
+  }
+  @include mobile {
+    .panel__item {
+      align-self: self-start;
+    }
+  }
+  
 }

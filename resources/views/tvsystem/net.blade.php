@@ -74,7 +74,7 @@
     
     {{-- TABS local content Item  --}}
     <x-tabs-content-item classActive="_active">
-      <x-row>
+      <x-row sClass='acess-level'>
         
         <x-item>
           <h3>Создание сети лесничества</h3>
@@ -128,7 +128,7 @@
     
     {{-- TABS expand content Item --}}
     <x-tabs-content-item>
-      <x-row>
+      <x-row sClass='acess-level'>
         
         <x-item>
           <h3>Расширение сети</h3>
@@ -176,7 +176,7 @@
     
     {{-- TABS content Item --}}
     <x-tabs-content-item>
-      <x-row>
+      <x-row sClass='acess-level'>
         
         <x-item>
           <h3>Возможности объединенных сетей</h3>
