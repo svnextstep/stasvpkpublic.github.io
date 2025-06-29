@@ -88,7 +88,9 @@ h3 {
 }
 
 h4 {
-  
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 15px 0 10px 0;
 }
 
 h5 {
@@ -263,6 +265,10 @@ ul.list--dotted {
   
   .panel__item-column {
     @include flex_column_between;
+  }
+  
+  .align-items--center {
+    align-items: center;
   }
   
   .flex-self-end {
@@ -494,6 +500,32 @@ ul.list--dotted {
   }
 }
 
+
+  .anim-expand-line {
+    @include border-radius;
+    
+    position: relative;
+    width: 0;
+    height: 3px;
+    background-color: var(--color-accent);
+    opacity: 0;
+    
+    &._active{
+      animation: expand_line 2s linear 0s forwards;
+    }
+  }
+  
+  @keyframes expand_line {
+    0% {
+     width: 0;
+    }
+    100% {
+      width: 50%;
+      opacity: 1;
+    }
+  }
+
+
 /* INDIVIDUAL GROUP */
 
 .presentation {
@@ -525,15 +557,13 @@ ul.list--dotted {
   .bright_slogan_design {
     font-family: var(--font-famile-base-extra);
     padding: 10px 0;
-    font-size: 2.3rem;
+    font-size: 2rem;
     font-weight: 200;
-    text-transform: uppercase;
     text-align: inherit;
     color: var(--color-platinum);
     
     @media (max-width: 1400px) {
-      font-size: 2rem;
-      letter-spacing: -2px;
+      font-size: 1.5rem;
     }
     
     @include tablet {

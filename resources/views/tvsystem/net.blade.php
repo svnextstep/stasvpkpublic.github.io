@@ -14,15 +14,18 @@
 <div class="presentation__card">
   
   <div class="bright_slogan_design">каждый участок под контролем</div>
-  <p>Сеть профессиональных многокамерных телесистем наблюдения за лесом обеспечивает</p>
+  
+  <x-expand-line></x-expand-line>
+  
+  <p class='_center'>Сеть профессиональных многокамерных телесистем наблюдения за лесом обеспечивает</p>
   
   <div class="presentation__card-title">
     <span class="_color-accent">Точность координат </span> возгорания <br/>
-     и полный <span class="_color-accent">контроль</span> над <span class="_color-accent">всеми</span> <br/>
-      участками лесного хозяйства  
+     и <span class="_color-accent">полный контроль</span> 
+      лесного хозяйства
   </div>
 
-  <p>Различные уровни доступа к данным камер сети ВПК возможны из пунктов наблюдения</p>
+  <p class='_center'>Различные уровни доступа к данным камер сети ВПК возможны из пунктов наблюдения:</p>
 
   <x-accents-list>
     <x-accents-item>лесничества</x-accents-item>

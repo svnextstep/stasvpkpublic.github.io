@@ -421,26 +421,51 @@ $fire-point_wight: 2px;
   }
 }
 
-.map-card {
+.presentation.map-card {
   @include presentation_block();
-  
-  background-image: url(#{$assetPath}tv_system/monitore.png), url(#{$assetPath}tv_system/monitore_map_fire.png), url(#{$assetPath}ts-description_bg.jpg);
-  background-position: 56% 60%, 80% 30%, 0 0;//bottom  left
-  background-size: 15% auto, 25% auto, cover;// 100% auto
-  background-repeat: no-repeat;
+  @include bg-img(url(#{$assetPath}ts-description_bg.jpg), 0, 0, cover);
+
   
   @include tablet {
-    background-image: url(#{$assetPath}tv_system/monitore.png), url(#{$assetPath}tv_system/monitore_map_fire.png), url(#{$assetPath}ts-description_bg-tablet.jpg);
-    background-position: top 200px left 55%, top 110px left 95%, 0 0;//bottom  left
-    background-size: 25% auto, 35% auto,cover;// 100% auto
+    @include bg-img(url(#{$assetPath}ts-description_bg-tablet.jpg), 0, 0, cover);
   }
 
   @include mobile {
-    background-image: url(#{$assetPath}tv_system/monitore_small.png), url(#{$assetPath}tv_system/monitore_map_fire_small.png), url(#{$assetPath}ts-description_bg-mobile.jpg);
-    background-position: top 200px left 55%, top 110px left 95%, 0 0;//bottom  left
-    background-size: 25% auto, 35% auto,cover;// 100% auto
-
+    @include bg-img(url(#{$assetPath}ts-description_bg-mobile.jpg), 0, 0, cover);
   }
+  
+  .presentation__img {
+    position: absolute;
+    top:2%;
+    right: 5%;
+    width: 25%;
+    overflow: visible;
+          
+    @include mobile {
+      top:4%;
+      right: 5%;
+      width: 30%;
+    }
+    @include mobile-s {
+      top:6%;
+      right: 1%;
+      width: 30%;
+    }
+    .screen-view {
+      position: absolute;
+      top: 40%;
+      left: -55%;
+      width: 70%;
+    }
+    
+    .screen-map {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
 }
 
 // camera PAIR

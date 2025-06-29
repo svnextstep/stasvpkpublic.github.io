@@ -4,6 +4,38 @@
 @section('content')
 
 <div class="presentation map-card">
+  <div class="presentation__img">
+    <picture class='screen-map'>
+        <source 
+            media="(max-width: 480px)"
+            srcset="{{ asset('img/tv_system/monitore_map_fire_small.png')}}">
+
+        <source 
+            media="(max-width: 1280px)"
+            srcset="{{ asset('img/tv_system/monitore_map_fire.png')}}">
+
+        <img 
+            src="{{ asset('img/tv_system/monitore_map_fire.png')}}" 
+            alt="Интерактивная карта наблюдения за лесом"
+            width="300px" height="auto" alt="" loading='lazy'>
+    </picture>
+    <picture class='screen-view'>
+        <source 
+            media="(max-width: 480px)"
+            srcset="{{ asset('img/tv_system/monitore_small.png')}}">
+
+        <source 
+            media="(max-width: 1280px)"
+            srcset="{{ asset('img/tv_system/monitore.png')}}">
+
+        <img 
+            src="{{ asset('img/tv_system/monitore.png')}}" 
+            alt="Интерактивная карта наблюдения за лесом"
+            width="300px" height="auto" alt="" loading='lazy'>
+    </picture>
+
+  </div>
+  
   <div class="presentation__title">
     <div>Interactive</div>
     <div class="presentation__title-accent">Map</div>
@@ -14,8 +46,9 @@
 {{-- TOP PANEL - name aand main info --}}
 <div class="presentation__card">
   
-  <div class="bright_slogan_design">РЕАЛЬНЫЕ СОБЫТИЯ В РЕАЛЬНОМ ВРЕМЕНИ</div>
+  <div class="bright_slogan_design">реальные события в реальном времени</div>
   
+  <x-expand-line></x-expand-line>
   
   <div class="presentation__card-title">
     Демонстрация Работы всех Телекамер </br><span class="_color-accent">в Реальном Времени</span>
@@ -122,19 +155,23 @@
 {{-- MAP FUNCTIONS --}}
 
 <section>
-   
-  <x-accents-list>
-    <x-accents-item>запись в электронный журнал</x-accents-item>
-    <x-accents-item>автоматическое оповещение о пожаре операторов</x-accents-item>
-    <x-accents-item>оповещение руководителя</x-accents-item>
-  </x-accents-list>
+  <x-row sClass='_article'>
+    <x-item-column sClass='align-items--center frame-accent--bordered'>
+      <h4 class="_center">запись в электронный журнал</h4>
+      <img class="album-item-1 _anim-items _anim-no-hide" src="{{asset('/img/tv_system/map_record.jpg')}}" width='250' height="250" alt="" loading="lazy"/>
+    </x-item-column>
     
-  <div class="photo-album falling-cards">
-    <img class="album-item-1 _anim-items _anim-no-hide" src="{{asset('/img/tv_system/map_record.jpg')}}" width='250' height="250" alt="" loading="lazy"/>
-    <img class="album-item-2 _anim-items _anim-no-hide" src="{{asset('/img/tv_system/map_fire_warning.jpg')}}" width='250' height="250" alt="" loading="lazy"/>
-    <img class="album-item-3 _anim-items _anim-no-hide" src="{{asset('/img/tv_system/map_fire_warning_office.jpg')}}" width='250' height="250" alt="" loading="lazy"/>
-  </div>
-  <div class="yellow-line"></div>
+    <x-item-column sClass='align-items--center frame-accent--bordered'>
+      <h4 class="_center">автоматическое оповещение о пожаре операторов</h4>
+      <img class="album-item-2 _anim-items _anim-no-hide" src="{{asset('/img/tv_system/map_fire_warning.jpg')}}" width='250' height="250" alt="" loading="lazy"/>
+    </x-item-column>
+
+    <x-item-column sClass='align-items--center frame-accent--bordered'>
+      <h4 class="_center">оповещение руководителя</h4>
+      <img class="album-item-3 _anim-items _anim-no-hide" src="{{asset('/img/tv_system/map_fire_warning_office.jpg')}}" width='250' height="250" alt="" loading="lazy"/>
+    </x-item-column>
+  </x-row>
+  <p></p>
 </section>
 
 @endsection

@@ -14,7 +14,9 @@
 {{-- TOP PANEL - name and main info --}}
 <div class="presentation__card">
   
-  <div class="bright_slogan_design">Минимальный вес при максимальной прочности</div>
+  <div class="bright_slogan_design">минимальный вес при максимальной прочности</div>
+  
+  <x-expand-line></x-expand-line>
   
   <div class="presentation__card-title">TOWER <span class="_color-accent">ВПК-48</span></div>
 
