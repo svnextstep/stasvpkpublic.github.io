@@ -210,13 +210,13 @@
 
 {{-- TOWER popup --}}
 <x-popup-details sTitle="{{ __('messages.list_item_tower') }}" iId='tower_popup'  sClass="print_popup"  :aFooter="['sBtnMainName' => __('messages.text_read_more'), 'sBtnMainLink' => 'tower']">
-  <x-row>
+  <x-row sClass="popup_tower">
     
     <x-item-no-padding sClass='tower-popup-bg'>
       <div></div>
       <div class="tower-popup-bg__header">
-        Легкосплавная вышка собственной разработки</br>
-        <h3 class="_color-accent">ВПК-48</3>
+        <h3>Легкосплавная вышка собственной разработки</br>
+          <span class="_color-accent">ВПК-48</span></h3>
       </div>
     </x-item-no-padding>
     
@@ -331,9 +331,11 @@
   <x-row>
     
     <x-item-column>
-      <h5>Оборудование</h5>
-      <p>Производством ВПК был разработан gps трекер позволяющий водителям пожарных машин пользоваться навигационной системой, которая прокладывает <span class="_color">оптимальный маршрут</span> движения <span class="_color">от местоположения автомобиля и до места пожара</span>.</p>
-        
+      <div>
+        <h5>Оборудование</h5>
+        <p>Производством ВПК был разработан gps трекер позволяющий водителям пожарных машин пользоваться навигационной системой, которая прокладывает <span class="_color">оптимальный маршрут</span> движения <span class="_color">от местоположения автомобиля и до места пожара</span>.</p>
+      </div>
+  
       <picture class='_article'>
           <source 
               media="(max-width: 480px)"

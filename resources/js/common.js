@@ -87,6 +87,10 @@ function appearPanel(sPref, sDirection) {
   });
 }
 
+function bodyLock () {
+  const lockPaddingVal = (window.innerWidth - document.documentElement.clientWidth) + "px";
+  $("body").css('overflow', "hidden").css('padding-right', lockPaddingVal);
+}
 
 $(document).ready(function(){
   
@@ -144,13 +148,23 @@ $(document).ready(function(){
   /* popup  */
   $('.popup-close-button').on('click', function() {
     $(this).closest('.popup').fadeOut();
+    setTimeout(function() {
+      $("body").css('overflow', "auto").css('padding-right', 0);
+    }, 500);
+  });
+  
+  $('.popup').on('click', function(e) {
+    if (!e.target.closest('.popup__body')) {
+      $(this).fadeOut();
+    }
   });
 
   $('.popup_click').on('click', function() {
+    bodyLock();
     $('#' + $(this).attr('id') + '_popup').fadeIn();
   });
   /* END popup  */
-
+  
 
   $('.tabs__item').click(function() {
     const className = '_active';
