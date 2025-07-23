@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
   const sGallery = "gallery__wrapper";
+  const sNumericLegend = "numericLegend";
   const sGalleryBody = "gallery__body";
   const sGalleryLegend = "gallery__legend";
   
@@ -11,6 +12,7 @@ $(document).ready(function(){
   const sGalleryListItem = "gallery__item";
   
   const sGalleryArrowInactive = '_arrow-inactive';
+  const sGalleryLegendItem = 'legend__item';
   const sGalleryLegendItemFilled = 'legend__item--filled';
   
   const checkStepsLeft = function(oFrame, oList) {
@@ -37,42 +39,86 @@ $(document).ready(function(){
     oGallery.find("." + sGalleryLegend).css('opacity', 0);
   };
   
-  $('.' + sGallery).each(function(){
-    const oGallery = $(this);
+  const refreshLegend = function(oList, oLegend, step) {
+    const activeLegend = ($(oList).offset().left < 0 ) ? Math.round(Math.abs($(oList).offset().left) / step) : 0;
+  
+    if (oLegend.find(".num").length) {
+      oLegend.find(".num").html(activeLegend + 1);
+      
+    } else {
+      $(oLegend).find("." + sGalleryLegendItemFilled).removeClass(sGalleryLegendItemFilled);
+      $(oLegend).children().eq(activeLegend).addClass(sGalleryLegendItemFilled);     
+    }
+  };
+  
+  const makeGallery = function(oGallery) {
+    let bLock = false;
+    const bNumericLegend = oGallery.hasClass(sNumericLegend);
     const oFrame = oGallery.find("." + sGalleryFrame);
     const oList = oGallery.find("." + sGalleryList);
     
-    const frameW = Math.round($(oList).innerWidth());
-    const realW = Math.round($(oList).prop('scrollWidth'));
+    const frameW = Math.round($(oFrame).innerWidth());
+    const step =  frameW;
+    
     const iChildern = oList.children().length;
-            
-    let step = frameW;
+    const childW = $(oList).children().first().innerWidth();
+    const items = Math.round(frameW / (childW + 20));
+    const itemW = frameW / items;
+    const realW = iChildern * itemW;
     
-    const oLegend = oGallery.find('.' + sGalleryLegend);
-    let legendChildren = $(oLegend).children();
+    /* correct list/items size*/
+    oList.css("width", realW);
     
-    let bLock = false;
-  
+    if (frameW < childW) {
+      let margin = 2;
+      let w = frameW - margin * 2;
+     
+      oList.children().each(function() {
+        $(this).css("min-width", w);
+        $(this).css("width", w);
+        $(this).css("margin-inline", margin);
+      });
+    }
     
-    /* navigation */
-    if (realW <= frameW) {
+    /* correct items position */
+    if ( $(oList).offset().left < $(oFrame).offset().left ) {
+      const countStepsLeftSide = (Math.abs($(oList).offset().left) + $(oFrame).offset().left) / step;
+      
+      if (!Number.isInteger(countStepsLeftSide)) {
+        $(oList).css('transform', 'translate3d(-' + ( step * Math.floor(countStepsLeftSide) ) + 'px, 0px, 0px)');
+      }
+    }
+    
+    setTimeout(function() {
+      /* navigation */
+      if (realW <= frameW) {
       hideNavigationTools(oGallery);
       
     } else {
-      step = getStepWidth(realW, frameW, iChildern);
+      const oLegend = oGallery.find('.' + sGalleryLegend);
       
-      /* legend */
-      if (legendChildren.length === 1) {
-        let legendCount = Math.floor(realW / step);
+        /* legend */
         
-        /* append legend*/
-        for (let i = 1; i < legendCount; i++) {
-          $(oLegend).append($(legendChildren).prop('outerHTML'));
+        const legendCount = Math.floor(realW / step);
+        $(oLegend).empty();
+
+        if (legendCount !== 1) {
+          
+          if (!bNumericLegend) {
+            /* append legend*/
+            for (let i = 1; i <= legendCount; i++) {
+              $(oLegend).append($('<div/>').addClass(sGalleryLegendItem));
+            }
+          } else {
+            $(oLegend).append($('<div/>').addClass("num"));
+            $(oLegend).append($('<div/>').html(" из "+ legendCount));
+          }
+          
+          /* set active legend item*/
+          refreshLegend(oList, oLegend, step);
         }
 
-        /* set active legend item*/
-        $(oLegend).children().first().addClass(sGalleryLegendItemFilled);
-      }
+
        
       /* arrow listen*/
       oGallery.find('.' + sGalleryArrow).click(function(){
@@ -85,28 +131,33 @@ $(document).ready(function(){
 
           /* move list */
           $(oList).css('transform', 'translate3d(-' + move + 'px, 0px, 0px)');
-
+          
           setTimeout(function(){
-
+            
             /* refresh arrow */
             setArrowStatus(oGallery.find('[data-arrow-cycle-left]'), (($(oList).offset().left * -1 ) > $(oFrame).offset().left));
             setArrowStatus(oGallery.find('[data-arrow-cycle-right]'), ((realW - ($(oList).offset().left * -1) - step)  >= step));
             
             /* refresh legend */
-            let currentLegendItem = $(oLegend).find("." + sGalleryLegendItemFilled);
-            currentLegendItem.removeClass(sGalleryLegendItemFilled);
-            if (bDirectionRight) {
-              currentLegendItem.next().addClass(sGalleryLegendItemFilled);
-            } else {
-              currentLegendItem.prev().addClass(sGalleryLegendItemFilled);
-            }
-
+            refreshLegend(oList, oLegend, step);
             bLock = false;
-          }, 500);
+          }, 1000);
 
         }
       });
     }
+    }, 500);
+  };
+  
+  $( window ).on( "orientationchange", function() {
+    
+    $('.' + sGallery).each(function(){
+      makeGallery($(this));
+    });
+  });
+  
+  $('.' + sGallery).each(function(){
+    makeGallery($(this));
   });
   
   const legendWork = function(oItem) {

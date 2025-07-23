@@ -8,7 +8,7 @@
    <div class="take-attantion _accent">Реклама, статьи в специализированном журнале "Лесной и охотничий журнал"</div>
  </div>
  
- <x-gallery-wrapper>
+ <x-gallery-wrapper sClass="numericLegend">
    
   @for ($i = 2; $i <= 44; $i++)
   <x-gallery-item>
