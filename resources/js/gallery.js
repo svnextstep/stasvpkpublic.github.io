@@ -99,7 +99,7 @@ $(document).ready(function(){
       
         /* legend */
         
-        const legendCount = Math.floor(realW / step);
+        const legendCount = Math.ceil(realW / step);
         $(oLegend).empty();
 
         if (legendCount !== 1) {
