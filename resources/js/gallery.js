@@ -135,8 +135,8 @@ $(document).ready(function(){
           setTimeout(function(){
             
             /* refresh arrow */
-            setArrowStatus(oGallery.find('[data-arrow-cycle-left]'), (($(oList).offset().left * -1 ) > $(oFrame).offset().left));
-            setArrowStatus(oGallery.find('[data-arrow-cycle-right]'), ((realW - ($(oList).offset().left * -1) - step)  >= step));
+            setArrowStatus(oGallery.find('[data-arrow-cycle-left]'), (Math.abs($(oList).offset().left) > $(oFrame).offset().left));
+            setArrowStatus(oGallery.find('[data-arrow-cycle-right]'), ((realW - Math.abs($(oList).offset().left) - step)  >= itemW));
             
             /* refresh legend */
             refreshLegend(oList, oLegend, step);
