@@ -149,7 +149,7 @@ $(document).ready(function(){
     }, 500);
   };
   
-  $( window ).on( "orientationchange", function() {
+  $( window ).on( "resize", function() {
     
     $('.' + sGallery).each(function(){
       makeGallery($(this));
