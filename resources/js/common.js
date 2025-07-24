@@ -92,6 +92,12 @@ function bodyLock () {
   $("body").css('overflow', "hidden").css('padding-right', lockPaddingVal);
 }
 
+function bodyUnlock() {
+  setTimeout(function() {
+    $("body").css('overflow', "auto").css('padding-right', 0);
+  }, 500);
+}
+
 $(document).ready(function(){
   
   /* button scroll top */
@@ -148,14 +154,13 @@ $(document).ready(function(){
   /* popup  */
   $('.popup-close-button').on('click', function() {
     $(this).closest('.popup').fadeOut();
-    setTimeout(function() {
-      $("body").css('overflow', "auto").css('padding-right', 0);
-    }, 500);
+    bodyUnlock();
   });
   
   $('.popup').on('click', function(e) {
     if (!e.target.closest('.popup__body')) {
       $(this).fadeOut();
+      bodyUnlock();
     }
   });
 
