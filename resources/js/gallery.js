@@ -62,7 +62,7 @@ $(document).ready(function(){
     
     const iChildern = oList.children().length;
     const childW = $(oList).children().first().innerWidth();
-    const items = Math.round(frameW / (childW + 20));
+    const items = Math.floor(frameW / (childW + 20));
     const itemW = frameW / items;
     const realW = iChildern * itemW;
     
