@@ -1,5 +1,5 @@
 <section class="gallery">
-  <div class="gallery__wrapper @isset ($sClass)  {{$sClass}} @endisset " >
+  <div class="gallery__wrapper @isset ($sClass)  {{$sClass}} @endisset " @isset ($iId)  id="{{$iId}}" @endisset>
     
     <div class="gallery__body">
       
@@ -24,6 +24,7 @@
     
     {{-- legend --}}
     <div class="gallery__legend legend"></div>
-    
+    <div class="gallery__current-step">1</div>
+    <div class="gallery__current-item">1</div>
   </div>
 </section>

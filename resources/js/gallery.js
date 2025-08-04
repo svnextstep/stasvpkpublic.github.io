@@ -14,15 +14,8 @@ $(document).ready(function(){
   const sGalleryArrowInactive = '_arrow-inactive';
   const sGalleryLegendItem = 'legend__item';
   const sGalleryLegendItemFilled = 'legend__item--filled';
-  
-  const checkStepsLeft = function(oFrame, oList) {
-    return Math.round(Math.abs( $(oList).offset().left - $(oFrame).offset().left ));
-  };
-  
-  const getStepWidth = function(realW, frameW, iChildern) {
-    const itemW = realW / iChildern;
-    return (frameW <= itemW) ? itemW : Math.floor(frameW / itemW) * itemW;
-  };
+  const sGalleryCurrentStep = "gallery__current-step";
+  const sGalleryCurrentItem = "gallery__current-item";
   
   const setArrowStatus = function(oArrow, bRemoveClass) {
     if(bRemoveClass) {
@@ -39,114 +32,127 @@ $(document).ready(function(){
     oGallery.find("." + sGalleryLegend).css('opacity', 0);
   };
   
-  const refreshLegend = function(oList, oLegend, step) {
-    const activeLegend = ($(oList).offset().left < 0 ) ? Math.round(Math.abs($(oList).offset().left) / step) : 0;
-  
+  const refreshLegend = function (oLegend, currentStep) {
     if (oLegend.find(".num").length) {
-      oLegend.find(".num").html(activeLegend + 1);
+      oLegend.find(".num").html(currentStep);
       
     } else {
       $(oLegend).find("." + sGalleryLegendItemFilled).removeClass(sGalleryLegendItemFilled);
-      $(oLegend).children().eq(activeLegend).addClass(sGalleryLegendItemFilled);     
+      $(oLegend).children().eq(currentStep - 1).addClass(sGalleryLegendItemFilled);     
     }
   };
+   const refreshArrows = function(oGallery, currentStep, iSteps) {
+    setArrowStatus(oGallery.find('[data-arrow-cycle-left]'), currentStep !== 1);
+    setArrowStatus(oGallery.find('[data-arrow-cycle-right]'), currentStep  < iSteps);
+  };
+ 
+  const getControlData = function(oDiv) {
+    return parseInt(oDiv.text());
+  };
+  
+  const setControlData = function (oDiv, value) {
+    $(oDiv).empty();
+    $(oDiv).append(value);
+  };
+  
+
   
   const makeGallery = function(oGallery) {
-    let bLock = false;
+    let margin = 20;
     const bNumericLegend = oGallery.hasClass(sNumericLegend);
+    
+    const oCurrentStep = oGallery.find('.' + sGalleryCurrentStep);
+    const oCurrentItem = oGallery.find('.' + sGalleryCurrentItem);
+    
     const oFrame = oGallery.find("." + sGalleryFrame);
+    const frameW = oFrame.width();
+    const step = frameW;
+    
     const oList = oGallery.find("." + sGalleryList);
-    
-    const frameW = Math.round($(oFrame).innerWidth());
-    const step =  frameW;
-    
     const iChildern = oList.children().length;
-    const childW = $(oList).children().first().innerWidth();
-    const items = Math.floor(frameW / (childW + 20));
-    const itemW = frameW / items;
-    const realW = iChildern * itemW;
-    
-    /* correct list/items size*/
-    oList.css("width", realW);
+    let childW = oList.children().first().width();
     
     if (frameW < childW) {
-      let margin = 2;
-      let w = frameW - margin * 2;
-     
+      margin = 2;
+      childW = frameW - margin;
       oList.children().each(function() {
-        $(this).css("min-width", w);
-        $(this).css("width", w);
-        $(this).css("margin-inline", margin);
+        $(this).css("min-width", childW);
+        $(this).css("width", childW);
       });
     }
     
-    /* correct items position */
-    if ( $(oList).offset().left < $(oFrame).offset().left ) {
-      const countStepsLeftSide = (Math.abs($(oList).offset().left) + $(oFrame).offset().left) / step;
-      
-      if (!Number.isInteger(countStepsLeftSide)) {
-        $(oList).css('transform', 'translate3d(-' + ( step * Math.floor(countStepsLeftSide) ) + 'px, 0px, 0px)');
-      }
+    let iVisibleItems = Math.floor(frameW / (childW + margin));
+    iVisibleItems = (iVisibleItems !== 0 ? iVisibleItems : 1);
+    const itemW = frameW / iVisibleItems;
+    
+    const listW = iChildern * itemW;
+    const iSteps = Math.ceil(listW / step);
+    
+    /* correct list/items size*/
+    oList.css("width", listW);
+     
+    /* CORRECT */
+    
+    /* items position for resize */
+    let passedtStep = 0; 
+    if (getControlData(oCurrentStep) !== 0 && getControlData(oCurrentItem) !== 1) {
+      passedtStep = getControlData(oCurrentItem) / iVisibleItems;
+      passedtStep = (Number.isInteger(passedtStep)) ? passedtStep - 1 : Math.floor(passedtStep);
     }
     
-    setTimeout(function() {
-      /* navigation */
-      if (realW <= frameW) {
+    $(oList).css('transform', 'translate(-' + (passedtStep * step)  + 'px, 0px)');
+    setControlData(oCurrentStep, passedtStep + 1);
+    
+    /* END correct */
+    
+    /* navigation */
+    if (listW <= frameW) {
       hideNavigationTools(oGallery);
       
     } else {
+      /* legend */
       const oLegend = oGallery.find('.' + sGalleryLegend);
-      
-        /* legend */
-        
-        const legendCount = Math.ceil(realW / step);
-        $(oLegend).empty();
 
-        if (legendCount !== 1) {
-          
-          if (!bNumericLegend) {
-            /* append legend*/
-            for (let i = 1; i <= legendCount; i++) {
-              $(oLegend).append($('<div/>').addClass(sGalleryLegendItem));
-            }
-          } else {
-            $(oLegend).append($('<div/>').addClass("num"));
-            $(oLegend).append($('<div/>').html(" из "+ legendCount));
+      $(oLegend).empty();
+
+      if (iSteps !== 1) {
+
+        if (!bNumericLegend) {
+          /* append legend*/
+          for (let i = 1; i <= iSteps; i++) {
+            $(oLegend).append($('<div/>').addClass(sGalleryLegendItem));
           }
-          
-          /* set active legend item*/
-          refreshLegend(oList, oLegend, step);
+        } else {
+          $(oLegend).append($('<div/>').addClass("num"));
+          $(oLegend).append($('<div/>').html(" из "+ iSteps));
         }
 
-
-       
-      /* arrow listen*/
-      oGallery.find('.' + sGalleryArrow).click(function(){
-
-        if (!bLock && !($(this).hasClass(sGalleryArrowInactive))) {
+        /* refresh navigation */
+        refreshLegend(oLegend, getControlData(oCurrentStep));
+        refreshArrows(oGallery, getControlData(oCurrentStep), iSteps);
+      }
+      
+      /* LISTEN arrows*/
+      oGallery.find('.' + sGalleryArrow).off("click").on("click", function(){
+        
+        if (!($(this).hasClass(sGalleryArrowInactive) ) ) {
           const bDirectionRight = $(this).attr('data-arrow-cycle-left') === undefined;
-          const existSteps = checkStepsLeft(oFrame, oList);
-          let move = (bDirectionRight) ? step + existSteps : Math.abs(step - existSteps);
-          bLock = true;
 
-          /* move list */
-          $(oList).css('transform', 'translate3d(-' + move + 'px, 0px, 0px)');
+          let fixedCurrentStep = getControlData(oCurrentStep);
+          let newCurrentStep = ( Math.abs((bDirectionRight) ? (fixedCurrentStep + 1) : (fixedCurrentStep - 1)) );
+          let passingSteps = newCurrentStep - 1;
           
-          setTimeout(function(){
-            
-            /* refresh arrow */
-            setArrowStatus(oGallery.find('[data-arrow-cycle-left]'), (Math.abs($(oList).offset().left) > $(oFrame).offset().left));
-            setArrowStatus(oGallery.find('[data-arrow-cycle-right]'), ((realW - Math.abs($(oList).offset().left) - step)  >= itemW));
-            
-            /* refresh legend */
-            refreshLegend(oList, oLegend, step);
-            bLock = false;
-          }, 1000);
-
+          /* move list */
+          $(oList).css('transform', 'translate(-' + (itemW * passingSteps * iVisibleItems) + 'px, 0px)');
+          
+          /* correct navigation */
+          refreshLegend(oLegend, newCurrentStep);
+          refreshArrows(oGallery, newCurrentStep, iSteps);
+          setControlData(oCurrentStep, newCurrentStep);
+          setControlData(oCurrentItem, (passingSteps * iVisibleItems + 1));
         }
       });
     }
-    }, 500);
   };
   
   $( window ).on( "resize", function() {

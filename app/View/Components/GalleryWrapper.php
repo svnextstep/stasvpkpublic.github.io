@@ -9,12 +9,14 @@ use Illuminate\View\Component;
 class GalleryWrapper extends Component
 {
   public $sClass;
-    /**
+  public $iId;
+  /**
      * Create a new component instance.
      */
-    public function __construct($sClass = '')
+    public function __construct($sClass = '', $iId = '')
     {
         $this->sClass = $sClass;
+        $this->iId = $iId;
     }
 
     /**

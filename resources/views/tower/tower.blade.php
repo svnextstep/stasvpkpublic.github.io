@@ -31,7 +31,7 @@
     
 </div>
 
-<x-gallery-wrapper>
+<x-gallery-wrapper iId="tower-gallery">
   {{-- ITEM --}}
   <x-gallery-item>
     <x-gallery-item-img>

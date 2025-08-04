@@ -34,10 +34,6 @@
   &__list {
     @include flex_row(space-around);
     
-    @include mobile {
-      @include flex_row_start();
-    }
-    
     position: relative;
     align-items: stretch;
     flex-wrap: nowrap;
@@ -50,7 +46,6 @@
     gap: 0;
     min-width: 300px;
     width: 300px;
-    margin-inline: 20px;
     padding: 0;
     overflow: hidden;
     background-color: var(--color-light);
@@ -77,6 +72,10 @@
     &__item {
       cursor: default;
     }
+  }
+  
+  &__current-item {
+    display: none;
   }
 }
 
