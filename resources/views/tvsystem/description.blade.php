@@ -216,7 +216,67 @@
   </x-row>
 </section>
 
+<section>
+  {{-- ADDITION --}}
+  <h2>Единая система контроля</h2>
+  <p class="_article _gor-center">Индивидуальные проекты предполагают расширение дополнительных возможностей в зависимости от потребностей хозяйства. </p>
 
+  <div class="ts-features">
+    
+    <div class="ts-features-main">
+
+      <x-ts-feature detailClass="ts-features-main__item-1" sTitle='Сеть фотоловушек' sImg='projects/photo_traps.png'>
+        Предназначены для <a href="{{route('photo_traps')}}">скрытой сьемки событий</a>. Контроль лесных дорог, чистоты леса, наблюдение за животными.
+      </x-ts-feature>
+      
+      <x-ts-feature detailClass="ts-features-main__item-2" sTitle='Сеть телесистем'>
+        <div class="ts-features-main__item-2-img"><img src="{{asset('/img/tv_system/models/2000.png')}}" width="200" height="200" alt=""/></div>
+        Просмотр информации и управление всеми камерами лесничеств из офиса лесхоза
+      </x-ts-feature>
+     
+      <x-ts-feature detailClass="ts-features-main__item-3" sTitle='Малые территории'>
+        Наблюдение <a href="{{route('control_sawmill')}}">за територией</a> лесничества, гаражей, теплиц, деревообрабатывающими предприятиями
+      </x-ts-feature>
+    </div>
+
+    
+    
+    <div class="ts-features-office">
+
+      <div class="ts-features-office__img">
+        <div class="ts-features-office__circle">
+          <img src="{{asset('/img/tv_system/office.jpg')}}" width="200" height="200" alt=""/>
+        </div>
+      </div>
+      
+    </div>
+    
+    <x-row sClass="ts-features-adds">
+      <x-item sClass="ts-features-adds__item">
+        <div><b>Компьютерная сеть</b></div>
+        <div>Между лесничествами и лесхозом для бухгалтерского учета, обмена информацией, электронной почты</div>
+      </x-item>
+
+      <x-item sClass="ts-features-adds__item">
+        <div><b>Скоростной интерент</b></div>
+        <div>В хозяйстве, беспроводная Wi-Fi связь на териториях лесхоза и лесничеств</div>
+      </x-item>
+
+      <x-item sClass="ts-features-adds__item">
+        <div><b>GPS</b></div>
+        <div>Качественный бесплатный gps-мониторинг транспорта и рабочих</div>
+      </x-item>
+
+      <x-item sClass="ts-features-adds__item">
+        <div><b>Видеосвязь</b></div>
+        <div>Селекторные совещания с лесничествами, видеосовещания</div>
+      </x-item>
+
+    </x-row>
+  
+  </div>
+ 
+</section>
 
 <section>
   {{-- DESIGN --}}

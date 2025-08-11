@@ -722,6 +722,207 @@
   }
 }
 
+/* additional features */
+
+.ts-features {
+  $feature_detail_text_size: 300px;
+  $feature_detail_size: 150px;
+
+  position: relative;
+  
+  &__item {
+    position: absolute;
+    
+    @include mobile {
+      position: relative;
+      left:0 !important;
+      top: 0 !important;
+      margin-top: 20px;
+    }
+  }
+  
+  &-main {
+    position: relative;
+    width: 70%;
+    height: calc($feature_detail_size * 2.4);
+    margin: 20px auto;
+    overflow: visible;
+    
+    @media (max-width: 1200px) {
+      width: 90%;
+    }
+    
+    @media (max-width: 900px) {
+      width: 98%;
+    }
+    
+    @include mobile {
+      @include flex_column;
+      
+      height: calc($feature_detail_size * 3);
+      margin-left: -(calc($feature_detail_size * 0.3));
+      
+      .feature-detail {
+        &__body {
+          position: absolute;
+          top: 0;
+          left: calc($feature_detail_size * 1.1);
+          width: calc($feature_detail_text_size * 1.5);
+        }
+      }
+    }
+    
+    .feature-detail {
+      @include square($feature_detail_size);
+      @include border-radius(50%);
+
+      position: relative;
+      border: 1px solid var(--color-accent);
+      overflow: visible;
+
+      &__img {
+        @include border-radius(50%);
+        
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      &__body {
+        position: absolute;
+        top: calc($feature_detail_size * 0.85);
+        left: calc($feature_detail_size * 0.9);
+        width: $feature_detail_text_size;
+        
+        @include mobile {
+          top: 0;
+          left: calc($feature_detail_size * 1.1);
+        }
+      }
+
+      &__title {
+        font-weight: 600;
+      }
+    }
+    
+    &__item {
+      &-1 {
+        left: 0;
+        top: 30%;
+      }
+      
+      &-2 {
+        left: 30%;
+        top: 0;
+
+        @include tablet {
+          left: 25%;
+        }
+        
+        @include mobile {
+          order: -1;
+        }
+        
+        &-img {
+          position: absolute;
+          top: -(calc($feature_detail_size * 0.70));
+          left: -(calc($feature_detail_size * 0.75));
+
+          @include mobile{
+            top: calc($feature_detail_size * 0.40);
+            left: -(calc($feature_detail_size * 0.85));
+
+            >img {
+              width: $feature_detail_size;
+            }
+          }
+        }
+        
+        .feature-detail__img {
+          @include bg-img(url(#{$assetPath}tv_system/lenses/compare_origin_view.jpg), top, left, cover);
+        }
+      }
+      
+      &-3 {
+        right: 0;
+        top: 30%;
+        
+        @include mobile-above {
+          .feature-detail__body {
+            top: calc($feature_detail_size * 0.85);
+            left: -(calc($feature_detail_text_size * 0.55));
+          }
+        }
+
+        .feature-detail__img {
+          @include bg-img(url(#{$assetPath}projects/sawmill.jpg), top, left, cover);
+        }
+      }
+    }
+  }
+  
+  &-office {
+    @include flex-row(space-around);
+    
+    align-items: center;
+    position: relative;
+    height: calc($feature_detail_size * 2.2);
+    background-image: linear-gradient(transparent 25%, #F9F9F9 25%, #F9F9F9 75%, white 75%, white 100%);
+    overflow: visible;
+    
+    @include mobile {
+      justify-content: flex-end;
+    }
+    &__img {
+      @include border-radius(50%);
+      @include square(calc($feature_detail_size * 2.2));
+      
+      border: 1px solid var(--color-accent);
+      
+      @include mobile {
+        margin-right: -(calc($feature_detail_size * 0.40));
+      }
+    }
+    &__circle {
+      @include border-radius(50%);
+      @include square(100%);
+      
+      overflow: hidden;
+      border: 30px solid white;
+
+      >img {
+        width: 100%;
+      }
+    }
+  }
+  
+  &-adds {
+    @include flex_row;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    &__item {
+      min-width: 200px;
+      max-width: 300px;
+      
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;      
+        width: 20px;
+        height: 20px;
+        margin: -22px 0  0 -22px;
+        border: 1px solid var(--color-accent);
+        border-radius: 50%;
+        background-image: radial-gradient(circle, var(--color-accent) 65%, white 35%);
+        background-position:  center;
+        background-size: 14px 14px;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+}
 
 /* COMPONENTS */
 .ts-components {
