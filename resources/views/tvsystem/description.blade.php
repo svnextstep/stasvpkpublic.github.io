@@ -311,8 +311,7 @@
         <div class="project-steps__item step appear-panel__link" id="step-{{$sName}}">
           <div class="step__body">
             <div class="step__number">{{ $loop->index + 1 }}</div>
-            <div class="step__title open-popup__link2">{{ __('messages.ts.title_project_stages_' . $sName) }} @if($sName !== "support") ...@endif
-            </div>
+            <div class="step__title open-popup__link2">{{ __('messages.ts.title_project_stages_' . $sName) }} ...</div>
           </div>
         </div>
       @endforeach

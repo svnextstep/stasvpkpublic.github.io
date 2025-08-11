@@ -133,11 +133,6 @@
 }
 
 @mixin border-radius($radius: var(--border-radius)) {
-  //-webkit-border-radius: $radius;// Chrome и Safari
-  //-moz-border-radius: $radius;// Firefox
-  //-ms-border-radius: $radius;// Internet Explorer
-  //-o-border-radius: $radius;// Opera
-  //-khtml-border-radius: $radius; /* KHTML */
   border-radius: $radius;
 }
 
@@ -384,33 +379,17 @@
 }
 
 @mixin transform_rotate($deg) {
-  //-webkit-transform: rotate($deg);
-  //-ms-transform: rotate($deg);
   transform: rotate($deg);
 }
 
 @mixin transform_tmp($scale) {
   transform: scale($scale);
-  //-ms-transform: scale($scale);// - для IE9 и старше (младше девятой версии трансформация не поддерживается
-  //-webkit-transform: scale($scale);// - для Chrome, Safari, Android и iOS
-  //-o-transform: scale($scale);// - для Opera до версии 12.10
-  //-moz-transform: scale($scale);// - для Firefox до версии 16.0
 }
 @mixin transform_tmp_scale_move($scale, $x, $y) {
   transform: scale($scale) translate($x, $y);
-  -ms-transform: scale($scale) translate($x, $y);// - для IE9 и старше (младше девятой версии трансформация не поддерживается
-  -webkit-transform: scale($scale) translate($x, $y);// - для Chrome, Safari, Android и iOS
-  -o-transform: scale($scale) translate($x, $y);// - для Opera до версии 12.10
-  -moz-transform: scale($scale) translate($x, $y);// - для Firefox до версии 16.0
-  //transform: scale(1.3,1.3) rotate(40deg) translate(5px,5px);
 }
 
 @mixin transformX_tmp($scale, $move) {
   transform: scale($scale) translateX($move);
-  //-ms-transform: scale($scale) translateX($move);// - для IE9 и старше (младше девятой версии трансформация не поддерживается
-  //-webkit-transform: scale($scale) translateX($move);// - для Chrome, Safari, Android и iOS
-  //-o-transform: scale($scale) translateX($move);// - для Opera до версии 12.10
-  //-moz-transform: scale($scale) translateX($move);// - для Firefox до версии 16.0
-  //transform: scale(1.3,1.3) rotate(40deg) translate(5px,5px);
 }
 
