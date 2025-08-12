@@ -230,7 +230,7 @@ $fire-point_wight: 2px;
   @include bg-img(url(#{$assetPath}tv_system/map.jpg), 0, 0, cover);
   
   @include mobile {
-    @include bg-img(url(#{$assetPath}tv_system/map-mobile.jpg), 0, 0, cover);
+    //@include bg-img(url(#{$assetPath}tv_system/map-mobile.jpg), 0, 0, cover);
   }
   
   display: flex;
@@ -447,7 +447,7 @@ $fire-point_wight: 2px;
       width: 30%;
     }
     @include mobile-s {
-      top:6%;
+      top:4%;
       right: 1%;
       width: 30%;
     }

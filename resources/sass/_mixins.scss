@@ -93,8 +93,9 @@
 
 @mixin square($size) {
   width: $size;
-  aspect-ratio: 1;
+  height:  $size;
 }
+
 @mixin close_button($size) {
   @include square($size);
   

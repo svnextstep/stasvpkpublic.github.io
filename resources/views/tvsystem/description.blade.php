@@ -224,16 +224,16 @@
   <div class="ts-features">
     
     <div class="ts-features-main">
-
-      <x-ts-feature detailClass="ts-features-main__item-1" sTitle='Сеть фотоловушек' sImg='projects/photo_traps.png'>
+      
+      <x-ts-feature detailClass="ts-features-main__item-1" sTitle='Сеть телесистем'>
+        <div class="ts-features-main__item-1-img"><img src="{{asset('/img/tv_system/models/2000.png')}}" width="200" height="200" alt=""/></div>
+        Просмотр информации и управление всеми камерами лесничеств из офиса лесхоза
+      </x-ts-feature>
+      
+      <x-ts-feature detailClass="ts-features-main__item-2" sTitle='Сеть фотоловушек' sImg='projects/photo_traps.png'>
         Предназначены для <a href="{{route('photo_traps')}}">скрытой сьемки событий</a>. Контроль лесных дорог, чистоты леса, наблюдение за животными.
       </x-ts-feature>
       
-      <x-ts-feature detailClass="ts-features-main__item-2" sTitle='Сеть телесистем'>
-        <div class="ts-features-main__item-2-img"><img src="{{asset('/img/tv_system/models/2000.png')}}" width="200" height="200" alt=""/></div>
-        Просмотр информации и управление всеми камерами лесничеств из офиса лесхоза
-      </x-ts-feature>
-     
       <x-ts-feature detailClass="ts-features-main__item-3" sTitle='Малые территории'>
         Наблюдение <a href="{{route('control_sawmill')}}">за територией</a> лесничества, гаражей, теплиц, деревообрабатывающими предприятиями
       </x-ts-feature>
