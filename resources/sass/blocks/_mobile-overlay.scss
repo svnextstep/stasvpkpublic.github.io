@@ -17,9 +17,9 @@
   
   &__list {
     @include flex-center;
+    @include gap-row(30px);
     
     flex-direction: column;
-    row-gap: 30px;
     min-height: 80vh;
   }
 }

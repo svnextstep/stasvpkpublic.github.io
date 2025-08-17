@@ -1,31 +1,29 @@
 .gallery {
   &__wrapper {
+    
     @include flex_column;
+    @include gap-clm(40px);
+    
     padding-top: 40px;
-    gap: 40px;
-    background-color: var(--color-platinum);
+    background-color: $color-platinum;
   }
   
   &__body {
-    
-    @include mobile-above {
-      --arrow-size: calc(var(--arrow-cycle-size) + 20px);
-    }
-    
-    @include mobile {
-      --arrow-size: var(--arrow-cycle-size);
-    }
-    
-    display: grid;
-    grid-template-columns: var(--arrow-size) auto var(--arrow-size);
-    padding-block: 40px;
+    @include flex-row;
+    @include padding-block(40px);
   }
   
   &__arrow {
     @include flex-center;
+    flex: 0 0 calc($arrow-cycle-size + 20px);
+    
+    @include mobile {
+      flex: 0 0 $arrow-cycle-size;
+    }
   }
   
   &__frame {
+    flex: 1 1 auto;
     display: block;
     position: relative;
     overflow: hidden;
@@ -42,15 +40,15 @@
   
   &-detail {
     @include flex_column;
+    @include gap-clm(0);
     
-    gap: 0;
     min-width: 300px;
     width: 300px;
     padding: 0;
     overflow: hidden;
-    background-color: var(--color-light);
-    border: 1px dotted var(--color-gray-alt);
-    border-radius: var(--border-radius-small);
+    background-color: $color-light;
+    border: 1px dotted $color-gray-alt;
+    border-radius: $border-radius-small;
     
     &__img {
       width: 100%;
@@ -81,34 +79,20 @@
 
 .legend {
   @include flex-center(true);
-
-  gap: 10px;
+  @include gap-row(10px);
+  
   margin-bottom: 20px;
   color: white;
-  
-  
 
   &__item {
     @include square(13px);
 
-    border: 2px solid var(--color-light);
+    border: 2px solid $color-light;
     border-radius: 50%;
     cursor: pointer;
 
     &--filled {
-      background-color: var(--color-light);
+      background-color: $color-light;
     }
   }
-}
-
-@keyframes my-animation {
-  from {
-   
-  }
-  to {
-    -webkit-transform: translate3d(var(--move-gallety-list), 0px, 0px);
-    -ms-transform: translate3d(var(--move-gallety-list), 0px, 0px);
-    transform: translate3d(var(--move-gallety-list), 0px, 0px);
-  }
-  
 }

@@ -16,8 +16,10 @@
         <img class="logo__image" src="{{ asset('img/logo_top.png') }}" width="140" height="70" alt="VPK group" loading="lazy"/>
       </a>
       
-      @yield('nav')
-      
+      <div>
+         @yield('nav')
+      </div>
+     
     </div>
 
     <div class="header__path"></div>

@@ -1,14 +1,14 @@
 .header {
-  --header-height: 100px;
-  --path-line-height: 20px;
-  --top-line-height: 4px;
-  --sub-menu-bg: var(--color-translucent);
+  $header-height: 100px;
+  $path-line-height: 20px;
+  $top-line-height: 4px;
+  $sub-menu-bg: $color-translucent;
   
   position: relative;
-  height: var(--header-height);
+  height: $header-height;
   padding: 0;
-  background-color: var(--color-light);
-  box-shadow: var(--shadow-light);
+  background-color: $color-light;
+  box-shadow: $shadow-light;
   z-index: 1010;
   
   &__inner {
@@ -20,17 +20,17 @@
   }
   
   &__top-line {
-    height: var(--top-line-height);
+    height: $top-line-height;
     width: 100%;
-    background-color: var(--color-accent);
+    background-color: $color-accent;
   }
   
   &__body {
     @include flex_row;
+    @include gap-row(40px);
+    @include padding-inline($container-padding-x);
     
     align-items: center;
-    gap: 40px;
-    padding-inline: var(--container-padding-x);
     z-index: 1012;
   }
   
@@ -50,12 +50,12 @@
       left: 0;
       width: 100%;
       height: 98vh;
-      background-color: var(--color-light);
+      background-color: $color-light;
       overflow: auto;
       
       &.header__menu-modal--visible {
         top: 0;
-        transition-duration: var(--transition-duration-slowly);
+        transition-duration: $transition-duration-slowly;
       }
     }
     
@@ -68,13 +68,12 @@
     
     &-list {
       @include flex_row_end;
-      
-      gap: 20px;
+      @include gap_row(20px);
       
       @include mobile {
-        flex-direction: column;
-        justify-content:  flex-start;
-        gap: 40px;
+        @include flex_column;
+        @include gap-clm(40px);
+        
         padding: 10vw;
       }
       >a {
@@ -87,15 +86,16 @@
       overflow: visible;
       
       @include mobile-above {
-        max-height: calc(var(--header-height) - var(--path-line-height) - var(--top-line-height));
+        max-height: calc($header-height - $path-line-height - $top-line-height);
       }
       
       &__link {
+        @include gap-clm(5px);
+        
         display: inline-flex;
         position: relative;
         flex-direction: column;
         justify-content: flex-start;
-        gap: 5px;
         align-items: center;
         cursor: pointer;
         z-index: 1015;
@@ -137,40 +137,39 @@
         }
         
         &__list {
+          @include gap-clm(5px);
           position: relative;
           display: flex;
           flex-direction: column;
-          gap: 5px;
           padding: 25px 0px 15px;
-          background-color: var(--color-bg-gray);
-          border-top: 2px solid var(--color-accent);
-          box-shadow: var(--shadow-light);
+          background-color: $color-bg-gray;
+          border-top: 2px solid $color-accent;
+          box-shadow: $shadow-light;
           
           @include mobile {
-            gap: 15px;
+            @include gap-clm(15px);
+            
             box-shadow: none;
-            //background-color: var(--sub-menu-bg);
           }
-          
         }
         
         &.appear-panel-visible {
           .sub-menu__list {
             margin-top: 20px;
-            transition-duration: var(--transition-duration-slowly);
+            transition-duration: $transition-duration-slowly;
           }
         }
         
         &__item {
           position: relative;
-          border-left: 4px solid var(--sub-menu-bg);
+          border-left: 4px solid $sub-menu-bg;
           padding: 10px;
 
           &:hover {
-            color: var(--color-accent);
-            border-left: 4px solid var(--color-accent);
+            color: $color-accent;
+            border-left: 4px solid $color-accent;
             background-color: inherit;
-            transition-duration: var(--transition-duration-slowly);
+            transition-duration: $transition-duration-slowly;
           }
         }
         &__link {
@@ -183,8 +182,8 @@
   &__path {
     position: relative;
     width: 100%;
-    height: var(--path-line-height);
-    background-color: var(--color-yellow);
+    height: $path-line-height;
+    background-color: $color-yellow;
     z-index: 1005;
   }
 }

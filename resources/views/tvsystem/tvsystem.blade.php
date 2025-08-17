@@ -105,31 +105,37 @@
   </x-row>
   
   {{-- row 2 --}}
-  <div class='popup-ts-components__camera-items _article'>
-    <div class='camera-frame'>
-      <h5 class='photo-traps__gist'>Корпус</h5>
-      <p>Корпус защищает объектив от внешних воздействий.<br/>
-        Водостойкий, выдерживает морозы, покраска надежно защищает от коррозии.</p>
-    </div>
+  
+  <x-row>
+    <x-item sClass="popup-ts-components__camera-items">
+      <div>
+        <h5 class='photo-traps__gist'>Корпус</h5>
+        <p>Корпус защищает объектив от внешних воздействий.<br/>
+          Водостойкий, выдерживает морозы, покраска надежно защищает от коррозии.</p>
+      </div>
+      
+      <div>
+        <x-img-platform>
+           <img src="{{ asset('img/tv_system/lenses/gallary/gl_1.jpg')}}" width="70%" height="auto" alt="" loading='lazy'/> 
+         </x-img-platform>    
+      </div>
+    </x-item>
     
-    <div>
-      <h5>Объектив</h5>
-      <p>Телекамеры ВПК базируются только на
-      <span class='_color-accent'>качественных японских объективах</span></p>
-    </div>
-    
-    <div class='camera-frame-img'>
-      <x-img-platform>
-         <img src="{{ asset('img/tv_system/lenses/gallary/gl_1.jpg')}}" width="70%" height="auto" alt="" loading='lazy'/> 
-       </x-img-platform>    
-    </div>
+    <x-item sClass="popup-ts-components__camera-items">
+      <div>
+        <h5>Объектив</h5>
+        <p>Телекамеры ВПК базируются только на
+        <span class='_color-accent'>качественных японских объективах</span></p>
+      </div>
+      
+      <div>
+        <x-img-platform>
+          <img src="{{ asset('img/tv_system/lenses/gallary/gl_2.jpg')}}"  width="70%" height="auto" alt="" loading='lazy'/>
+        </x-img-platform>    
+      </div>
+    </x-item>
+  </x-row>
 
-    <div>
-      <x-img-platform>
-        <img src="{{ asset('img/tv_system/lenses/gallary/gl_2.jpg')}}"  width="70%" height="auto" alt="" loading='lazy'/>
-      </x-img-platform>    
-    </div>
-  </div>
 
   {{-- row 3 --}}
   <x-row>

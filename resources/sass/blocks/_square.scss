@@ -1,32 +1,10 @@
-:root{
-  --square-size: 200px;
-  --square-wrapper-coefficient: 1.4;
-  --square-margin-coefficient: 4;
-}
+$square-wrapper-coefficient: 1.4;
 
-@media (max-width: 1250px) {
-  :root {
-    --square-margin-coefficient: 8;
-  }
-}
-
-
-@media (max-width: 1030px) {
-  :root {
-    --square-size: 190px;
-    --square-margin-coefficient: 100;
-  }
-}
-
-@include mobile {
-  :root {
-    --square-size: 80px;
-    --square-margin-coefficient: 100;
-  }
-}
-
-@mixin squares($square-size) {
-  $square-margin: calc( $square-size / var(--square-margin-coefficient) );
+@mixin squares($size, $square-margin-coefficient) {
+  
+  $square-size: calc($size * $square-wrapper-coefficient);
+  $square-margin: calc( $square-size / $square-margin-coefficient );
+  
   $square-row-3-width: calc( ($square-size + $square-margin) * 3 );
   $square-row-2-width: calc( ($square-size + $square-margin) * 2 );
   $margin-left: calc($square-size * 0.5 + $square-margin * 0.5);
@@ -46,14 +24,14 @@
   }
   
   .panel__row {
+    @include gap_row($square-margin);
     justify-content: flex-start;
-    gap: $square-margin;
     width: $square-row-3-width;
     
     @include mobile {
+      @include gap_row(10px);
       flex-direction: column;
       width: 100%;
-      gap: 10px;
     }
   }
   
@@ -73,10 +51,13 @@
       margin-top: 0;
     }
   }
+  
+  .square {
+    @include square-item($size, $square-size);
+  }
 }
 
 @mixin square-item($size, $wrapper-size) {
-  
   @include square($wrapper-size);
   @include flex_column(center);
   
@@ -87,13 +68,13 @@
   &__bg {
     @include square($size);
     
-    border: 4px solid var(--color-bg-gray);
-    rotate: 45deg;
+    border: 4px solid $color-bg-gray;
+    @include transform_rotate(45deg);
     overflow: hidden;
     
     @include mobile-above {
       @include border-radius-large;
-      background-color: var(--color-bg-gray);
+      background-color: $color-bg-gray;
       
       >img {
         opacity: 0;
@@ -110,7 +91,7 @@
   &__content {
     @include flex_column(center);
     
-    font-family: var(--font-famile-base-extra);
+    font-family: $font-famile-base-extra;
     font-weight: 500;
     position: absolute;
     padding: 0;
@@ -129,7 +110,7 @@
       left: calc($wrapper-size / 2);
       width: 100vw;
       padding: 20px calc($wrapper-size / 1.5);
-      background-color: var(--color-translucent);
+      background-color: $color-translucent;
     }
     
     >h3 {
@@ -146,19 +127,28 @@
     }
     
     .square__content, h3 {
-      color: var(--color-accent);
+      color: $color-accent;
     }
     
   }
 }
 
 .squares {
-  $square-size: calc(var(--square-size) * var(--square-wrapper-coefficient));
-  @include squares($square-size);
   
-  .square {
-    @include square-item(var(--square-size), $square-size);
+  @include squares(200px, 4);
+  
+  @media (max-width: 1250px) {
+    @include squares(200px, 8);
   }
+
+  @media (max-width: 1030px) {
+    @include squares(190px, 100);
+  }
+
+  @include mobile {
+    @include squares(80px, 100);
+  }
+  
 }
 
       .img_pos {

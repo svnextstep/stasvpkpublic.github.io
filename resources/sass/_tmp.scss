@@ -1,10 +1,4 @@
-:root {
-  --tmp-square-size: 80px;
-}
-
-@mixin tmp-bg-color($color) {
-  background-color: var($color);
-}
+$tmp-square-size: 80px;
 
 .tmp-rows {
   @include flex_row;
@@ -12,48 +6,43 @@
 }
 
 .tmp-square {
-  @include square(var(--tmp-square-size));
+  @include square($tmp-square-size);
   background-color: #191A23;
 }
 
 .color-dark {
-  @include tmp-bg-color(--color-dark);
+  //background-color: $color-dark;
 }
 
 .color-accent {
-  @include tmp-bg-color(--color-accent);
+  background-color: $color-accent;
 }
 
-.color-accent {
-  @include tmp-bg-color(--color-accent);
-}
 
 .color-bg-gray {
-  @include tmp-bg-color(--color-bg-gray);
+   background-color: $color-bg-gray;
 }
 
 .color-gray-alt {
-  @include tmp-bg-color(--color-gray-alt);
+  background-color: $color-gray-alt;
 }
 
 
 .color-pale-gold {
-  @include tmp-bg-color(--color-pale-gold);
+  background-color: $color-pale-gold;
 }
 
 .color-platinum {
-  @include tmp-bg-color(--color-platinum);
+  background-color: $color-platinum;
 }
 
 .color-yellow {
-  @include tmp-bg-color(--color-yellow);
+   background-color: $color-yellow;
+  //@include tmp-bg-color(--color-yellow);
 }
 
-.color-popup-header {
-  @include tmp-bg-color(--color-popup-header);
-}
 
 .color-translucent {
-  @include tmp-bg-color(--color-translucent);
+  background-color: $color-translucent;
 }
 

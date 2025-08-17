@@ -90,8 +90,8 @@
   
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--color-accent);
-  border-top: 10px solid  var(--color-accent);
+  border: 1px solid $color-accent;
+  border-top: 10px solid  $color-accent;
   
   .net_wrapper {
     @include square(100%);
@@ -133,8 +133,8 @@
       
         &.forestry_1 {
           .forestry__cameras {
-            margin: 0  0 0 calc($regionSize * 2); 
-            transform: rotate(65deg);
+            @include transform_rotate(65deg);
+            margin: 0  0 0 calc($regionSize * 2);
           }
         }
         
@@ -175,7 +175,7 @@
     }
     
     ._note{
-      font-family: var(--font-famile-base-extra);
+      font-family: $font-famile-base-extra;
       font-weight: 200;
     }
     
@@ -195,8 +195,8 @@
   
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--color-accent);
-  border-top: 10px solid  var(--color-accent);
+  border: 1px solid $color-accent;
+  border-top: 10px solid  $color-accent;
   
   .net_wrapper {
     @include square(100%);
@@ -210,7 +210,8 @@
       
       .forestry {
         @include flex_column;
-        gap: 20px;
+        @include gap-clm(20px);
+        
         position: relative;
         
         &__cameras {
@@ -281,8 +282,8 @@
   
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--color-accent);
-  border-top: 10px solid  var(--color-accent);
+  border: 1px solid $color-accent;
+  border-top: 10px solid  $color-accent;
   
   .net_wrapper {
     @include square(100%);
@@ -296,7 +297,8 @@
       
       .forestry {
         @include flex_column;
-        gap: 20px;
+        @include gap-clm(20px);
+        
         position: absolute;
         overflow: visible;
         
@@ -331,7 +333,7 @@
         left: 2%;
         
         .forestry__cameras{
-          transform: rotate(-100deg);
+          @include transform_rotate(-100deg);
         }
       }
       
@@ -396,12 +398,12 @@
   border:1px solid grey;
   
   path {
-    stroke: var(--color-bg-gray-dark);
+    stroke: $color-bg-gray-dark;
     stroke-width: "1";
     fill: "none";
   }
   circle {
-    fill: var(--color-accent);
+    fill: $color-accent;
   }
 }
 

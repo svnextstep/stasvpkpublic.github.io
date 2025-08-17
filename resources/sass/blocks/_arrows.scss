@@ -1,6 +1,6 @@
 @mixin draw-border-side($side, $side-name, $size, $color) {
   @if $side {
-    border-#{$side-name}: $size solid var($color);
+    border-#{$side-name}: $size solid $color;
   } @else {
     border-#{$side-name}: $size solid transparent;
   }
@@ -10,18 +10,18 @@
   width: 0;
   height: 0;
   @if $direction == 'down' {
-    border-top: $size solid var($color);
+    border-top: $size solid $color;
     border-left: $size solid transparent;
     border-right: $size solid transparent;
   }
   @if $direction == 'up' {
-    border-bottom: $size solid var($color);
+    border-bottom: $size solid $color;
     border-left: $size solid transparent;
     border-right: $size solid transparent;
   }
   
   @if $direction == 'right' {
-    border-left: $size solid var($color);
+    border-left: $size solid $color;
     border-bottom: $size solid transparent;
     border-top: $size solid transparent;
   }
@@ -38,67 +38,67 @@
 
 
 @mixin arrow-cycle($size, $isLeft: true) {
-  --arrow-color: var(--color-light);
+  $arrow-color: $color-light;
+  $left: 12px;
+  $after: 45deg;
+  $before: -45deg;
+  
   @if $isLeft {
-    --before: 45deg;
-    --after: -45deg;
-    --left: 9px;
-  } @else {
-    --after: 45deg;
-    --before: -45deg;
-    --left: 12px;
+    $before: 45deg;
+    $after: -45deg;
+    $left: 9px;
   }
   
   @include square($size);
   
   position: relative;
   border-radius: 50%;
-  border: 2px solid var(--arrow-color);
+  border: 2px solid $arrow-color;
   cursor: pointer;
   
   &::before,
   &::after {
     content: '';
     position: absolute;
-    left: var(--left);
+    left: $left;
     width: 40%;
     height: 3px;
-    background-color: var(--arrow-color);
+    background-color: $arrow-color;
     border-radius: 5px;
   }
   
   &::before {
     top: 60%;
-    rotate: var(--before);
+    @include transform_rotate($before);
   }
   
   &::after {
     top: 35%;
-    rotate: var(--after);
+    @include transform_rotate($after);
   }
 }
 
 .arrow-accent-sm-down, .arrow-accent-sm-up {
   display: inline-block;
   position:  relative;
-  width: calc(var(--arrow-accent-sm-size) * 2);
-  height: var(--arrow-accent-sm-size);
+  width: calc($arrow-accent-sm-size * 2);
+  height: $arrow-accent-sm-size;
   
 }
 .arrow-accent-sm-down {
-    @include arrow-down(var(--arrow-accent-sm-size), --color-accent);
+    @include arrow-down($arrow-accent-sm-size, $color-accent);
 }
 
 .arrow-accent-sm-up {
-  @include arrow-up(var(--arrow-accent-sm-size), --color-accent);
+  @include arrow-up($arrow-accent-sm-size, $color-accent);
 }
 
 .arrow-cycle--left {
-  @include arrow-cycle(var(--arrow-cycle-size));
+  @include arrow-cycle($arrow-cycle-size);
 }
 
 .arrow-cycle--right {
-  @include arrow-cycle(var(--arrow-cycle-size), false);
+  @include arrow-cycle($arrow-cycle-size, false);
 }
 
 .arrow-cycle--top {
@@ -110,7 +110,7 @@
   bottom: 20px;
   z-index: 1020;
   border-radius: 50%;
-  background-color: var(--color-accent);
+  background-color: $color-accent;
   opacity: 0.6;
   cursor: pointer;
   
@@ -130,18 +130,18 @@
     top: 30%;
     height: 40%;
     width: 3px;
-    background-color: var(--color-light);
+    background-color: $color-light;
     border-radius: 5px;
   }
   
   &::before {
     left: 60%;
-    rotate: -45deg;
+    @include transform_rotate(-45deg);
   }
   
   &::after {
     left: 35%;
-    rotate: 45deg;
+    @include transform_rotate(45deg);
   }
 
 }

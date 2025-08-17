@@ -1,7 +1,8 @@
 .container {
-  max-width: calc(var(--container-width) + var(--container-padding-x) *2 );
-  margin-inline: auto;
-  padding-inline: var(--container-padding-x);
+  @include padding-inline($container-padding-x);
+  @include margin-inline(auto);
+  
+  max-width: calc($container-width + $container-padding-x * 2);
 }
 
 .visually-hidden {

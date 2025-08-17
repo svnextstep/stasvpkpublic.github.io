@@ -13,27 +13,23 @@
   &._migrate-left {
     top: calc($baseSize / 1.39);
     left: 0;
-    //transform: rotate(330deg);
   }
   &._migrate-right {
     top:  calc($baseSize / 6.52);
     left: -(calc($baseSize / 3));
-    //transform: rotate(220deg);
   }
   
 
   // own case
   &.fire_camera_1 {
-    transform: rotate(210deg);
-    
-    
+    @include transform_rotate(210deg);
   }
+  
   &.fire_camera_2 {
-    transform: rotate(100deg);
+    @include transform_rotate(100deg);
   }
   &.fire_camera_1, &.fire_camera_2 {
     .camera_monitoring_area._active {
-      -webkit-animation: full_cycle_rotate 15s linear 0s 3;
       animation: full_cycle_rotate 15s linear 0s 3;
     }
   }
@@ -294,8 +290,8 @@
         }
 
         ._local_1{
+          @include transform_rotate(240deg);
           opacity: 1;
-          transform: rotate(240deg);
         }
       }
       .net-central__elm-2 {
@@ -309,7 +305,7 @@
         }
 
         ._local_1{
-          transform: rotate(-70deg);
+          @include transform_rotate(-70deg);
           padding-right: 70px;
           padding-bottom: 40px;
         }
@@ -329,7 +325,7 @@
         }
 
         ._local_1{
-          transform: rotate(8deg);
+          @include transform_rotate(8deg);
         }
         
       }
@@ -655,9 +651,10 @@
 
         .camera_data_transfer {
           @include camera_data_transfer(50%);
+          @include transform_rotate(3deg);
+          
           width: 1000%;
           height: 1%;
-          transform: rotate(3deg);
         }
         @media (min-width: 500px) {
           top: 20%;
@@ -665,9 +662,10 @@
 
           .camera_data_transfer {
             @include camera_data_transfer(50%);
+            @include transform_rotate(-3deg);
+            
             width: 1000%;
             height: 1%;
-            transform: rotate(-3deg);
           }
         }
         @media (min-width: 600px) {
@@ -675,8 +673,8 @@
           left: 2%;
           .camera_data_transfer {
             @include camera_data_transfer(50%);
+            @include transform_rotate(-1deg);
             width: 1000%;
-            transform: rotate(-1deg);
           }               
         }
         @media (min-width: $medium_breakpoint_min) {
@@ -684,8 +682,8 @@
           left: 2%;
           .camera_data_transfer {
             @include camera_data_transfer(50%);
+            @include transform_rotate(3deg);
             width: 1000%;
-            transform: rotate(3deg);
           }               
         }
       }
@@ -696,9 +694,9 @@
         left: 40%;
         .camera_data_transfer {
           @include camera_data_transfer(50%);
+          @include transform_rotate(15deg);
           width: 700%;
           height: 1%;
-          transform: rotate(15deg);
         }
       }
       
@@ -708,9 +706,9 @@
         right: 40%;
         .camera_data_transfer {
           @include camera_data_transfer(50%);
+          @include transform_rotate(-25deg);
           width: 300%;
           height: 1%;
-          transform: rotate(-25deg);
         }
                   
         @media (min-width: 500px) {
@@ -718,8 +716,8 @@
           right: 40%;
           .camera_data_transfer {
             @include camera_data_transfer(50%);
+            @include transform_rotate(-45deg);
             width: 500%;
-            transform: rotate(-45deg);
           }               
         }
 
@@ -729,8 +727,8 @@
           right: 40%;
           .camera_data_transfer {
             @include camera_data_transfer(50%);
+            @include transform_rotate(-35deg);
             width: 350%;
-            transform: rotate(-35deg);
           }               
         }
         @media (min-width: 650px) {
@@ -738,8 +736,8 @@
           right: 30%;
           .camera_data_transfer {
             @include camera_data_transfer(50%);
+            @include transform_rotate(-38deg);
             width: 300%;
-            transform: rotate(-38deg);
           }               
         }
         @media (min-width: 700px) {
@@ -747,8 +745,8 @@
           right: 20%;
           .camera_data_transfer {
             @include camera_data_transfer(50%);
+            @include transform_rotate(-45deg);
             width: 200%;
-            transform: rotate(-45deg);
           }               
         }
         @media (min-width: $medium_breakpoint_min) {
@@ -756,8 +754,8 @@
           right: 20%;
           .camera_data_transfer {
             @include camera_data_transfer(50%);
+            @include transform_rotate(-30deg);
             width: 200%;
-            transform: rotate(-30deg);
           }               
         }
       }

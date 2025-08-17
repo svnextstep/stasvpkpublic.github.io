@@ -13,23 +13,23 @@
   color: $colorText;
   background-color: $colorBg;
   border: 1px solid $colorBorder;
-  font-family: var(--font-famile-base-extra);
+  font-family: $font-famile-base-extra;
   font-weight: 200;
   text-decoration: none;
   cursor: pointer;
 }
 
 .btn__main {
-  @include btn(var(--color-light), var(--color-accent));
+  @include btn($color-light, $color-accent);
 }
 
 .btn-tool {
-  $color: var(--color-pale-gold);
+  $color: $color-pale-gold;
   
   @include btn($color, transparent, $color);
 
   @include hover {
-    color: var(--color-accent);
+    color: $color-accent;
     background-color: $color;
   }
 }

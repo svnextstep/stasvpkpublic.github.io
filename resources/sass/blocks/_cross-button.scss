@@ -3,10 +3,10 @@
   @include square(40px);
   
   position: relative;
-  border-radius: var(--border-radius-small);
+  border-radius: $border-radius-small;
   
   @include hover {
-    background-color: var(--color-accent);
+    background-color: $color-accent;
   }
   
   &::before,
@@ -17,14 +17,14 @@
     left: 7px;
     width: 70%;
     height: 2px;
-    background-color: var(--color-dark);
+    background-color: $color-dark;
     border-radius: 5px;
   }
   
   &::before {
-    rotate: 45deg;
+    @include transform_rotate(45deg);
   }
   &::after {
-    rotate: -45deg;
+    @include transform_rotate(-45deg);
   }
 }

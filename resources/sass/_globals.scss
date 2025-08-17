@@ -1,11 +1,15 @@
 body {
-  @include fluid-text(18, 16);
-  
-  font-family: var(--font-famile-base);
+  //@include fluid-text(18, 16);
+  font-size: 18px;
+  font-family: $font-famile-base;
   font-weight: 400;
   line-height: 1.28;
-  color: var(--color-platinum);
-  background-color: var(--color-light);
+  color: $color-platinum;
+  background-color: $color-light;
+  
+  @include mobile {
+    font-size: 16px;
+  }
 }
 
 .wrapper {
@@ -19,8 +23,8 @@ body {
 
 .content {
   @include flex_column;
+  @include gap-clm($content-gap);
   
-  gap: var(--content-gap);
   position: relative;
 }
 
@@ -41,15 +45,15 @@ a._no-underline {
 
 
 h1, h2, h3, h4, h5, .take-attantion, .tabs__item {
-  font-family: var(--font-famile-base-extra);
-  color: var(--color-platinum);
+  font-family: $font-famile-base-extra;
+  color: $color-platinum;
 }
 
 h1 {
   font-size: 3.5rem;
   font-weight: 400;
   line-height: 3rem;
-  padding: 50px 0 0 var(--container-padding-x);
+  padding: 50px 0 0 $container-padding-x;
   
   @include mobile {
     font-size: 2.5rem;
@@ -109,7 +113,7 @@ h5 {
     height: 1.2rem;
     margin-right: 10px;
     margin-bottom: -2px;
-    background-color: var(--color-accent);
+    background-color: $color-accent;
   }
   
   @include tablet {
@@ -142,7 +146,7 @@ h5 {
     margin: -155px 5px 0px -130px;
     width: 250px;
     height: 250px;
-    background-color: var(--color-bg-gray);
+    background-color: $color-bg-gray;
     opacity: 0.5;
     border-radius: 50%;
   }
@@ -151,13 +155,12 @@ h5 {
 
 
 ul.first-letter {
-  //padding-top: var(--div-padding-y);
   
   >li {
     padding-top: 10px;
     
     &:first-letter {
-      font-family: var(--font-famile-base-extra);
+      font-family: $font-famile-base-extra;
       font-size: 1.5rem;
       font-weight: 500;
     }
@@ -167,9 +170,8 @@ ul.first-letter {
 
 ul.list--dotted {
   @include flex-column;
-  
-  gap: 10px;
-  padding-block: var(--div-padding-y);
+  @include gap-clm(10px);
+  @include padding-block($div-padding-y);
   
   li{
     position: relative;
@@ -185,7 +187,7 @@ ul.list--dotted {
       height: .4em;
       margin-bottom: .125em;
       border-radius: 50%;
-      background-color: var(--color-accent);
+      background-color: $color-accent;
     }
   }
 }
@@ -216,35 +218,16 @@ ul.list--dotted {
   @include flex_row_end();
 }
 
-.grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 10px;
-}
-
-.grid-unite-row-cells {
-  grid-column: -1 / 1;
-}
 .table-header {
-  font-family: var(--font-famile-base-extra);
+  font-family: $font-famile-base-extra;
   padding: 5px 0 !important;
-  background-color: var(--color-yellow);
-}
-
-.grid-3 {
-  @include grid_3();
-}
-.grid-table-params {
-  @include grid_3(2fr, 1fr, 1fr);
-  gap: 0;
+  background-color: $color-yellow;
 }
 
 /* PANELS GROUP */
 .panel__row {
   @include flex_row();
-  
-  gap: 10px;
+  @include gap-row(10px);
   
   @include mobile {
     flex-wrap: wrap;
@@ -259,7 +242,7 @@ ul.list--dotted {
   }
 
   .panel__item, .panel__item--center, .panel__item-column {
-    padding: var(--container-padding-x);
+    padding: $container-padding-x;
   }
   
   .panel__item--no-padding {
@@ -293,14 +276,14 @@ ul.list--dotted {
 
 .params__list {
   @include flex_column;
-  
-  gap: 10px;
+  @include gap_clm(10px);
+
   margin-top: 15px;
   line-height: 1;
   
   .param {
     &__header {
-      font-family: var(--font-famile-base-extra);
+      font-family: $font-famile-base-extra;
       color: rgb(35, 40, 37);
       font-size: 1rem;
       font-weight: 500;
@@ -321,11 +304,11 @@ ul.list--dotted {
 }
 
 ._color-accent {
-  color: var(--color-accent);
+  color: $color-accent;
 }
 
 ._top-line-accent {
-  border-top: 3px solid var(--color-accent);
+  border-top: 3px solid $color-accent;
 }
 
 ._keep-space {
@@ -339,10 +322,6 @@ ul.list--dotted {
 
 ._m-top-20 {
   margin-top: 20px;
-}
-
-._gap-20 {
-  gap: 20px;
 }
 
 ._fl-center {
@@ -364,8 +343,7 @@ ul.list--dotted {
 ._article-flex {
   @include _article;
   @include flex_column;
-  
-  gap: 30px;
+  @include gap-clm(30px);
 }
 // end ADDITION
 
@@ -373,21 +351,21 @@ ul.list--dotted {
 .attantion-frame {
   padding: 10px 15px;
   margin-top: 10px;
-  border-radius: var(--border-radius-small);
-  border: 10px solid var(--color-yellow);
-  background-color: var(--color-light);
+  border-radius: $border-radius-small;
+  border: 10px solid $color-yellow;
+  background-color: $color-light;
   text-align: center;
 }
 
 .line__horizontal-medium {
   width: 4rem;
   height: 2px;
-  background-color: var(--color-accent);
+  background-color: $color-accent;
 }
 
 .text_read_more {
   display: block;
-  color: var(--color-accent);
+  color: $color-accent;
   cursor: pointer;
   text-decoration: none;
   text-transform: uppercase;
@@ -411,14 +389,25 @@ ul.list--dotted {
   
   >div {
     padding: 15px 10px 5px;
-    border-bottom: 1px dotted var(--color-yellow);
+    border-bottom: 1px dotted $color-yellow;
   }
   
   &__title {
-    font-family: var(--font-famile-base-extra);
+    font-family: $font-famile-base-extra;
     font-weight: 500;
   }
+  .panel__row {
+    >div {
+      flex: 0 0 25%;
+      &:first-child {
+        flex: 0 0 50%;
+      }
+    }
+    
+  }
+  
 }
+
 
 .appear-panel-hidden {
   @include appear-panel-hidden;
@@ -440,16 +429,16 @@ ul.list--dotted {
 
 .frame-accent--bordered {
   @include frame-accent();
-  box-shadow: var(--shadow-light);
+  box-shadow: $shadow-light;
 }
 
 .product-main-accents {
   
   &__list {
     @include flex_row(space-around);
+    @include gap-row(20px);
     
     flex-wrap: wrap;
-    gap: 20px;
   }
 
   &__item {
@@ -473,7 +462,7 @@ ul.list--dotted {
     right: 0;
     width: 100%;
     height: $height;
-    background-color: var(--color-bg-gray);
+    background-color: $color-bg-gray;
     z-index: 1030;
   }
   
@@ -497,10 +486,10 @@ ul.list--dotted {
     top: -12rem;
     left: -10px;
     z-index: -1;
-    font-family: var(--font-famile-base-extra);
+    font-family: $font-famile-base-extra;
     font-size: 12rem;
     font-weight: 500;
-    color: var(--color-platinum);
+    color: $color-platinum;
     opacity: 0.05;
     
     @include tablet {
@@ -522,7 +511,7 @@ ul.list--dotted {
     position: relative;
     width: 0;
     height: 3px;
-    background-color: var(--color-accent);
+    background-color: $color-accent;
     opacity: 0;
     
     &._active{
@@ -549,15 +538,15 @@ ul.list--dotted {
 
 .presentation__card {
   @include flex_column;
+  @include gap-clm(20px);
   @include frame;
   
-  align-items: center;
-  gap: 20px;
+  align-self: center;
   max-width: 60%;
   position: relative;
-  margin: calc((var(--content-gap) + 1.2rem) * -1) auto 60px auto;
-  padding: 10px;
-  background-color: var(--color-light);
+  margin: calc($content-gap * -1) auto 60px auto;
+  padding: 20px;
+  background-color: $color-light;
   text-align: center;
   
   @include tablet {
@@ -566,16 +555,16 @@ ul.list--dotted {
   
   @include mobile {
     max-width: 90%;
-    padding: 20px;
+    padding: 10px;
   }
   
   .bright_slogan_design {
-    font-family: var(--font-famile-base-extra);
+    font-family: $font-famile-base-extra;
     padding: 10px 0;
     font-size: 2rem;
     font-weight: 200;
     text-align: inherit;
-    color: var(--color-platinum);
+    color: $color-platinum;
     
     @media (max-width: 1400px) {
       font-size: 1.5rem;
@@ -592,27 +581,29 @@ ul.list--dotted {
   }
   
   &-title {
-    font-family: var(--font-famile-base-extra);
+    font-family: $font-famile-base-extra;
     font-size: 2.5rem;
     font-weight: 700;
-    padding-block: 20px;
-    
+    @include padding-block(20px);
+     
     @include mobile {
       font-size: 2rem;
     }
   }
+  .anim-expand-line {
+    margin: 0 auto;
+  }
 }
 
 .tabs {
-  --color-tab: var(--color-light);
-  --color-active-tab: var(--color-bg-gray);
+  $color-tab: $color-light;
+  $color-active-tab: $color-bg-gray;
   
   &__row {
     @include flex_row(center);
+    @include gap-row(10px);
     
     position: relative;
-    //margin-top: 50px;
-    gap: 10px;
     
     &::before {
       content: " ";
@@ -622,34 +613,34 @@ ul.list--dotted {
       width: 100vw;
       margin-left: -50vw;
       margin-right: -50vw;
-      border-bottom: 1px solid var(--color-gray-alt);
+      border-bottom: 1px solid $color-gray-alt;
       z-index: 1;
     }
   }
   
   &__item {
     
-    background-color: var(--color-tab);
-    border: 1px solid var(--color-gray-alt);
-    border-radius: var(--border-radius-small);
+    background-color: $color-tab;
+    border: 1px solid $color-gray-alt;
+    border-radius: $border-radius-small;
     padding: 17px 10px;
     margin-bottom: -10px;
     cursor: pointer;
     
     &._active {
-      background-color: var(--color-active-tab);
+      background-color: $color-active-tab;
       z-index: 2;
     }
     
     &:hover {
-      color: var(--color-accent);
+      color: $color-accent;
     }
   }
   
   &__content {
     position: relative;
     margin-top: 0;
-    background-color: var(--color-active-tab);
+    background-color: $color-active-tab;
     z-index: 10;
     
     &-item {
@@ -664,9 +655,9 @@ ul.list--dotted {
 .expand-block {
   &__title {
     @include flex_row_start;
+    @include gap-clm(10px);
     
     align-items: flex-end;
-    column-gap: 10px;
     flex-wrap: nowrap;
     
     .arrow-accent-sm-down, .arrow-accent-sm-up {
@@ -702,8 +693,7 @@ ul.list--dotted {
 
 .summary-with-icon {
   @include flex_row_start;
-  
-  gap: 5px;
+  @include gap-row(5px);
   
   &__img {
     flex: 0 0 20%;
@@ -728,7 +718,7 @@ ul.list--dotted {
   bottom: 0;
   height: 20px;
   z-index: 1030;
-  background-color: var(--color-yellow);
+  background-color: $color-yellow;
 }
 
 

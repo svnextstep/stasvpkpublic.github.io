@@ -1,8 +1,6 @@
 .popup {
   @include frame;
   
-  --padding-inline: 1.2rem;
-  
   display: none;
   position: fixed;
   top: 0;
@@ -27,16 +25,16 @@
   
   &__body {
     @include flex_column_between();
+    @include gap-clm(0);
     
-    gap: 0;
-    background-color: var(--color-light);
+    background-color: $color-light;
     
     @include mobile-above {
       @include border-radius;
       position: fixed;
       width: 80%;
       height: 80%;
-      border: 1px solid var(--color-light);
+      border: 1px solid $color-light;
       overflow: hidden;
     }
     
@@ -50,8 +48,8 @@
   }
   
   &__header, &__footer {
-    padding: 15px var(--container-padding-x);//var(--padding-inline);
-    background-color: var(--color-bg-gray);
+    padding: 15px $container-padding-x;
+    background-color: $color-bg-gray;
     
   }
   &__header {
@@ -68,9 +66,9 @@
   
   &__content{
     @include flex_column_between;
+    @include gap-clm(20px);
     
     flex: 1 1 auto;
-    gap: 20px;
     position: relative;
     width: 100%;
     overflow: auto;

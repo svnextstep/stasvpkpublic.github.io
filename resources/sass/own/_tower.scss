@@ -7,23 +7,22 @@
 }
 
 .tower-params {
+  @include flex-row(space-around);
+  @include gap-row(30px);
+  
+  align-items: stretch;
+  flex-wrap: wrap;
   position: relative;
   width: 80%;
   margin: 0 auto;
-  display: flex;
-  //grid-template-columns: repeat(3, 1fr);
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: stretch;
-  flex-wrap: wrap;
-  gap: 30px;
 
   .params__list {
+    @include gap-row(20px);
+    
     flex: 1 1 30%;
     max-width: 300px;
     min-width: 250px;
-    gap: 20px;
-    box-shadow: var(--shadow-light);
+    box-shadow: $shadow-light;
   }
 }
 
@@ -34,7 +33,7 @@
     margin-right: 10px;
     >img {
       min-width: 100%;
-      border: 1px solid var(--color-accent);
+      border: 1px solid $color-accent;
     }
   }
   .overlapped_img{

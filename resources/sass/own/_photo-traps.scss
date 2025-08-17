@@ -14,8 +14,8 @@
   
   &__title {
     width: calc($imgSize * 0.75);
-    color: var(--color-pale-gold);
-    background-color:  var(--color-accent);
+    color: $color-pale-gold;
+    background-color:  $color-accent;
     padding: 20px;
     margin-left: -20px;
   }
@@ -27,7 +27,7 @@
     display: contents;
     
     >p, >div {
-      padding: var(--container-padding-x);
+      padding: $container-padding-x;
     }
   }
   

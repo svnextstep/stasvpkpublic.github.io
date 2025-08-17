@@ -15,11 +15,11 @@
         <p>Мы искренне стараемся создать для Вас наилучшие условия приобретения  и эксплуатации наших телесистем.</p>
         <div class="hands">
           <div>
-            <img src="{{asset('/img/contact_as_forest.jpg')}}" width="100%" height="auto" alt="" loading="lazy" />
+            <img src="{{asset('/img/contact_as_forest.jpg')}}" width="200" height="auto" alt="" loading="lazy" />
           </div>
           
           <div>
-            <img src="{{asset('/img/hands.jpg')}}" width="100%" height="auto" alt="" loading="lazy" />
+            <img src="{{asset('/img/hands.jpg')}}" width="200" height="auto" alt="" loading="lazy" />
           </div>
           
         </div>

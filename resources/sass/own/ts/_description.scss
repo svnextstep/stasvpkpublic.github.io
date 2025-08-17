@@ -3,7 +3,7 @@
     position: absolute;
     line, path, ellipse, poligon, circle {
       fill:none;
-      stroke: var(--color-yellow);//#EBB240;
+      stroke: $color-yellow;//#EBB240;
       stroke-miterlimit:10;
       stroke-dasharray: 2000;
       stroke-dashoffset: 2000;
@@ -15,11 +15,11 @@
 @mixin draw_lens_slide1($w, $delay: 0) {
   
   .svg-lens {
+    @include transform_rotate(20deg);
     top: 28%;
     left: 26%;
     width: $w;
     height: calc($w / 1.29); //241px;
-    transform: rotate(20deg);
     
     line, path, ellipse{
       animation: draw 10s linear $delay forwards;
@@ -30,7 +30,6 @@
     top: 55%;
     right: 5%;
     animation: appear_text 2s linear $delay forwards;
-    //@include transition-in(var(--title-appear-duration), $delay);
   }
 }
 
@@ -44,7 +43,7 @@
     animation: move_drawn_camera 2s linear calc($delay * 1.5) forwards;
     
     line, path, polygon {
-       fill: var(--color-platinum);
+       fill: $color-platinum;
     }
     
     line, path{
@@ -56,7 +55,6 @@
     top: 45%;
     right: 5%;
     animation: appear_text 2s linear $delay forwards;
-    //@include transition-in(var(--title-appear-duration), $delay);
   }
 }
 
@@ -70,7 +68,7 @@
     animation: move_drawn_turner 2s linear calc($delay * 1.2) forwards;
     
     line, path, polygon {
-       fill: var(--color-platinum);
+       fill: $color-platinum;
     }
     
     line, path{
@@ -82,7 +80,6 @@
     top: 65%;
     right: 5%;
     animation: appear_text 2s linear $delay forwards;
-    //@include transition-in(var(--title-appear-duration), $delay);
   }
 }
 
@@ -94,7 +91,7 @@
     height: $w;
     
     path, ellipse {
-      fill: var(--color-platinum);
+      fill: $color-platinum;
       stroke-width: 0.3;
     }
     
@@ -115,7 +112,6 @@
     top: 75%;
     right: 5%;
     animation: appear_text 2s linear $delay forwards;
-    //@include transition-in(var(--title-appear-duration), $delay);
   }
 }
 
@@ -165,7 +161,7 @@
 }
 @keyframes transfer_svg_circle {
   100% {
-    fill: var(--color-yellow);
+    fill: $color-yellow;
   }
 }
 
@@ -176,25 +172,25 @@
 }
 
 @mixin svg_draw_slide1() {
-  --delay-draw: 2s;
+  $delay-draw: 2s;
 
   #howitworks_slide1_descr{
     @include transition-in;
   }
-  @include draw_lens_slide1(170px, var(--delay-draw));
-  @include draw_camera_slide1(300px, calc(var(--delay-draw) + 5s));
-  @include draw_turner_slide1(180px, calc(var(--delay-draw) + 10s));
-  @include draw_tower_slide1(300px, calc(var(--delay-draw) + 13s));
+  @include draw_lens_slide1(170px, $delay-draw);
+  @include draw_camera_slide1(300px, calc($delay-draw + 5s));
+  @include draw_turner_slide1(180px, calc($delay-draw + 10s));
+  @include draw_tower_slide1(300px, calc($delay-draw + 13s));
 }
 
 @mixin svg_draw_slide2($delay) {
   #howitworks_slide2_descr {
-    @include transition-in(var(--transition-duration-slowly), $delay);
+    @include transition-in($transition-duration-slowly, $delay);
   }
   
   .howitworks__demo {
     line, path, circle {
-      fill: var(--color-platinum);
+      fill: $color-platinum;
     }
   }
   
@@ -233,8 +229,8 @@
   $blockH: 550px;
   @include flex_column_between;
   align-items: center;
-  background-color: var(--color-platinum);
-  color: var(--color-light);
+  background-color: $color-platinum;
+  color: $color-light;
   width: 100%;
   min-height: $blockH;
   overflow: hidden;
@@ -279,8 +275,8 @@
         font-size: 1rem;
         line-height: 1.1;
         text-align: left;
-        padding: 10px var(--container-padding-x);
-        color: var(--color-text-soft-light);
+        padding: 10px $container-padding-x;
+        color: $color-text-soft-light;
       }
     }
     
@@ -291,91 +287,121 @@
     &__slide2 {
       position: absolute;
       top: 0;
-      left: calc($demo-screen-w * -2);
+      left: -400px;//calc($demo-screen-w * -2);
       width: $demo-screen-w;
       height: $demo-screen-h;
-      background-color: var(--color-platinum);
+      background-color: $color-platinum;
 
       .net-work {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0;
+        @include flex-row;
+        @include gap-row(0);
+        
+        flex-wrap: nowrap;
         width: 800px;
         height: 100%;
-        color: var(--color-light);
+        color: $color-light;
+        
+        &__canvas, &__transition{
+          flex: 0 0 50%;
+        }
 
         &__canvas {
-          background-color: var(--color-platinum);
+          background-color: $color-platinum;
         }
 
         .transition {
           display: flex;
           flex-direction: column;
-          gap: 0;
+          @include gap-clm(0);
 
           &__cell {
-            background-color: var(--color-platinum);
+            background-color: $color-platinum;
           }
 
           &__top {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
+            @include flex-row;
+            
             height: 30%;
+            
+            >div {
+              flex: 0 0 25%;
+            }
 
             .item-2, .item-3, .item-4 {
-              border-bottom: 2px solid var(--color-yellow);
+              border-bottom: 2px solid $color-yellow;
             }
 
             .item-4{
-              background-color: var(--color-yellow);
+              background-color: $color-yellow;
               opacity: 0.8;
             }
           }
 
           &__middle {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1.2fr 0.8fr;
+            @include flex-row;
+            
             height: 15%;
 
+            >div {
+              flex: 0 0 25%;
+            }
+            
             .item-1, .item-2, .item-3 {
-              border-bottom: 2px solid var(--color-yellow);
+              border-bottom: 2px solid $color-yellow;
             }
 
             .item-3{
-              background-color: var(--color-yellow);
+              flex: 0 0 30%;
+              background-color: $color-yellow;
               opacity: 0.8;
             }
 
             .item-4{
+              flex: 0 0 20%;
               opacity: 0;
             }
           }
 
           &__bottom {
-            display: grid;
-            grid-template-columns: 1fr 0.8fr 1.2fr 1fr;
+            @include flex-row;
+            
             height: 30%;
-
+            
+            >div {
+              flex: 0 0 25%;
+            }
+            .item-2{
+              flex: 0 0 20%;
+            }
+            .item-3{
+              flex: 0 0 30%;
+            }
             .item-4{
               opacity: 0;
             }
           }
 
           &__footer {
-            display: grid;
-            grid-template-columns: 0.8fr 1.2fr 1.7fr 0.3fr;
+            @include flex-row;
+            
             height: 25%;
-
+            
+            .item-1 {
+              flex: 0 0 20%;
+            }
             .item-2, .item-3 {
-              border-top: 2px solid var(--color-yellow);
+              flex: 0 0 30%;
+              border-top: 2px solid $color-yellow;
             }
 
             .item-3{
-              background-color: var(--color-yellow);
+              flex: 0 0 40%;
+              background-color: $color-yellow;
               opacity: 0.8;
             }
 
             .item-4{
+              flex: 0 0 10%;
               opacity: 0;
             }
           }
@@ -393,7 +419,7 @@
         position: absolute;
         font-family: "Caveat", cursive;
         font-size: 1.1rem;
-        color: var(--color-text-soft-light);
+        color: $color-text-soft-light;
         opacity: 0;
       }
       
@@ -472,13 +498,13 @@
   position: relative;
   align-items: center;
   width: 100vw;
-  background-color: var(--color-bg-gray);
+  background-color: $color-bg-gray;
   
   &__row {
     @include flex-column;
     @include bg-img(url(#{$assetPath}tv_system/net/design_arrows.jpg), top, right, auto, 100%);
-
-    gap: 50px;
+    @include gap-clm(50px);
+    
     position: relative;
     width: $rowW;
     padding-bottom: calc($stepSize * 0.8);
@@ -500,8 +526,8 @@
       flex: 0 1 400px;
       padding: calc($stepSize / 2);
       margin-left: calc($stepSize / 2);
-      background-color: var(--color-accent);
-      color: var(--color-pale-gold);
+      background-color: $color-accent;
+      color: $color-pale-gold;
       font-weight: 500;
       cursor: pointer;
       
@@ -511,7 +537,7 @@
         top: calc($stepSize * -0.25);
         right: calc($stepSize * -0.95);
         bottom: 0;
-        color: var(--color-yellow);
+        color: $color-yellow;
         @include arrow($stepSize, 'right', --color-accent);
       }
     }
@@ -524,9 +550,9 @@
       top: calc($stepSize / -2);
       left: calc($stepSize / -2);
       padding-top:  calc($stepSize / 5);
-      background-color: var(--color-accent);
-      border: 2px solid var(--color-pale-gold);
-      font-family: var(--font-famile-base-extra);
+      background-color: $color-accent;
+      border: 2px solid $color-pale-gold;
+      font-family: $font-famile-base-extra;
       text-align: center;
     }
 
@@ -543,8 +569,8 @@
     width: calc($rowW * 0.75);
     max-width: 450px;
     padding: 0 20px 20px;
-    background-color: var(--color-bg-gray);
-    border: 2px solid var(--color-platinum);
+    background-color: $color-bg-gray;
+    border: 2px solid $color-platinum;
     opacity: 0.9;
     overflow: auto;
 
@@ -553,14 +579,14 @@
     }
     
     .slogan {
-      border-top: 1px solid var(--color-gray-alt );
-      color: var(--color-yellow);
+      border-top: 1px solid $color-gray-alt;
+      color: $color-yellow;
       text-align: right;
     }
   }
   .appear-panel__move-left {
     right: 0;
-    transition-duration: var(--transition-duration-slowly);
+    transition-duration: $transition-duration-slowly;
   }
 }
 
@@ -591,7 +617,7 @@
     margin: 10% auto;
     padding: 20px 20px;
     background-color: rgba(0,0,0,0.4);
-    color: var(--color-text-soft-light);
+    color: $color-text-soft-light;
     
     @include tablet {
       width: 85%;
@@ -614,19 +640,20 @@
       }
       
       &__item{
+        @include padding-inline(3rem);
+        
         display: none;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        padding-inline: 3rem;
         
         @include mobile {
-          padding-inline: var(--container-padding-x);
+          @include padding-inline($container-padding-x);
         }
         
         >h3, >p {
-          color: var(--color-bg-gray);
+          color: $color-bg-gray;
         }
         
         >p {
@@ -638,16 +665,6 @@
       }
       
     }
-    
-/*    .legend {
-      &:first-child {
-        background-color: var(--color-light);
-      }
-
-      &__item {
-        cursor: pointer;
-      }
-    }*/
   }
 }
 
@@ -656,7 +673,7 @@
   
   align-items: center;
   min-height: 100%;
-  padding-top: var(--paragraphMarginBottom);
+  padding-top: $paragraphMarginBottom;
   overflow: hidden;
  
   div {
@@ -692,19 +709,20 @@
   @include flex_row(space-around);
   @include paragraph;
   @include border-radius;
+  @include border-inline (1px, $color-accent);
+  @include border-block (0);
+  @include gap-clm(10px);
+  @include margin-block(20px);
   
-  gap: 10px;
   padding: 20px;
-  margin-block: 20px; 
-  border-inline: 1px solid var(--color-accent);
   
   @include tablet {
     @include flex_column;
-    
-    gap: 0;
+    @include border-inline (0);
+    @include border-block (1px, $color-accent);
+    @include gap-clm(0);
+
     padding: 0;
-    border-block: 1px solid var(--color-accent);
-    border-inline: none;
   }
   
   &__item, &__math {
@@ -712,7 +730,7 @@
     h3 {
       margin: 0;
       text-align: center;
-      color: var(--color-accent);
+      color: $color-accent;
     }
     
     p {
@@ -748,7 +766,8 @@
     }
     
     @include mobile {
-      gap: 20px;
+      @include gap-clm(20px);
+
       height: calc($feature_detail_size * 3.1);
       
       .feature-detail {
@@ -777,7 +796,7 @@
         @include border-radius(50%);
         
         flex: 0 0 $feature_detail_size;
-        border: 1px solid var(--color-accent);
+        border: 1px solid $color-accent;
         overflow: visible;
         
         >img {
@@ -797,7 +816,11 @@
       }
 
       &__title {
+        font-size: 1rem;
         font-weight: 600;
+      }
+      &__descr {
+        font-size: 1rem;
       }
     }
     
@@ -871,7 +894,7 @@
       @include border-radius(50%);
       @include square(calc($feature_detail_size * 2.2));
       
-      border: 1px solid var(--color-accent);
+      border: 1px solid $color-accent;
       
       @include mobile {
         margin-right: -(calc($feature_detail_size * 0.40));
@@ -891,11 +914,12 @@
   }
   
   &-adds {
-    @include flex_row;
-    justify-content: space-around;
-    gap: 20px;
+    @include flex_row(space-around);
+    @include gap-row(20px);
+    
     flex-wrap: wrap;
     flex: 1 1 auto;
+    
     &__item {
       min-width: 200px;
       max-width: 300px;
@@ -907,12 +931,16 @@
         width: 20px;
         height: 20px;
         margin: -22px 0  0 -22px;
-        border: 1px solid var(--color-accent);
+        border: 1px solid $color-accent;
         border-radius: 50%;
-        background-image: radial-gradient(circle, var(--color-accent) 65%, white 35%);
+        background-image: radial-gradient(circle, $color-accent 65%, white 35%);
         background-position:  center;
         background-size: 14px 14px;
         background-repeat: no-repeat;
+      }
+      
+      >div {
+        font-size: 1rem;
       }
     }
   }
@@ -957,28 +985,15 @@
 .wrong-cameras {
   &__img-list {
     @include flex_row(space-around);
+    @include gap-row(20px);
+    @include margin-block(40px);
+    
     flex-wrap: wrap;
-    gap: 20px;
-    margin-block: 40px;
   }
 }
 
 .popup-ts-components__camera-items {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 20px;
-  
-  @include mobile {
-    grid-template-columns: 1fr;
-    
-    .camera-frame {
-      order: -2;
-    }
-    .camera-frame-img {
-      order: -1;
-    }
-  }
+  @include flex_column_between;
 }
 
 .popup_tower {

@@ -1,14 +1,15 @@
 .footer {
-  --color-footer-bg: #546e7a;
-  --color-footer-bg-medium: #4d646f;
-  --color-footer-bg-dark: #3d4d54;
+  //--color-footer-bg: #546e7a;
+  $color-footer-bg: #546e7a;
+  $color-footer-bg-medium: #4d646f;
+  $color-footer-bg-dark: #3d4d54;
   
   position: relative;
   width: 100%;
   min-height: 400px;
   /*padding: 20px 10%;*/
   z-index: 1;
-  background-color: var(--color-footer-bg);
+  background-color: $color-footer-bg;
   background-image: url('#{$assetPath}logo_bg.png');
   
   background-repeat: no-repeat;
@@ -47,14 +48,14 @@
     display: inline-flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 10px;
+    @include gap-clm(10px);
     
   }
   
   &__lang-item {
     padding: 15px 25px;
-    color: var(--color-light);
-    background-color:  var(--color-footer-bg-medium);
+    color: $color-light;
+    background-color:  $color-footer-bg-medium;
     
     >a {
       font-family: 'Fira Sans Extra Condensed';
@@ -64,20 +65,21 @@
     }
     
     &:hover {
-      box-shadow: var(--shadow-light);
+      box-shadow: $shadow-light;
     }
     
   }
   
   ._active {
-    background-color:  var(--color-footer-bg-dark);
-    box-shadow: var(--shadow-light);
+    background-color:  $color-footer-bg-dark;
+    box-shadow: $shadow-light;
   }
   
 
   &__body {
     @include flex_column();
-    gap: 20px;
+    @include gap-clm(20px);
+    
     width: 85%;
     margin: 0 auto;
   }
@@ -88,12 +90,14 @@
     
     .body-item__row {
       @include flex_column();
-      align-items: center;
-      gap: 15px;
+      @include gap-clm(15px);
       
+      align-items: center;
+            
       .phones {
         @include flex_row();
-        gap: 20px;
+        @include gap-row(20px);
+        
         font-size: 1.3rem;
         
         @include mobile {
@@ -109,42 +113,45 @@
   
   
   &__menu {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-content: space-around;
-    gap: 20px;
+    @include flex-row(space-around);
+    @include gap-row(20px);
+    
+    flex-wrap: wrap;
     
     @include tablet {
-      grid-template-columns: repeat(2, 1fr);
+      
     }
     
     @include mobile {
-      grid-template-columns: repeat(1, 1fr);
+      
     }
 
     .expand-block {
+      min-width: 300px;
+      padding-top: 30px;
       
       &__title {
+        @include gap-row(20px);
+        
         align-items: start;
-        gap: 20px;
         font-weight: 700;
         font-size: 1.5rem;
-        color: var(--color-footer-bg-dark);
+        color: $color-footer-bg-dark;
         padding-bottom: 0;
       }
       
       &__body {
         @include flex_column;
-        
-        gap: 10px;
+        @include gap-clm(10px);
+
         font-family: "Fira Sans Extra Condensed";
         font-weight: 500;
         font-size: 1.2rem;
-        border-left: 2px solid var(--color-footer-bg-dark);
+        border-left: 2px solid $color-footer-bg-dark;
         padding-left: 15px;
         
         @include mobile {
-          gap: 40px;
+          @include gap-clm(40px);
         }
       }
     }
