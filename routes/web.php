@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use App\Services\Localization\LocalizationService;
+use App\Http\Controllers\IeWarningController;
 use App\Http\Controllers\TowerController;
 use App\Http\Controllers\LensController;
 
@@ -33,6 +34,7 @@ Route::group(
     function () {
 Route::get('tmp', function () { return view('tmp'); });
       //Route::get('/', function () { return view('welcome'); });
+      Route::get('ie_warning', [IeWarningController::class, 'index'])->name("ie_warning");
       Route::get('/', function () {return view('tvsystem/description');});
 
       // ABOUT

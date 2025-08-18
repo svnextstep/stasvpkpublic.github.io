@@ -287,7 +287,7 @@
     &__slide2 {
       position: absolute;
       top: 0;
-      left: -400px;//calc($demo-screen-w * -2);
+      left: calc($demo-screen-w * -2);
       width: $demo-screen-w;
       height: $demo-screen-h;
       background-color: $color-platinum;
