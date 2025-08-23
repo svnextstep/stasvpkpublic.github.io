@@ -11,6 +11,10 @@
   box-shadow: $shadow-light;
   z-index: 1010;
   
+  @media print {
+    height: auto;
+  }
+  
   &__inner {
     @include flex_column_between;
     
@@ -44,6 +48,11 @@
     padding-top: 20px;
     z-index: 1019;
     
+    @media print {
+      display: none;
+    }
+  
+  
     @include mobile {
       position: fixed;
       top: -200vh;
@@ -176,6 +185,16 @@
           text-decoration: none;
         }
       }
+    }
+  }
+  
+  &__phones {
+    display: none;
+    
+    @media print {
+      @include flex-row;
+      @include gap-row(20px);
+      min-width: 60%;
     }
   }
   

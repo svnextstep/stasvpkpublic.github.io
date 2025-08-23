@@ -19,6 +19,18 @@
       <div>
          @yield('nav')
       </div>
+      <div class="header__phones">
+        <div>
+          <div>(099) 5404004</div>
+          <div>(068) 8404004</div>
+          <div>(057) 72-82446</div>
+        </div>
+        
+        <div>
+          <div>Украина, г. Харьков,</br> ул.Рождественская, 29-б</div>
+          <div>e-mail: vpktech@ukr.net</div>
+        </div>
+      </div>
      
     </div>
 

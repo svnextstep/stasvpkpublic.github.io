@@ -5,6 +5,10 @@
   position: relative;
   border-radius: $border-radius-small;
   
+  @media print {
+    display: none;
+  }
+  
   @include hover {
     background-color: $color-accent;
   }

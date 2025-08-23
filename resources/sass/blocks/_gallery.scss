@@ -1,3 +1,29 @@
+.legend {
+  @include flex-center(true);
+  @include gap-row(10px);
+  
+  margin-bottom: 20px;
+  color: white;
+
+  &__item {
+    @include square(13px);
+
+    border: 2px solid $color-light;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &--filled {
+      background-color: $color-light;
+    }
+  }
+  
+  @media print {
+    display: none;
+  }
+  
+}
+
+
 .gallery {
   &__wrapper {
     
@@ -6,6 +32,11 @@
     
     padding-top: 40px;
     background-color: $color-platinum;
+    
+    @media print {
+      @include gap-clm(0);
+      padding-top: 0;
+    }
   }
   
   &__body {
@@ -20,6 +51,10 @@
     @include mobile {
       flex: 0 0 $arrow-cycle-size;
     }
+    @media print {
+      display: none;
+      flex: 0 0 0;
+    }
   }
   
   &__frame {
@@ -27,6 +62,12 @@
     display: block;
     position: relative;
     overflow: hidden;
+    
+    @media print {
+      flex: 1 1 100%;
+      height: auto;
+      overflow: visible;
+    }
   }
   
   &__list {
@@ -34,7 +75,7 @@
     
     position: relative;
     align-items: stretch;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     transition: all 0.8s ease 0s;
   }
   
@@ -72,27 +113,8 @@
     }
   }
   
-  &__current-item {
+  &__current-item, &__current-step {
     display: none;
   }
-}
 
-.legend {
-  @include flex-center(true);
-  @include gap-row(10px);
-  
-  margin-bottom: 20px;
-  color: white;
-
-  &__item {
-    @include square(13px);
-
-    border: 2px solid $color-light;
-    border-radius: 50%;
-    cursor: pointer;
-
-    &--filled {
-      background-color: $color-light;
-    }
-  }
 }

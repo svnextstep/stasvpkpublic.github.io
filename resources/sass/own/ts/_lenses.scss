@@ -3,6 +3,12 @@
 @mixin lenses_tab_content($w, $y) {
   $unit: calc( $w / 3 );
   
+  .tabs__content {
+    @media print {
+      @include flex-row;
+    }
+  }
+  
   .tab-lens {
     @include bg-img(url(#{$assetPath}tv_system/lenses/tv_lenses.jpg), 0, 0, cover);
     
@@ -10,9 +16,13 @@
     margin: 0 auto;
     width: $w;
     height: $y;
-    
+   
     @include mobile {
       @include bg-img(url(#{$assetPath}tv_system/lenses/tv_lenses_mobile.jpg), 0, 0, cover);
+    }
+    
+    @media print {
+      flex: 1 1 33%;
     }
     
     &__focus {
@@ -110,6 +120,10 @@
     padding-top: 60px;
   }
 
+  @media print {
+    top: -50px;
+    left: 80%;
+  }
   img {
     max-width: 250px;
     height: auto;
@@ -122,12 +136,43 @@
   }
 }
 
-.compare-lens {
-  width: 100%;
+.compare_lens {
+  &__img {
+    width: 100%;
+  }
+  &__item-1 {
+    
+  }
+  @media (max-width: 1000px) and (min-width: 769px), print {
+    flex-wrap: wrap;
+
+    .change-order{
+      flex: 1 1 100%;
+      display: contents;
+
+      .expand-block{
+        flex: 0 0 50%;
+        padding: 10px;
+      }
+    }
+
+    .compare_lens__item-1 {
+      flex: 0 0 50%;
+      order: -1;
+    }
+  }
+  
+  @include mobile {
+    flex-direction: column-reverse;
+  }
 }
 
-
+.lens-params__img {
   
+    width: 100%;
+}
+
+.section-tabs {
   @include mobile-above {
     @include lenses_tab_content(900px, 520px);
   }
@@ -146,6 +191,7 @@
   @media (max-width: 350px) {
     @include lenses_tab_content(300px, 173px);
   }
+}
 
 .forest-view {
   @include flex-column;
@@ -276,4 +322,6 @@
       font-weight: 500;
     }
 }
+
+
 

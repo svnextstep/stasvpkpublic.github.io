@@ -89,7 +89,7 @@
 {{-- popup --}}
 
 {{-- CAMERA popup --}}
-<x-popup-details sTitle="{{ __('messages.list_item_camera') }}" iId='tvcamera_popup' sClass="print_popup" :aFooter="['sBtnMainName' => __('messages.text_read_more'), 'sBtnMainLink' => 'lenses']" >
+<x-popup-details sTitle="{{ __('messages.list_item_camera') }}" iId='tvcamera_popup' sClass="print_popup print_popup_visible" :aFooter="['sBtnMainName' => __('messages.text_read_more'), 'sBtnMainLink' => 'lenses']" >
   
   {{-- row 1 --}}
   <x-row>
@@ -155,7 +155,7 @@
 </x-popup-details>
 
 {{-- TURNER popup --}}
-<x-popup-details sTitle="{{ __('messages.list_item_rotary_device') }}" iId='turner_popup'  sClass="print_popup" >
+<x-popup-details sTitle="{{ __('messages.list_item_rotary_device') }}" iId='turner_popup print_popup_visible'  sClass="print_popup" >
   <x-row>
     
     <x-item>
@@ -182,7 +182,7 @@
 </x-popup-details>
 
 {{-- DATA TRANSFER SYSTEM popup --}}
-<x-popup-details sTitle="{{ __('messages.list_item_data_transfer') }}" iId='data-transfer_popup'  sClass="print_popup" >
+<x-popup-details sTitle="{{ __('messages.list_item_data_transfer') }}" iId='data-transfer_popup'  sClass="print_popup print_popup_visible" >
   <x-row>
     
     <x-item-column>
@@ -215,7 +215,7 @@
 </x-popup-details>
 
 {{-- TOWER popup --}}
-<x-popup-details sTitle="{{ __('messages.list_item_tower') }}" iId='tower_popup'  sClass="print_popup"  :aFooter="['sBtnMainName' => __('messages.text_read_more'), 'sBtnMainLink' => 'tower']">
+<x-popup-details sTitle="{{ __('messages.list_item_tower') }}" iId='tower_popup'  sClass="print_popup print_popup_visible"  :aFooter="['sBtnMainName' => __('messages.text_read_more'), 'sBtnMainLink' => 'tower']">
   <x-row sClass="popup_tower">
     
     <x-item-no-padding sClass='tower-popup-bg'>
@@ -241,7 +241,7 @@
 </x-popup-details>
 
 {{-- OFFICE DEVICE popup --}}
-<x-popup-details sTitle="{{ __('messages.list_item_office_device') }}" iId='office-device_popup'  sClass="print_popup" >
+<x-popup-details sTitle="{{ __('messages.list_item_office_device') }}" iId='office-device_popup'  sClass="print_popup print_popup_visible" >
   <x-row>
     
     <x-item>
@@ -296,7 +296,7 @@
 </x-popup-details>
 
 {{-- SOFTWARE popup --}}
-<x-popup-details sTitle="{{ __('messages.list_item_software') }}" iId='software_popup'  sClass="print_popup"  :aFooter="['sBtnMainName' => __('messages.text_read_more'), 'sBtnMainLink' => 'interactive_map']">
+<x-popup-details sTitle="{{ __('messages.list_item_software') }}" iId='software_popup'  sClass="print_popup print_popup_visible"  :aFooter="['sBtnMainName' => __('messages.text_read_more'), 'sBtnMainLink' => 'interactive_map']">
   <x-row>
     <x-item>
       <div>
@@ -333,7 +333,7 @@
 </x-popup-details>
 
 {{-- GPS popup --}}
-<x-popup-details sTitle="{{ __('messages.list_item_gps') }}" iId='gps_popup'  sClass="print_popup" >
+<x-popup-details sTitle="{{ __('messages.list_item_gps') }}" iId='gps_popup'  sClass="print_popup print_popup_visible" >
   <x-row>
     
     <x-item-column>
@@ -376,13 +376,13 @@
 
 {{-- FEATURES popup --}}
 
-<x-popup-details sTitle="{{ __('messages.list_item_additional_features') }}" iId='features_popup'  sClass="print_popup" >
+<x-popup-details sTitle="{{ __('messages.list_item_additional_features') }}" iId='features_popup'  sClass="print_popup print_popup_visible" >
   <x-features></x-features>
 </x-popup-details>
 
 {{-- SECURITY popup --}}
 
-<x-popup-details sTitle="{{ __('messages.list_item_security') }}" iId='security_popup'  sClass="print_popup"  :aFooter="['sBtnMainName' => __('messages.text_read_more'), 'sBtnMainLink' => 'ts_protection']">
+<x-popup-details sTitle="{{ __('messages.list_item_security') }}" iId='security_popup'  sClass="print_popup print_popup_visible"  :aFooter="['sBtnMainName' => __('messages.text_read_more'), 'sBtnMainLink' => 'ts_protection']">
   <x-row>
     
     <x-item>

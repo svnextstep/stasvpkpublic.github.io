@@ -16,6 +16,7 @@ $(document).ready(function(){
   const sGalleryLegendItemFilled = 'legend__item--filled';
   const sGalleryCurrentStep = "gallery__current-step";
   const sGalleryCurrentItem = "gallery__current-item";
+  let originalStyles = {};
   
   const setArrowStatus = function(oArrow, bRemoveClass) {
     if(bRemoveClass) {
@@ -41,7 +42,7 @@ $(document).ready(function(){
       $(oLegend).children().eq(currentStep - 1).addClass(sGalleryLegendItemFilled);     
     }
   };
-   const refreshArrows = function(oGallery, currentStep, iSteps) {
+  const refreshArrows = function(oGallery, currentStep, iSteps) {
     setArrowStatus(oGallery.find('[data-arrow-cycle-left]'), currentStep !== 1);
     setArrowStatus(oGallery.find('[data-arrow-cycle-right]'), currentStep  < iSteps);
   };
@@ -54,8 +55,6 @@ $(document).ready(function(){
     $(oDiv).empty();
     $(oDiv).append(value);
   };
-  
-
   
   const makeGallery = function(oGallery) {
     let margin = 20;
@@ -164,6 +163,24 @@ $(document).ready(function(){
   
   $('.' + sGallery).each(function(){
     makeGallery($(this));
+  });
+  
+  $(window).on('beforeprint', function() {
+    $('.gallery__list').each(function() {
+      originalStyles[$(this)] = {
+        width: $(this).css("width"),
+        "flex-wrap": "wrap"
+      };
+      
+      $(this).css("width", "100%");
+    });
+  });
+  
+  $(window).on('afterprint', function() {
+    $('.gallery__list').each(function() {
+      $(this).css("width", originalStyles[$(this)].width);
+      originalStyles[$(this)] = {};
+    });
   });
   
   const legendWork = function(oItem) {

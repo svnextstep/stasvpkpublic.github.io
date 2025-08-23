@@ -235,11 +235,23 @@
   min-height: $blockH;
   overflow: hidden;
   
+  @media print {
+    @include flex-row;
+    @include gap-row(10px);
+    
+    min-height: auto;
+  }
+  
   .howitworks {
     $demo-screen-w: 400px;
     $demo-screen-h: $blockH;
     position: relative;
-
+    
+    @media print {
+      width: 100%;
+      height: auto;
+    }
+    
     &__demo {
       @include flex_row_end;
       
@@ -248,6 +260,11 @@
         width: $demo-screen-w;
         height: $demo-screen-h;
         overflow: hidden;
+        
+        @media print {
+          display: none;
+          height: auto;
+        }
         
         svg {
           fill: none;
@@ -267,6 +284,9 @@
       right: 0;
       bottom: 0;
 
+      @media print {
+        position: relative;
+      }
       
       .desciptions-item {
         position: relative;
@@ -277,6 +297,14 @@
         text-align: left;
         padding: 10px $container-padding-x;
         color: $color-text-soft-light;
+        
+        @media print {
+          position: relative;
+          top: 0 !important;
+          left: 0 !important;
+          width: 100%;
+          height: auto;
+        }
       }
     }
     
@@ -292,6 +320,10 @@
       height: $demo-screen-h;
       background-color: $color-platinum;
 
+      @media print {
+        left: 0;
+        height: auto;
+      }
       .net-work {
         @include flex-row;
         @include gap-row(0);
@@ -410,6 +442,14 @@
     }
   }
   
+  .howitworks4print {
+    display: none;
+    
+    @media print {
+      display: block;
+    }
+  }
+
   &._active {
     
     .howitworks {
@@ -444,7 +484,12 @@
           @include mobile {
             left: 0;
           }
+          
+          @media print {
+            left: 0;
+          }
         }
+        
         #howitworks_slide2_descr {
           left: -25%;
           width: 360px;
@@ -453,7 +498,12 @@
           @include mobile {
             left: 0;
           }
+          
+          @media print {
+            left: 0;
+          }
         }
+        
         #howitworks_slide3_descr {
           left: -20%;
           width: 350px;
@@ -464,7 +514,13 @@
             left: 0px;
             padding-top: 190px;
           }
+          
+          @media print {
+            left: 0;
+            padding-top: 10px;
+          }
         }
+        
         #howitworks_slide4_descr {
           left: 30%;
           width: 500px;
@@ -475,6 +531,10 @@
             left: 0;
             width: 100%;
             padding-top: 25px;
+          }
+          
+          @media print {
+            left: 0;
           }
           
           >ul {
@@ -513,6 +573,9 @@
     >h3 {
       margin-left: calc($stepSize * 0.5);
       
+    }
+    @media print {
+      width: 85vw;
     }
   }
   
@@ -559,6 +622,10 @@
     &__title {
       padding-left: calc($stepSize / 2);
     }
+    
+    @media print {
+      display: none;
+    }
   }
 
   .appear-panel__content {
@@ -576,6 +643,13 @@
 
     @include mobile {
       width: calc($rowW * 0.85);
+    }
+    
+    @media print {
+      position: relative;
+      right: 0;
+      width: 85vw;
+      max-width: 85vw;
     }
     
     .slogan {
@@ -605,12 +679,13 @@
     background-image: url(#{$assetPath}tv_system/camera.png), url(#{$assetPath}ts-description_bg-mobile.jpg);
     background-size: auto 100px, cover;
   }
+  
+  @media print {
+     background-size: 0;
+  }
+  
   .slider {
     @include flex_column;
-    
-    @include mobile-above {
-      @include border-radius;
-    }
     
     align-items: center;
     width: 70%;
@@ -619,15 +694,24 @@
     background-color: rgba(0,0,0,0.4);
     color: $color-text-soft-light;
     
+    @include mobile-above {
+      @include border-radius;
+    }
+    
     @include tablet {
       width: 85%;
     }
+    
     @include mobile {
       width: 100%;
       padding: 5px 10px;
       margin: 15% auto 5%;
     }
     
+    @media print {
+      margin: 0;
+      padding: 0;
+    }
     .ts-brief {
       position: relative;
       width: 100%;
@@ -637,6 +721,14 @@
         @media (orientation: landscape) {
           min-height: 150px;
         }
+      }
+      
+      @media print {
+        @include flex-row;
+        @include gap-row(20px);
+        
+        position: relative;
+        min-height: auto;
       }
       
       &__item{
@@ -650,6 +742,11 @@
         
         @include mobile {
           @include padding-inline($container-padding-x);
+        }
+        
+        @media print {
+          position: relative;
+          flex: 1 1 48%;
         }
         
         >h3, >p {
@@ -694,9 +791,6 @@
   }
   
   @include mobile {
-    display: none;
-  }
-  @media print {
     display: none;
   }
 }
@@ -777,6 +871,10 @@
       }
     }
     
+    @media print {
+      width: 90%;
+    }
+    
     .feature-detail {
       @include flex-row;
       
@@ -789,6 +887,10 @@
         &__img {
           margin-left: -(calc($feature_detail_size * 0.25))
         }
+      }
+      
+      @media print {
+        max-width: calc($feature_detail_size * 3.4);
       }
       
       &__img {
@@ -860,7 +962,7 @@
       &-3 {
         @include mobile-above {
           align-self: end;
-          margin-top: -(calc($feature_detail_size ));
+          margin-top: -(calc($feature_detail_size  * 0.7));
 
           .feature-detail {
             flex-direction: row-reverse;
@@ -868,9 +970,26 @@
             &__title, &__descr {
               text-align: right;
             }
+            
           }
         }
-
+        
+        @media print {
+          align-self: start;
+          margin-top: -(calc($feature_detail_size  * 0.7));
+          margin-left: 50%;
+          
+          .feature-detail {
+            @media print {
+              flex-direction: row-reverse;
+              
+              &__title, &__descr {
+                text-align: right;
+              }
+            }
+          }
+        }
+        
         .feature-detail__img {
           @include bg-img(url(#{$assetPath}projects/sawmill.jpg), top, left, cover);
         }

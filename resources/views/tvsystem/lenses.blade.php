@@ -52,40 +52,46 @@
 </div>
 
 {{-- TABS body --}}
-<x-tabs-list :aTabItems="['Model 1', 'Model 2', 'Model 3']">
-  @foreach ($aLenses as $iId => $aModel)
-    @php $sActive = ($loop->index == 0) ? '_active' : '' @endphp
-    
-    <x-tabs-content-item sClass="tab-lens lenses-tab__{{$iId}}  {{$sActive}}" >
-      
-      <div class="tab-lens__focus">
-        @for ($i = 1; $i <= 3; $i++)
-        <div @if ( $i  == $iId)class="_active-win" @endif></div>
-        @endfor
-      </div>
-      
-      <div class="tab-lens__params lens-params__{{$iId}} _active">
-          
-        @php $direction = ($iId != 1) ? "_direction-right" : ""; @endphp
+<div class="only-print-visible lens-params__img">
+  <img src="{{asset('img/tv_system/lenses/tv_lenses.jpg')}}" width="400" height="auto" alt="Линзы используемые в телесистемах ВПК"  loading="lazy"  />
+</div>
 
-        <x-params-list  sClass="{{$direction}}"  >
+<section class="section-tabs">
+  <x-tabs-list :aTabItems="['Model 1', 'Model 2', 'Model 3']">
+    @foreach ($aLenses as $iId => $aModel)
+      @php $sActive = ($loop->index == 0) ? '_active' : '' @endphp
 
-          @foreach ($aModel['params'] as $sParamName => $aParam)
-            <x-params-item sName="{{ __('messages.' . $sParamName) }}">{{$aParam['value']}} {{  __('messages.' . $aParam['unit']) }}</x-params-item>
-          @endforeach
+      <x-tabs-content-item sClass="tab-lens lenses-tab__{{$iId}}  {{$sActive}}" >
 
-          <x-params-item sName="используются в телесистемах">
-            <h3 class="_color-accent">{{ __('messages.text_vpk_name') . " " . $aModel['used_in'] }}</h3>
-          </x-params-item>
+        <div class="tab-lens__focus">
+          @for ($i = 1; $i <= 3; $i++)
+          <div @if ( $i  == $iId)class="_active-win" @endif></div>
+          @endfor
+        </div>
 
-        </x-params-list>
-   
-      </div>  
+        <div class="tab-lens__params lens-params__{{$iId}} _active">
 
-    </x-tabs-content-item>
-  @endforeach
-  
-</x-tabs-list>
+          @php $direction = ($iId != 1) ? "_direction-right" : ""; @endphp
+
+          <x-params-list  sClass="{{$direction}}"  >
+
+            @foreach ($aModel['params'] as $sParamName => $aParam)
+              <x-params-item sName="{{ __('messages.' . $sParamName) }}">{{$aParam['value']}} {{  __('messages.' . $aParam['unit']) }}</x-params-item>
+            @endforeach
+
+            <x-params-item sName="используются в телесистемах">
+              <h3 class="_color-accent">{{ __('messages.text_vpk_name') . " " . $aModel['used_in'] }}</h3>
+            </x-params-item>
+
+          </x-params-list>
+
+        </div>  
+
+      </x-tabs-content-item>
+    @endforeach
+
+  </x-tabs-list>
+</section>
 
 {{-- PARAMETERS --}}
 <section>
@@ -106,13 +112,9 @@
 </section>
 
 <section>
-  <div class="panel__row">
-    
-    <div class="panel__item">
-      <img class='compare-lens' src="{{ asset("img/tv_system/lenses/compare_lens.jpg") }}" width="600" height="auto" alt="" loading="lazy" />
-    </div>
+  <div class="panel__row compare_lens">
 
-    <div class="panel__item _article">
+    <div class="panel__item _article change-order">
       <x-expand-block sTitle="Диаметр">
         <p>Чем больше диаметр, тем лучше качество изображения. На больших площадях важен каждый миллиметр диаметра объектива. Его можно измерять даже линейкой.</p>
       </x-expand-block>
@@ -125,6 +127,10 @@
         <p>На данный момент объективы высокого качества выпускаются <span class="_color">японскими компаниями</span>. Китайские производители, к сожалению, не имеют технологий изготовления больших объективов.</p>
       </x-expand-block>
       
+    </div>
+    
+    <div class="panel__item compare_lens__item-1">
+      <img class='compare-lens__img' src="{{ asset("img/tv_system/lenses/compare_lens.jpg") }}" width="600" height="auto" alt="" loading="lazy" />
     </div>
     
   </div>  

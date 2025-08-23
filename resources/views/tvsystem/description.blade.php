@@ -161,7 +161,9 @@
       
     </x-row>
 
-    
+    <div class="howitworks4print">
+      <img src="{{asset('img/tv_system/howitworks/img4print.jpg')}}" width="500" height="auto" alt="howitworks" loading="lazy"/>
+    </div>
   </div>
 </section>
 

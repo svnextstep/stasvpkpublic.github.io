@@ -26,6 +26,10 @@ body {
   @include gap-clm($content-gap);
   
   position: relative;
+  
+  @media print {
+    @include gap-clm(0);
+  }
 }
 
 main {
@@ -75,6 +79,10 @@ h2 {
   @include mobile-s {
     font-size: 2.2rem;
     padding: 0 20px;
+  }
+  
+  @media print {
+    padding: 10px 15px;
   }
 }
 
@@ -222,6 +230,7 @@ ul.list--dotted {
   font-family: $font-famile-base-extra;
   padding: 5px 0 !important;
   background-color: $color-yellow;
+  border-bottom: 1px solid $color-yellow;
 }
 
 /* PANELS GROUP */
@@ -238,6 +247,10 @@ ul.list--dotted {
     
     @include mobile {
       flex: 1 1 100%;
+    }
+    
+    @media print {
+      flex: 1 1 50%;
     }
   }
 
@@ -433,7 +446,7 @@ ul.list--dotted {
 }
 
 .product-main-accents {
-  
+
   &__list {
     @include flex_row(space-around);
     @include gap-row(20px);
@@ -443,6 +456,9 @@ ul.list--dotted {
 
   &__item {
     @include frame-accent('item');
+  }
+  @media print {
+    margin-bottom: 0;
   }
 }
 
@@ -529,6 +545,13 @@ ul.list--dotted {
     }
   }
 
+  .only-print-visible {
+    display: none;
+    
+    @media print {
+      display: block;
+    }
+  }
 
 /* INDIVIDUAL GROUP */
 
@@ -578,6 +601,10 @@ ul.list--dotted {
       font-size: 1.5rem;
       letter-spacing: -1px;
     }
+    
+    @media print {
+      padding: 0;
+    }
   }
   
   &-title {
@@ -589,9 +616,21 @@ ul.list--dotted {
     @include mobile {
       font-size: 2rem;
     }
+    @media print {
+      padding: 0;
+    }
   }
   .anim-expand-line {
     margin: 0 auto;
+    @media print {
+      display: none;
+    }
+  }
+  
+  @media print {
+    @include gap-clm(10px);
+    max-width: 60%;
+    margin: 10px 0px 0px auto;
   }
 }
 
@@ -604,6 +643,10 @@ ul.list--dotted {
     @include gap-row(10px);
     
     position: relative;
+    
+    @media print {
+      display: none;
+    }
     
     &::before {
       content: " ";
@@ -645,8 +688,14 @@ ul.list--dotted {
     
     &-item {
       display: none;
+      
       &._active {
         display: block;
+      }
+      
+      @media print {
+        display: block;
+        position: relative;
       }
     }
   }

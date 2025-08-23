@@ -324,6 +324,9 @@
   @include mobile {
     //min-height: 70vh;
   }
+  @media print {
+    min-height: 0;
+  }
 
   &__title {
     max-width: 40rem;
@@ -344,6 +347,17 @@
       @include border-radius(0);
     }
     
+    @media print {
+      position: absolute;
+      left: 0;
+      top: 20px;
+      max-width: 0;
+      margin: 40px 0 0 0;
+      padding: 0 0px;
+      font-size: 2rem;
+      color: $color-platinum;
+    }
+    
     &-accent {
       font-size: 6rem;
       color: $color-yellow;
@@ -351,11 +365,19 @@
       @include mobile {
         font-size: 4rem;
       }
+      @media print {
+        font-size: 2.5rem;
+        color: $color-platinum;
+      }
     }
     
     &-second-info {
       font-size: 1.8rem;
+      @media print {
+        font-size: 1.5rem;
+      }
     }
+
   }
 }
 

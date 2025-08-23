@@ -20,6 +20,14 @@
       
       flex-wrap: wrap;
     }
+    
+    @media print {
+      flex-wrap: nowrap;
+      
+      >div {
+        flex: 1 1 50%;
+      }
+    }
   }
   
   &__hands {

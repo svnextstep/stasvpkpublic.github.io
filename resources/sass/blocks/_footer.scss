@@ -17,6 +17,10 @@
   color: #fff;
   border-top: 2px solid #3d4d54;
   
+  @media print {
+    display: none;
+  }
+  
   &::before {
     content: "";
     opacity: 0.5;

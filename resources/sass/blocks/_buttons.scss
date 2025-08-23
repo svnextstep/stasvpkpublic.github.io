@@ -17,6 +17,10 @@
   font-weight: 200;
   text-decoration: none;
   cursor: pointer;
+  
+  @media print {
+    display: none;
+  }
 }
 
 .btn__main {

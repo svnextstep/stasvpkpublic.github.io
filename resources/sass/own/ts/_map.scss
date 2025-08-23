@@ -483,13 +483,19 @@ $fire-point_wight: 2px;
     @include mobile {
       @include flex_column;
       align-self: self-start;
-      
+    }
+    
+    @media print {
+      flex: 1 1 100%;
     }
   }
   
   &__show {
     @include tablet {
       padding: 0 !important;
+    }
+    @media print {
+      display: none;
     }
   }
 }

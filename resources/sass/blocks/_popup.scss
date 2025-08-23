@@ -12,6 +12,9 @@
   overflow-x: hidden;
   overflow-y: auto;
   
+  @media print {
+    position: relative;
+  }
   
   &__wrapper {
     @include flex_column(center);
@@ -45,6 +48,12 @@
       right: 0;
       bottom: 0;
     }
+    
+    @media print {
+      position: relative;
+      width: 100%;
+      height: auto;
+    } 
   }
   
   &__header, &__footer {
@@ -78,4 +87,10 @@
 .popup-close-button {
   @include close_button(1.3rem);
   cursor: pointer;
+}
+
+@media print {
+  .print_popup_visible {
+    display: block;
+  }
 }

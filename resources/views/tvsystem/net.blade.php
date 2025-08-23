@@ -94,7 +94,7 @@
         </x-item>
         
         {{-- DEMO BLOCK --}}
-        <x-item>
+        <x-item sClass="tabs-demo-item">
           <div class="net-alone-office__row">
 
             <div class="net_wrapper" id="local-net-panel" data-init-action="data_transfer">
@@ -151,7 +151,7 @@
         </x-item>
         
         {{-- DEMO BLOCK --}}
-        <x-item>
+        <x-item sClass="tabs-demo-item">
           <div class="net-expand__row">
             <div class="net_wrapper">
               
@@ -196,7 +196,7 @@
         </x-item>
         
         {{-- DEMO BLOCK --}}
-        <x-item>
+        <x-item sClass="tabs-demo-item">
           <div class="net-central-office__row">
 
             <div class="net_wrapper" id="central-net-panel" data-init-action="data_transfer">

@@ -149,6 +149,9 @@ $square-wrapper-coefficient: 1.4;
     @include squares(80px, 100);
   }
   
+  @media print {
+    display: none;
+  }
 }
 
       .img_pos {
