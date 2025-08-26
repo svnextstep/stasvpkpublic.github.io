@@ -7,6 +7,7 @@
 }
 
 .tower-params {
+  $row_gap: 30px;
   @include flex-row(space-around);
   @include gap-row(30px);
   
@@ -23,6 +24,13 @@
     max-width: 300px;
     min-width: 250px;
     box-shadow: $shadow-light;
+    
+    @media screen and (max-width: 500px) {
+      &:last-child {
+        margin-right: $row_gap;
+      }
+    }
+    
   }
 }
 

@@ -1033,8 +1033,9 @@
   }
   
   &-adds {
+    $row_gap: 20px;
     @include flex_row(space-around);
-    @include gap-row(20px);
+    @include gap-row($row_gap);
     
     flex-wrap: wrap;
     flex: 1 1 auto;
@@ -1060,6 +1061,10 @@
       
       >div {
         font-size: 1rem;
+      }
+      
+      &:last-child {
+        margin-right: $row_gap
       }
     }
   }

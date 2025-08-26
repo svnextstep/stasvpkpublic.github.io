@@ -16,9 +16,6 @@
         <img class="logo__image" src="{{ asset('img/logo_top.png') }}" width="140" height="70" alt="VPK group" loading="lazy"/>
       </a>
       
-      <div>
-         @yield('nav')
-      </div>
       <div class="header__phones">
         <div>
           <div>(099) 5404004</div>
@@ -31,7 +28,10 @@
           <div>e-mail: vpktech@ukr.net</div>
         </div>
       </div>
-     
+      
+      <div>
+         @yield('nav')
+      </div>
     </div>
 
     <div class="header__path"></div>
