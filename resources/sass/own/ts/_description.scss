@@ -227,7 +227,10 @@
 
 .how-it-works {
   $blockH: 570px;
+  $description_padding_4mobile: 10px;
+  
   @include flex_column_between;
+  
   align-items: center;
   background-color: $color-platinum;
   color: $color-light;
@@ -482,7 +485,7 @@
           animation: move_description 8s ease-in 6s forwards;
           
           @include mobile {
-            left: 0;
+            left: $description_padding_4mobile;
           }
           
           @media print {
@@ -492,11 +495,11 @@
         
         #howitworks_slide2_descr {
           left: -25%;
-          width: 360px;
+          width: 355px;
           animation: move_description 5s ease-in 15s forwards;
           
           @include mobile {
-            left: 0;
+            left: $description_padding_4mobile;
           }
           
           @media print {
@@ -506,12 +509,12 @@
         
         #howitworks_slide3_descr {
           left: -20%;
-          width: 350px;
+          width: 290px;
           padding-top: 160px;
           animation: move_description 5s ease-in 40s forwards;
           
           @include mobile {
-            left: 0px;
+            left: $description_padding_4mobile;
             padding-top: 190px;
           }
           
@@ -528,7 +531,7 @@
           animation: move_description 5s ease-in 50s forwards;
           
           @include mobile {
-            left: 0;
+            left: $description_padding_4mobile;
             width: 100%;
             padding-top: 25px;
           }
