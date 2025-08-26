@@ -12,7 +12,7 @@
 
     {{-- parameters --}}
     <div class="main-parameters">
-      <div class="take-attantion _accent">Производство <span  class="_color-accent">Телевизионных систем наблюдения</span> за лесом предполагает различные <span  class="text_color_logo">конфигурации</span> систем.</div>
+      <div class="take-attantion _accent">Производство <span  class="_color-accent">Телевизионных систем наблюдения</span> за лесом предполагает различные <span  class="text_color_logo">конфигурации</span> систем</div>
     </div>
 
     {{--  --}}

@@ -54,7 +54,7 @@
 
 {{-- OLD TOWERS RECONSTRUCTION reconstruction of old towers --}}
 
-<section class="_article" id='oldstructures'>
+<section class="_article" id='tower_old'>
   <div class="panel__row _frame support">
       
     <div class="panel__item">
@@ -88,10 +88,7 @@
       
       <div>
         <h5>Ремонт пожарных вышек</h5>
-      <p>Восстановление старых пожарных вышек. Наращивание вышек на 12-15 метров.
-paint metal structures
-
-repair old tower </p>
+      <p>Восстановление старых пожарных вышек. Наращивание вышек на 12-16 метров.</p>
       </div>
 
     </div>
@@ -111,8 +108,8 @@ repair old tower </p>
       <div class="walkie-servise__list">
         <ul class="list--dotted">
           <li>ремонт</li>
-          <li>наладка</li>
-          <li>продажа</li>
+          <li>наладку</li>
+          <li>продажу</li>
         </ul>
 
         <div class="walkie">

@@ -43,7 +43,7 @@ return [
     
     'projects' => 'Проекты',
     'photo_traps' => 'Фотоловушки',
-    'subordinate' => 'Сабхозяйства',
+    'subordinate' => 'Подразделения',
     'control_sawmill' => 'Надзор за деревообрабатывающим предприятием',
     
     'articals' => 'Статьи',
