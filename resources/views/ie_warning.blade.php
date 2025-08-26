@@ -16,10 +16,7 @@
     </ul>
 
     <p>Рекомендуется к использованию современные браузеры Microsoft Edge, Google Chrome, Firefox, Opera Browser. </p>
-    
-    <p>
-      <a href="{{ $redirectUrl }}">Продолжить просмотр в этом браузере</a>
-    </p>
+
     <p></p>
   </div>
    

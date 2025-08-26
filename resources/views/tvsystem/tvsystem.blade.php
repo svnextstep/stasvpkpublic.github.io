@@ -155,7 +155,7 @@
 </x-popup-details>
 
 {{-- TURNER popup --}}
-<x-popup-details sTitle="{{ __('messages.list_item_rotary_device') }}" iId='turner_popup print_popup_visible'  sClass="print_popup" >
+<x-popup-details sTitle="{{ __('messages.list_item_rotary_device') }}" iId='turner_popup'  sClass="print_popup print_popup_visible" >
   <x-row>
     
     <x-item>
