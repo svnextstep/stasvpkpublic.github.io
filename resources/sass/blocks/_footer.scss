@@ -117,8 +117,10 @@
   
   
   &__menu {
+    $row_gap: 20px;
+    
     @include flex-row(space-around);
-    @include gap-row(20px);
+    @include gap-row($row_gap);
     
     flex-wrap: wrap;
     
@@ -131,8 +133,12 @@
     }
 
     .expand-block {
-      min-width: 300px;
+      min-width: 200px;
       padding-top: 30px;
+      
+      &:last-child {
+        margin-right: $row_gap;
+      }
       
       &__title {
         @include gap-row(20px);
