@@ -172,15 +172,15 @@
 }
 
 @mixin svg_draw_slide1() {
-  $delay-draw: 2s;
+  $delay-draw: 0s;
 
   #howitworks_slide1_descr{
     @include transition-in;
   }
   @include draw_lens_slide1(170px, $delay-draw);
-  @include draw_camera_slide1(300px, calc($delay-draw + 5s));
-  @include draw_turner_slide1(180px, calc($delay-draw + 10s));
-  @include draw_tower_slide1(300px, calc($delay-draw + 13s));
+  @include draw_camera_slide1(300px, calc($delay-draw + 4s));
+  @include draw_turner_slide1(180px, calc($delay-draw + 8s));
+  @include draw_tower_slide1(300px, calc($delay-draw + 10s));
 }
 
 @mixin svg_draw_slide2($delay) {
@@ -226,7 +226,7 @@
 }
 
 .how-it-works {
-  $blockH: 550px;
+  $blockH: 570px;
   @include flex_column_between;
   align-items: center;
   background-color: $color-platinum;
@@ -469,9 +469,9 @@
       }
       
       &__slide2{
-        @include svg_draw_slide2(35s);
+        @include svg_draw_slide2(28s);
         
-        animation: move_net_work_canvas 3s linear 30s forwards;
+        animation: move_net_work_canvas 3s linear 25s forwards;
       }
       
       &__desciptions {
