@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use App\Services\Localization\LocalizationService;
 use App\Http\Controllers\IeWarningController;
 use App\Http\Controllers\TowerController;
@@ -25,6 +27,15 @@ Route::get('locale/{locale}', function ($locale) {
 })->name('locale');
 
 
+
+
+if ( strpos(\Request::header("user-agent"), "Trident") !== false || strpos(\Request::header("user-agent"), "MSIE") !== false ) {
+  Session::put("ie_browser", true);
+
+  if (!Cookie::has('visited')) {
+    Cookie::queue('visited', 'true', 60 * 24 * 365);
+  }
+}
 
 Route::group(
     [
