@@ -1,0 +1,27 @@
+
+
+********************** https://github.com/
+
+svetlanakarpuk@gmail.com
+svnextstep
+krow6868
+The following SSH key was added to your account:
+svkey
+SHA256:TX1MHm/QC8zEutpwerzWcv1MJyz8PEeCAOkCGbENmT4
+
+----
+project: stasvpkgroup
+
+
+********************* infinityfree.com
+svetak4t@gmail.com
+passw: krow6868
+
+vPanel 
+
+
+from local vpk.int:
+--- if0_39102267 (Website for vpkgroup.free.nf) ---
+free accouunt : vpkgroup.free.nf
+Account Username (Used to login to FTP, MySQL, etc.):  if0_39102267 ( auto generat)
+passw : FJphrFaYVi58iqh
